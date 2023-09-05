@@ -1,6 +1,3 @@
-repo_url: https://github.com/zpodfactory/zpodfactory.github.io
-site_url: https://zpodfactory.github.io
-
 site_name: zPodFactory
 theme:
   name: material
