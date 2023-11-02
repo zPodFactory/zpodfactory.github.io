@@ -1,0 +1,1231 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../install/">
+      
+      
+        <link rel="next" href="../user/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>Admin Guide - zPodFactory</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFire+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fire Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#admin-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="zPodFactory" class="md-header__button md-logo" aria-label="zPodFactory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            zPodFactory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Admin Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zpodfactory" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+    
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
+          
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../install/" class="md-tabs__link">
+          
+  
+    
+  
+  Installation & Configuration Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Admin Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../user/" class="md-tabs__link">
+          
+  
+    
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/" class="md-tabs__link">
+          
+  
+    
+  
+  API/SDK
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/roadmap/" class="md-tabs__link">
+        
+  
+    
+  
+  Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../faq/faq/" class="md-tabs__link">
+        
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="zPodFactory" class="md-nav__button md-logo" aria-label="zPodFactory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    zPodFactory
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zpodfactory" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../install/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Installation & Configuration Guide
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Installation & Configuration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  <span class="md-ellipsis">
+    Admin Guide
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Admin Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../user/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    User Guide
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    API/SDK
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            API/SDK
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/roadmap/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Roadmap
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview-high-level-diagram" class="md-nav__link">
+    Overview High Level Diagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-high-level-diagram" class="md-nav__link">
+    Network High Level Diagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nested-networking-diagram" class="md-nav__link">
+    Nested Networking Diagram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-installation" class="md-nav__link">
+    CLI Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    Authentication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-settings" class="md-nav__link">
+    Manage settings
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-users" class="md-nav__link">
+    Manage users
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-groups" class="md-nav__link">
+    Manage groups
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-permissions" class="md-nav__link">
+    Manage permissions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-library" class="md-nav__link">
+    Manage library
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-components" class="md-nav__link">
+    Manage components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-endpoints" class="md-nav__link">
+    Manage endpoints
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-profiles" class="md-nav__link">
+    Manage profiles
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="admin-guide">Admin Guide</h1>
+<p>To understand the zPodFactory framework, you need to understand the following concepts depicted in the diagram below:</p>
+<h2 id="overview-high-level-diagram">Overview High Level Diagram</h2>
+<p><a class="glightbox" href="../../img/zPodFactory-overview-layers.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zPodFactory-overview-layers.svg" /></a></p>
+<ul>
+<li>Top left in Blue you can see the physical environment used to host the nested environments (zPods). This is basically the <code>endpoint</code> in the zPodFactory framework. I've also depicted on the center part, how the "global" NSX configuration would look like from a simple deployment (single endpoint)</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You can check the endpoint section for more information on how to configure an endpoints here: <a href="./#manage-endpoints">Manage endpoints</a></p>
+</div>
+<ul>
+<li>
+<p>Center Left in Orange, you can see the nested environment from an administrator perspective, basically all the Layer 1 VMs. You can see the main components that are deployed at L1 which are the <code>zbox</code> and the <code>esxi</code> components. The <code>zbox</code> component is the main component that is used to manage the nested environment, and the <code>esxi</code> component is the nested environment hosts, the main important part here is the zPod Network, which is managed by an admin, and protecting every nested environment from each other and also the physical environment.</p>
+</li>
+<li>
+<p>Bottom left in Green shows what a User can see from his POV, he will never see the 2 above layers, unless he is a zPodFactory administrator, but he will see the nested environment from his perspective, which is usually the vCenter Server, and the components in it and have full control over those components as the Instance password is admin for every component in that nested environment. In the Center part, you could see what a User would potentially build in the nested environment, which is usually a vCenter Server, a NSX-T Manager, a NSX-T overlay network on top of the zPod Network and then VMs connected to that overlay network.</p>
+</li>
+</ul>
+<h2 id="network-high-level-diagram">Network High Level Diagram</h2>
+<p>Now from a more detailed networking perspective that shows 2 main NSX capabilities:</p>
+<p><a class="glightbox" href="../../img/zPodFactory-networking-nsx-overview.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zPodFactory-networking-nsx-overview.svg" /></a></p>
+<p>Depending on which NSX version you have installed at the physical layer, you may be able to use the recent NSX Projects features, which aims to build multi-tenancy in the NSX environment.</p>
+<ul>
+<li>On the bottom left side you can see a Project construct that encompasses 1 or more zPods (2 in this example)</li>
+<li>On the bottom right side you can see a zPod not using Projects at all.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To leverage NSX Projects you will need to use NSX 4.1.1 or above for full support.</p>
+</div>
+<p>Using NSX Projects are highly recommended as they provide a lot of benefits around the permissions that we can provide on the networking layer of the nested environments.  This gives users a lot of flexibility (creating VLANs/subnets, and routing them without any administrator interaction), and also to provide security for admins who can filter the routes being advertised to the main T0.</p>
+<p>Once the zPodFactory framework is deployed and running, you can start using the CLI to configure and manage the framework.</p>
+<h2 id="nested-networking-diagram">Nested Networking Diagram</h2>
+<p>This is what a user will be to use/leverage on any nested Instance/zPod he deploys.</p>
+<p><a class="glightbox" href="../../img/zPodFactory-instance-networking.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zPodFactory-instance-networking.svg" /></a></p>
+<p>Each Instance/zPod has 1 overall network (1 x /24 subnet that we carve into 4 x /26)</p>
+<p>Example: Instance "test" has <code>10.96.10.0/24</code></p>
+<p>We will have the following networks managed:</p>
+<ul>
+<li>Subnet <code>10.96.10.0/26</code> (Native VLAN, untagged, Management VLAN for components deployed): This Subnet is managed and routed by NSX T1.</li>
+<li>Subnet <code>10.96.10.64.0/26</code> (VLAN 64, tagged): This subnet is by default routed by the <code>zbox</code> component, but we will offer the ability to change the routing to a <code>vyos</code> component in the future</li>
+<li>Subnet <code>10.96.10.128.0/26</code> (VLAN 128, tagged): This subnet is by default routed by the <code>zbox</code> component, but we will offer the ability to change the routing to a <code>vyos</code> component in the future</li>
+<li>Subnet <code>10.96.10.192.0/26</code> (VLAN 192, tagged): This subnet is by default routed by the <code>zbox</code> component, but we will offer the ability to change the routing to a <code>vyos</code> component in the future</li>
+</ul>
+<p>Those VLANs should simplify the initial deployment and configuration of NSX in the nested layer so you can setup Host/Edge Nodes TEPs/Public subnets on different VLANs as you see fit.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>This does not mean you cannot add any new VLANs, those are just the default networks/VLANs configured that are configured AND advertised upstream through the T0.</p>
+<p>As you can imagine, we need to avoid advertising any non managed networks upstream or 2 users could for example try to advertise back the same subnet such as 192.168.1.0/24 and this would bring many issues we want to avoid.</p>
+<p><strong>PS:</strong> You will have control on the T1 of your instance to add any static routes as you see fit, meaning you could for example add VLAN 100 with the subnet <code>192.168.1.0/24</code> and it will be ONLY be available on your Instance. As you can imagine if you add a subnet, you'll need to route that subnet to a next hop that you have to manage yourself using <code>zbox</code>, <code>vyos</code>, or <code>NSX</code> if this is an overlay networking sitting on Geneve for example.</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p><code>zcli</code> is a command line tool that allows you to manage your zPods and the whole zPodFactory framework.</p>
+<h2 id="cli-installation">CLI Installation</h2>
+<p>Using <code>pip</code>:</p>
+<div class="highlight" data-copy="pip install zcli"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>❯ pip install zcli
+</code></pre></div>
+<p>Verify that the CLI is now available and working:</p>
+<p><a class="glightbox" href="../../img/zcli_help.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_help.png" /></a></p>
+<h2 id="authentication">Authentication</h2>
+<p>The first thing you need to do is to connect to the zPodFactory API as an administrator which is called <code>superadmin</code>.</p>
+<p>This user has the ability to do everything in the zPodFactory framework.</p>
+<p>First thing is to connect to the server with the superadmin token provided.</p>
+<div class="highlight" data-copy="zcli connect -s https://manager.zpodfactory.domain -t XXXX-TOKEN-XXXX"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>❯ zcli connect -s https://manager.zpodfactory.domain -t &quot;XXXX-TOKEN-XXXX&quot;
+</code></pre></div>
+<blockquote>
+<p>The process for the initial token is still under discussion, but it will be created at the first connection to the API and provided back to the user and saved in the zcli configuration file. (Basically the first api connection will become the <code>superadmin</code> user)</p>
+</blockquote>
+<h2 id="manage-settings">Manage settings</h2>
+<p>This is the main entry point to configure the framework, which requires very important information to be able to operate correctly.</p>
+<p>In the manual setup, we provided a <code>deploy.sh</code> script to help setup those settings correctly, but we will explain every relevant one here:</p>
+<ul>
+<li><code>zpodfactory_host</code>: This is the IP of the VM zPodFactory has been installed/running on.</li>
+<li><code>zpodfactory_instances_domain</code>: This is the base domain name that will be used for each deployed zPod/Instance. (e.g. if <code>test</code> is your zPod/Instance name, and if zpodfactory_instances_domain is <code>zpodfactory.domain</code>, the FQDN of the zPod/Instance will be <code>test.zpodfactory.domain</code>)</li>
+<li><code>zpodfactory_ssh_key</code>: This is the SSH Key that will be pushed to the zPod/Instance <code>zbox</code>, and <code>esxi</code> components to allow SSH access to those components.</li>
+<li><code>zpodfactory_customerconnect_username</code>: This is the username of the customer connect account that will be used to download the VMware products binaries.</li>
+<li><code>zpodfactory_customerconnect_password</code>: This is the password of the customer connect account that will be used to download the VMware products binaries.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you do not setup the customer connect credentials, the download engine will not work, and you will not be able to download any VMware products binaries.</p>
+<p>The download engine is a key component of the framework, and is used to download the VMware products binaries, and to deploy the nested environments.</p>
+<p>Right now there is no manual documentation/process that explains how to provide binaries/checksums etc to the zPodFramework yet !</p>
+</div>
+<ul>
+<li><code>license_&lt;component&gt;-&lt;version&gt;</code>: This is a facility to push automatically some licenses to components once deployed, right now we only support vcenter licenses, but very likely nsx will be the next to be supported.</li>
+</ul>
+<div class="highlight" data-copy="zcli setting list"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>❯ zcli setting list
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_setting_list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_setting_list.png" /></a></p>
+<h2 id="manage-users">Manage users</h2>
+<p>List users</p>
+<div class="highlight" data-copy="zcli user list"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>❯ zcli user list
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_user_list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_user_list.png" /></a></p>
+<p>TBD</p>
+<h2 id="manage-groups">Manage groups</h2>
+<p>TBD</p>
+<h2 id="manage-permissions">Manage permissions</h2>
+<p>TBD</p>
+<h2 id="manage-library">Manage library</h2>
+<p>By default zPodFactory comes with a default library that contains all the "official" vmware and misc supported <code>components</code> supported by the framework.</p>
+<p>This library is stored in a <a href="https://github.com/zpodfactory/zpodlibrary">git repository</a> and is cloned locally, and used to fetch all <code>components</code> metadata (mainly OVA binary files with some misc information) we use to manage the products.</p>
+<p>Listing libraries:</p>
+<div class="highlight" data-copy="zcli library list"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>❯ zcli library list
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_library_list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_library_list.png" /></a></p>
+<blockquote>
+<p>PS: The <code>default</code> library is the only one available for now, but the framework is designed to be able to support multiple libraries.</p>
+</blockquote>
+<p>Resync the library:</p>
+<div class="highlight" data-copy="zcli library resync -n default"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>❯ zcli library resync -n default
+</code></pre></div>
+<blockquote>
+<p>PS: The <code>resync</code> command will refresh all the <code>components</code> metadata from the git repository, and will update the local database with the new information.</p>
+</blockquote>
+<h2 id="manage-components">Manage components</h2>
+<p>List all <code>components</code>:</p>
+<div class="highlight" data-copy="zcli component list -a"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>❯ zcli component list -a
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_component_list_all.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_component_list_all.png" /></a></p>
+<p>List all available components (ready to deploy):</p>
+<div class="highlight" data-copy="zcli component list"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>❯ zcli component list
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_component_list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_component_list.png" /></a></p>
+<p>Enable a <code>component</code> (make it available for deployment):</p>
+<p>This will trigger the embedded download engine (Make sure that you configured your customer connect credentials in the settings or this task will fail)</p>
+<p>You will need to use the <code>component</code> uuid (long unique name of the <code>component</code>)</p>
+<div class="highlight" data-copy="zcli component enable --uid vcsa-8.0u2"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>❯ zcli component enable --uid vcsa-8.0u2
+</code></pre></div>
+<p>you can then follow the progress using <code>zcli component list -a</code>, or get on a specific <code>component</code> uuid as depicted below:</p>
+<div class="highlight" data-copy="zcli component get --uid vcsa-8.0u2"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>❯ zcli component get --uid vcsa-8.0u2
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_component_get.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_component_get.png" /></a></p>
+<h2 id="manage-endpoints">Manage endpoints</h2>
+<p>Endpoints are the target physical environments a nested environment will be built upon.</p>
+<p>The framework is designed to be able to support multiple endpoints, and to be able to deploy nested environments on different physical environments.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Network connectivity from the zPodFactory Appliance to the following is <strong>MANDATORY</strong>:</p>
+<ul>
+<li>VMware vCenter Server (HTTPS API)</li>
+<li>VMware ESXi Hosts (OVF/OVA uploads)</li>
+<li>VMware NSX-T Manager (HTTPS API)</li>
+<li>VMware NSX-T <code>networks</code> supernet L3 connectivity</li>
+</ul>
+</div>
+<p><a class="glightbox" href="../../img/zPodFactory-topology-overview-network-endpoints.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zPodFactory-topology-overview-network-endpoints.svg" /></a></p>
+<p>List all endpoints:</p>
+<div class="highlight" data-copy="zcli endpoint list"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>❯ zcli endpoint list
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_endpoint_list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_endpoint_list.png" /></a></p>
+<p>Add an endpoint (MISSING COMMAND)</p>
+<div class="highlight" data-copy="zcli endpoint add"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>❯ zcli endpoint add
+</code></pre></div>
+<p>Curl workaround for now until the command is implemented:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a># Create SDDC-Lab endpoint
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>curl -X POST http://$ZPODAPI_URL/endpoints -H &quot;Content-Type: application/json&quot; -d &#39;{
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  &quot;name&quot;: &quot;sddc-lab&quot;,
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>  &quot;description&quot;: &quot;SDDC Lab Environment&quot;,
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>  &quot;endpoints&quot;: {
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>    &quot;compute&quot;: {
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>      &quot;name&quot;: &quot;vcsa.sddc.lab&quot;,
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>      &quot;driver&quot;: &quot;vsphere&quot;,
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>      &quot;hostname&quot;: &quot;vcsa.sddc.lab&quot;,
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a>      &quot;username&quot;: &quot;administrator@vsphere.local&quot;,
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a>      &quot;password&quot;: &quot;VMware1!&quot;,
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>      &quot;datacenter&quot;: &quot;Chicago&quot;,
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a>      &quot;resource_pool&quot;: &quot;SDDC&quot;,
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a>      &quot;storage_policy&quot;: &quot;zPods&quot;,
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a>      &quot;storage_datastore&quot;: &quot;vsanDatastore&quot;,
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a>      &quot;contentlibrary&quot;: &quot;zPodFactory&quot;,
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a>      &quot;vmfolder&quot;: &quot;zPods-SDDC&quot;
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a>    },
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a>    &quot;network&quot;: {
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a>      &quot;name&quot;: &quot;nsx.sddc.lab&quot;,
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a>      &quot;driver&quot;: &quot;nsxt-projects&quot;,
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a>      &quot;hostname&quot;: &quot;nsx.sddc.lab&quot;,
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a>      &quot;username&quot;: &quot;admin&quot;,
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a>      &quot;password&quot;: &quot;VMware1!VMware1!&quot;,
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="hll">      &quot;networks&quot;: &quot;10.20.128.0/17&quot;,
+</span><a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a>      &quot;transportzone&quot;: &quot;nsx-overlay-transportzone&quot;,
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a>      &quot;edgecluster&quot;: &quot;edgecluster-sddc&quot;,
+<a id="__codelineno-12-28" name="__codelineno-12-28" href="#__codelineno-12-28"></a>      &quot;t0&quot;: &quot;T0-SDDC&quot;
+<a id="__codelineno-12-29" name="__codelineno-12-29" href="#__codelineno-12-29"></a>    }
+<a id="__codelineno-12-30" name="__codelineno-12-30" href="#__codelineno-12-30"></a>  },
+<a id="__codelineno-12-31" name="__codelineno-12-31" href="#__codelineno-12-31"></a>  &quot;enabled&quot;: true
+<a id="__codelineno-12-32" name="__codelineno-12-32" href="#__codelineno-12-32"></a>}&#39;
+</code></pre></div>
+<h2 id="manage-profiles">Manage profiles</h2>
+<p><code>Profiles</code> are a collections of <code>components</code> that are grouped together to form an initial nested environment.</p>
+<p>They are the main entry point to deploy a nested environment and require some mandatory <code>components</code> such as <code>zbox</code> which is the default appliance to manage the nested environment domain name/DHCP Server (dnsmasq), the NFS storage used for the ESXi hosts, and the router of the 3 additional /26 subnets routed on their respective VLAN (64/128/192) of an Instance (zPod).</p>
+<p><a class="glightbox" href="../../img/zPodFactory-instance-networking.svg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zPodFactory-instance-networking.svg" /></a></p>
+<div class="highlight" data-copy="zcli profile list"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>❯ zcli profile list
+</code></pre></div>
+<p><a class="glightbox" href="../../img/zcli_profile_list.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="img" src="../../img/zcli_profile_list.png" /></a></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../install/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation and Configuration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Installation and Configuration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../user/" class="md-footer__link md-footer__link--next" aria-label="Next: User Guide">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                User Guide
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.tabs.sticky", "navigation.footer", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
