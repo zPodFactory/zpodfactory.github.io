@@ -1,6 +1,22 @@
+INHERIT: mkdocs-nav.yml
+
 site_name: zPodFactory
+
+repo_name: GitHub
+repo_url: https://github.com/zpodfactory
+
 theme:
   name: material
+  font:
+    text: Roboto
+    code: Fire Code
+  features:
+    - navigation.tabs
+    - navigation.indexes
+    - navigation.tabs.sticky
+    - navigation.footer
+    - content.code.annotate
+    - content.code.copy
 
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -13,3 +29,27 @@ theme:
       toggle:
         icon: material/weather-night
         name: Switch to light mode
+
+plugins:
+
+- blog:
+    archive: false
+- search
+- glightbox
+
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
