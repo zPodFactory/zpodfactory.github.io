@@ -53,7 +53,7 @@ It is the recommended way to deploy zPodFactory, as it will simplify the install
 
 If you prefer to install zPodFactory manually and potentially set yourself a dev environment for it, you can follow the below instructions.
 
-We recommend starting with a [zBox 12.2](https://cloud.tsugliani.fr/ova/zbox-12.2.ova) appliance, as it is also the Linux distribution used for all our development and testing, and for the zPodFactory Appliance.  This should ensure all the steps we provide are as accurate and informative as possible.
+We recommend starting with a [zBox 12.5](https://cloud.tsugliani.fr/ova/zbox-12.5.ova) appliance, as it is also the Linux distribution used for all our development and testing, and for the zPodFactory Appliance.  This should ensure all the steps we provide are as accurate and informative as possible.
 
 Deploy the appliance and power it on with the correct networking ovf properties.
 
@@ -293,19 +293,16 @@ It will rely on a watchdog, that will check any modification to the configuratio
 Let's set up the base `dnsmasq` configuration file `/etc/dnsmasq.conf`:
 
 ```ini title="/etc/dnsmasq.conf"
-listen-address=127.0.0.1,10.96.42.137
-interface=lo,eth1
+listen-address=127.0.0.1,X.X.X.X
+interface=lo,eth0
 bind-interfaces
 expand-hosts
 dns-forward-max=1500
 cache-size=10000
-no-dhcp-interface=lo,eth0,eth1
-server=10.96.42.10
-domain=nested.lab
-local=/nested.lab/
-server=/zpod.io/10.96.42.10
-server=/zpodfactory.io/10.96.42.11
-server=/rax.lab/172.20.0.5
+no-dhcp-interface=lo,eth0
+server=1.1.1.1
+domain=zpod.lab
+local=/zpod.lab/
 servers-file=/zPod/zPodDnsmasqServers/servers.conf
 ```
 
@@ -317,9 +314,9 @@ This is obviously tied to my specific configuration so i'll highlight the import
 - `server`: the DNS server(s) that dnsmasq will use to resolve DNS requests upstream
 - `domain` and `local`: the domain name that dnsmasq will use to resolve DNS requests locally for the deployed nested envs:
 
-As an example if you put nested.lab here, every zPod deployed, will have a DNS name like this:
+As an example if you put `zpod.lab` here, every zPod deployed, will have a DNS name like this:
 
-- `zpodname.nested.lab`
+- `zpodname.zpod.lab`
 
 and all the DNS requests for this domain will be resolved by another dnsmasq instance on the nested environment itself also through dnsmasq.
 
@@ -327,6 +324,13 @@ and all the DNS requests for this domain will be resolved by another dnsmasq ins
 - `servers-file`: this is the file that will be used to store the DNS records for the deployed nested environments
 
 > Every time a nested environment is deployed or destroyed, the `servers-file` configuration file will be updated with the new information, and the watchdog will send a SIGHUP signal to dnsmasq to reload the configuration.
+
+
+Restart the dnsmasq service.
+
+``` { data-copy="systemctl restart dnsmasq" }
+❯ systemctl restart dnsmasq
+```
 
 Create the following systemd service file `/etc/systemd/system/zdnsmasqservers.service`:
 
@@ -479,7 +483,14 @@ Do you want to continue? [Y/n]
 
 ### zPodCore installation
 
-Clone the zPodCore repository:
+Create a directory to setup the application stack.
+
+``` { data-copy="mkdir -vp $HOME/git && cd $HOME/git" }
+❯ mkdir -vp $HOME/git && cd $HOME/git
+mkdir: created directory '/root/git'
+```
+
+Clone the zPodCore repository in the `$HOME/git` directory:
 
 ``` { data-copy="git clone https://github.com/zPodFactory/zpodcore.git" }
 ❯ git clone https://github.com/zPodFactory/zpodcore.git
@@ -492,87 +503,6 @@ remote: Total 4344 (delta 941), reused 1317 (delta 819), pack-reused 2801
 Receiving objects: 100% (4344/4344), 1.22 MiB | 9.36 MiB/s, done.
 Resolving deltas: 100% (2677/2677), done.
 
-```
-
-Install python poetry:
-
-``` { data-copy="apt install python3-poetry" }
-❯ apt install python3-poetry
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following additional packages will be installed:
-  adwaita-icon-theme at-spi2-common at-spi2-core build-essential cpp cpp-12 dconf-gsettings-backend dconf-service dpkg-dev fakeroot fontconfig g++ g++-12 gcc gcc-12 gcr gnome-keyring
-  gnome-keyring-pkcs11 gsettings-desktop-schemas gtk-update-icon-cache hicolor-icon-theme libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan8
-  libatk-bridge2.0-0 libatk1.0-0 libatomic1 libatspi2.0-0 libavahi-client3 libavahi-common-data libavahi-common3 libcairo-gobject2 libcairo2 libcc1-0 libcolord2 libcups2 libdatrie1
-  libdconf1 libdpkg-perl libepoxy0 libfakeroot libfile-fcntllock-perl libfribidi0 libgcc-12-dev libgck-1-0 libgcr-base-3-1 libgcr-ui-3-1 libgdk-pixbuf-2.0-0 libgdk-pixbuf2.0-bin
-  libgdk-pixbuf2.0-common libgomp1 libgraphite2-3 libgtk-3-0 libgtk-3-bin libgtk-3-common libharfbuzz0b libisl23 libitm1 liblcms2-2 liblsan0 libmpc3 libmpfr6 libpam-gnome-keyring
-  libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpixman-1-0 libquadmath0 librsvg2-2 librsvg2-common libsecret-1-0 libsecret-common libstdc++-12-dev libthai-data libthai0 libtsan2
-  libubsan1 libwayland-client0 libwayland-cursor0 libwayland-egl1 libxcb-render0 libxcb-shm0 libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2
-  libxrender1 libxtst6 make p11-kit p11-kit-modules pinentry-gnome3 python-pkginfo-doc python3-attr python3-cachecontrol python3-cleo python3-crashtest python3-distlib python3-dulwich
-  python3-fastimport python3-filelock python3-html5lib python3-importlib-metadata python3-jaraco.classes python3-jeepney python3-json-pointer python3-jsonschema python3-keyring
-  python3-lockfile python3-more-itertools python3-msgpack python3-packaging python3-pexpect python3-pip-whl python3-pkginfo python3-platformdirs python3-poetry-core python3-ptyprocess
-  python3-pylev python3-pyrsistent python3-rfc3987 python3-secretstorage python3-setuptools-whl python3-shellingham python3-tomlkit python3-uritemplate python3-virtualenv python3-webcolors
-  python3-webencodings python3-wheel-whl python3-zipp x11-common
-Suggested packages:
-  cpp-doc gcc-12-locales cpp-12-doc debian-keyring g++-multilib g++-12-multilib gcc-12-doc gcc-multilib autoconf automake libtool flex bison gdb gcc-doc gcc-12-multilib colord cups-common
-  bzr gvfs liblcms2-utils librsvg2-bin libstdc++-12-doc make-doc pinentry-doc python-attr-doc python-cleo-doc python3-gpg python3-genshi python3-lxml python-jsonschema-doc gir1.2-secret-1
-  libkf5wallet-bin python3-keyrings.alt python-lockfile-doc python-pexpect-doc python-secretstorage-doc
-The following NEW packages will be installed:
-  adwaita-icon-theme at-spi2-common at-spi2-core build-essential cpp cpp-12 dconf-gsettings-backend dconf-service dpkg-dev fakeroot fontconfig g++ g++-12 gcc gcc-12 gcr gnome-keyring
-  gnome-keyring-pkcs11 gsettings-desktop-schemas gtk-update-icon-cache hicolor-icon-theme libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan8
-  libatk-bridge2.0-0 libatk1.0-0 libatomic1 libatspi2.0-0 libavahi-client3 libavahi-common-data libavahi-common3 libcairo-gobject2 libcairo2 libcc1-0 libcolord2 libcups2 libdatrie1
-  libdconf1 libdpkg-perl libepoxy0 libfakeroot libfile-fcntllock-perl libfribidi0 libgcc-12-dev libgck-1-0 libgcr-base-3-1 libgcr-ui-3-1 libgdk-pixbuf-2.0-0 libgdk-pixbuf2.0-bin
-  libgdk-pixbuf2.0-common libgomp1 libgraphite2-3 libgtk-3-0 libgtk-3-bin libgtk-3-common libharfbuzz0b libisl23 libitm1 liblcms2-2 liblsan0 libmpc3 libmpfr6 libpam-gnome-keyring
-  libpango-1.0-0 libpangocairo-1.0-0 libpangoft2-1.0-0 libpixman-1-0 libquadmath0 librsvg2-2 librsvg2-common libsecret-1-0 libsecret-common libstdc++-12-dev libthai-data libthai0 libtsan2
-  libubsan1 libwayland-client0 libwayland-cursor0 libwayland-egl1 libxcb-render0 libxcb-shm0 libxcomposite1 libxcursor1 libxdamage1 libxfixes3 libxi6 libxinerama1 libxkbcommon0 libxrandr2
-  libxrender1 libxtst6 make p11-kit p11-kit-modules pinentry-gnome3 python-pkginfo-doc python3-attr python3-cachecontrol python3-cleo python3-crashtest python3-distlib python3-dulwich
-  python3-fastimport python3-filelock python3-html5lib python3-importlib-metadata python3-jaraco.classes python3-jeepney python3-json-pointer python3-jsonschema python3-keyring
-  python3-lockfile python3-more-itertools python3-msgpack python3-packaging python3-pexpect python3-pip-whl python3-pkginfo python3-platformdirs python3-poetry python3-poetry-core
-  python3-ptyprocess python3-pylev python3-pyrsistent python3-rfc3987 python3-secretstorage python3-setuptools-whl python3-shellingham python3-tomlkit python3-uritemplate python3-virtualenv
-  python3-webcolors python3-webencodings python3-wheel-whl python3-zipp x11-common
-0 upgraded, 138 newly installed, 0 to remove and 0 not upgraded.
-Need to get 85.3 MB of archives.
-After this operation, 331 MB of additional disk space will be used.
-Do you want to continue? [Y/n]
-```
-
-Disable experimental new installer (poetry)
-
-``` { data-copy="poetry config experimental.new-installer false" }
-❯ poetry config experimental.new-installer false
-```
-
-Requirement for poetry install on `psycopg2`
-
-``` { data-copy="apt install libpq-dev" }
-❯ apt install libpq-dev
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following additional packages will be installed:
-  libssl-dev
-Suggested packages:
-  postgresql-doc-15 libssl-doc
-The following NEW packages will be installed:
-  libpq-dev libssl-dev
-0 upgraded, 2 newly installed, 0 to remove and 0 not upgraded.
-Need to get 2,568 kB of archives.
-After this operation, 13.2 MB of additional disk space will be used.
-Do you want to continue? [Y/n]
-Get:1 http://deb.debian.org/debian bookworm/main amd64 libssl-dev amd64 3.0.9-1 [2,428 kB]
-Get:2 http://deb.debian.org/debian bookworm/main amd64 libpq-dev amd64 15.3-0+deb12u1 [140 kB]
-Fetched 2,568 kB in 0s (18.3 MB/s)
-Selecting previously unselected package libssl-dev:amd64.
-(Reading database ... 54499 files and directories currently installed.)
-Preparing to unpack .../libssl-dev_3.0.9-1_amd64.deb ...
-Unpacking libssl-dev:amd64 (3.0.9-1) ...
-Selecting previously unselected package libpq-dev.
-Preparing to unpack .../libpq-dev_15.3-0+deb12u1_amd64.deb ...
-Unpacking libpq-dev (15.3-0+deb12u1) ...
-Setting up libssl-dev:amd64 (3.0.9-1) ...
-Setting up libpq-dev (15.3-0+deb12u1) ...
-Processing triggers for man-db (2.11.2-2) ...
 ```
 
 Install `pyenv`
@@ -600,10 +530,43 @@ source ~/.zshrc
 
 Python library requirements for compilation
 
-``` { data-copy="apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev python3-openssl git" }
+``` { data-copy="apt install build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev libffi-dev liblzma-dev python3-openssl git libpq-dev" }
 ❯ apt install build-essential libssl-dev zlib1g-dev libbz2-dev \
 libreadline-dev libsqlite3-dev llvm libncurses5-dev libncursesw5-dev \
-libffi-dev liblzma-dev python3-openssl git
+libffi-dev liblzma-dev python3-openssl git libpq-dev
+```
+
+install python 3.12.1
+
+``` { data-copy="pyenv install 3.12.1" }
+❯ pyenv install 3.12.1
+```
+
+For each of the following directories set python version to 3.12.1, poetry config & poetry install.
+
+- `$HOME/git/zpodcore/zpodapi`
+- `$HOME/git/zpodcore/zpodengine`
+- `$HOME/git/zpodcore/zpodcli`
+
+``` { data-copy="for i in zpodapi zpodengine zpodcli; do cd $HOME/git/zpodcore/$i && pyenv local 3.12.1 && pyenv exec pip install poetry && poetry config virtualenvs.in-project true && poetry install; done; cd $HOME/git/zpodcore" }
+for i in zpodapi zpodengine zpodcli;
+  do cd $HOME/git/zpodcore/$i && pyenv local 3.12.1 && pyenv exec pip install poetry && poetry config virtualenvs.in-project true && poetry install;
+done;
+cd $HOME/git/zpodcore
+```
+
+Create a `.env` file in the `$HOME/git/zpodcore` directory and set the required environment variables.
+(Change `X.X.X.X` at the bottom by the IP of this zPodFactory VM)
+
+``` { data-copy="cp .env.default .env && vim .env" }
+❯ cp .env.default .env
+❯ vim .env
+```
+
+Build the Docker container images for the zPodCore application stack.
+
+``` { data-copy="docker compose build" }
+❯ docker compose build
 ```
 
 Setup an additional apt list for some additional packages
@@ -625,12 +588,16 @@ Here is a facility script called deploy.sh that will help launch the docker comp
 
 PS4="$(tput setaf 3)>>>$(tput sgr0) "
 
-ZPODAPI_URL=10.96.42.137:8000
+ZPODAPI_URL=X.X.X.X:8000
+PREFIX=project
 
 set -x
 
 # Shut down docker
 docker compose down
+
+# Remove volumes
+docker volume rm ${PREFIX}_zpod_vol_postgres ${PREFIX}_zpod_vol_prefect
 
 # Restart docker
 just zpodcore-start-background
@@ -643,15 +610,17 @@ just zpodengine-cmd python src/zpodengine/flow_init.py
 # Deploy
 just zpodengine-deploy-all
 
+# Delete library entries
+just zpodapi-exec "rm -rf /library/default"
 
-# Set zpodfactory_host (the zPodFactory VM IP listening for API requests)
+# Set zpodfactory_host
 curl -X PATCH http://$ZPODAPI_URL/settings/name=zpodfactory_host -H "Content-Type: application/json" -d '{
-  "value": "10.96.42.137"
+  "value": "X.X.X.X"
 }'
 
 # Set zpodfactory_instances_domain
 curl -X PATCH http://$ZPODAPI_URL/settings/name=zpodfactory_instances_domain -H "Content-Type: application/json" -d '{
-  "value": "mcsa.cloud"
+  "value": "zpod.lab"
 }'
 
 # Set zpodfactory_ssh_key
@@ -700,36 +669,34 @@ curl -X POST http://$ZPODAPI_URL/settings -H "Content-Type: application/json" -d
   "description": "NSX Data Center Enterprise Plus",
   "value": "XXXXX-XXXXX-XXXXX-XXXXXX-XXXXX"
 }'
-
-
-# Create RAX-MCA endpoint
+# Create vSphere/NSX target endpoint
 curl -X POST http://$ZPODAPI_URL/endpoints -H "Content-Type: application/json" -d '{
-  "name": "rax-mca",
-  "description": "MCA Prod Environment",
+  "name": "vSphere-SDDC",
+  "description": "vSphere SDDC with vCenter/NSX",
   "endpoints": {
     "compute": {
-      "name": "vcsa.rax.lab",
+      "name": "vcenter.fqdn.com",
       "driver": "vsphere",
-      "hostname": "vcsa.rax.lab",
-      "username": "USERNAME",
-      "password": "PASSWORD",
-      "datacenter": "Chicago",
-      "resource_pool": "SDDC",
+      "hostname": "vcenter.fqdn.com",
+      "username": "myserviceusername",
+      "password": "myservicepassword",
+      "datacenter": "Datacenter-Paris",
+      "resource_pool": "ClusterName",
       "storage_policy": "zPods",
       "storage_datastore": "vsanDatastore",
       "contentlibrary": "zPodFactory",
-      "vmfolder": "zPods-MCA"
+      "vmfolder": "zPods-OVH"
     },
     "network": {
-      "name": "nsx.rax.lab",
-      "driver": "nsxt-projects",
-      "hostname": "nsx.rax.lab",
-      "username": "USERNAME",
-      "password": "PASSWORD",
-      "networks": "10.196.128.0/17",
-      "transportzone": "nsx-overlay-transportzone",
-      "edgecluster": "edgecluster-mca",
-      "t0": "T0-MCA",
+      "name": "nsxmanager.fqdn.com",
+      "driver": "nsxt",
+      "hostname": "nsxmanager.fqdn.com",
+      "username": "myserviceusername",
+      "password": "myservicepassword",
+      "networks": "10.96.0.0/16",
+      "transportzone": "overlay-tz",
+      "edgecluster": "edgecluster-prod",
+      "t0": "T0-Paris-Prod",
       "macdiscoveryprofile": "Nested-Mac-Discovery-Profile"
     }
   },
@@ -745,23 +712,23 @@ curl -X POST http://$ZPODAPI_URL/libraries -H "Content-Type: application/json" -
 }'
 
 # Enable component zbox
-curl -X PUT http://$ZPODAPI_URL/components/uid=zbox-12.1/enable
+curl -X PUT http://$ZPODAPI_URL/components/uid=zbox-12.4/enable
 
 # Enable component esxi
-curl -X PUT http://$ZPODAPI_URL/components/uid=esxi-8.0u2/enable
+curl -X PUT http://$ZPODAPI_URL/components/uid=esxi-8.0u2b/enable
 
-# Enable component esxi
-curl -X PUT http://$ZPODAPI_URL/components/uid=vcsa-8.0u2/enable
+# Enable component vcsa
+curl -X PUT http://$ZPODAPI_URL/components/uid=vcsa-8.0u2b/enable
 
 # Enable component nsx
-curl -X PUT http://$ZPODAPI_URL/components/uid=nsx-4.1.1.0/enable
+curl -X PUT http://$ZPODAPI_URL/components/uid=nsx-4.1.2.3/enable
 
 # Add zbox profile
 curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: application/json" -d '{
   "name": "zbox",
   "profile": [
     {
-      "component_uid": "zbox-12.1"
+      "component_uid": "zbox-12.4"
     }
   ]
 }'
@@ -771,18 +738,18 @@ curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: applicati
   "name": "hosts",
   "profile": [
     {
-      "component_uid": "zbox-12.1"
+      "component_uid": "zbox-12.4"
     },
     [
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 11,
         "hostname": "esxi11",
         "vcpu": 4,
         "vmem": 12
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 12,
         "hostname": "esxi12",
         "vcpu": 4,
@@ -797,26 +764,26 @@ curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: applicati
   "name": "base",
   "profile": [
     {
-      "component_uid": "zbox-12.1"
+      "component_uid": "zbox-12.4"
     },
     [
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 11,
         "hostname": "esxi11",
-        "vcpu": 4,
+        "vcpu": 6,
         "vmem": 48
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 12,
         "hostname": "esxi12",
-        "vcpu": 4,
+        "vcpu": 6,
         "vmem": 48
       }
     ],
     {
-        "component_uid": "vcsa-8.0u2"
+        "component_uid": "vcsa-8.0u2b"
     }
   ]
 }'
@@ -826,25 +793,25 @@ curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: applicati
   "name": "sddc",
   "profile": [
     {
-      "component_uid": "zbox-12.1"
+      "component_uid": "zbox-12.4"
     },
     [
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 11,
         "hostname": "esxi11",
         "vcpu": 6,
         "vmem": 48
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 12,
         "hostname": "esxi12",
         "vcpu": 6,
         "vmem": 48
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 13,
         "hostname": "esxi13",
         "vcpu": 6,
@@ -852,73 +819,24 @@ curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: applicati
       }
     ],
     {
-        "component_uid": "vcsa-8.0u2"
+        "component_uid": "vcsa-8.0u2b"
     },
     {
-        "component_uid": "nsx-4.1.1.0"
+        "component_uid": "nsx-4.1.2.3"
     }
   ]
 }'
+TOKEN=$(docker compose logs | grep zpodapi | grep 'API Token:' | awk '{ print $5}')
 
-# Add 'sddc-large' profile
-curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: application/json" -d '{
-  "name": "sddc-large",
-  "profile": [
-    {
-      "component_uid": "zbox-12.1"
-    },
-    [
-      {
-        "component_uid": "esxi-8.0u2",
-        "host_id": 11,
-        "hostname": "esxi11",
-        "vcpu": 8,
-        "vmem": 64
-      },
-      {
-        "component_uid": "esxi-8.0u2",
-        "host_id": 12,
-        "hostname": "esxi12",
-        "vcpu": 8,
-        "vmem": 64
-      },
-      {
-        "component_uid": "esxi-8.0u2",
-        "host_id": 13,
-        "hostname": "esxi13",
-        "vcpu": 8,
-        "vmem": 64
-      },
-      {
-        "component_uid": "esxi-8.0u2",
-        "host_id": 14,
-        "hostname": "esxi14",
-        "vcpu": 8,
-        "vmem": 64
-      }
-    ],
-    {
-        "component_uid": "vcsa-8.0u2"
-    },
-    {
-        "component_uid": "nsx-4.1.1.0"
-    }
-  ]
-}'
+zcli connect -s http://$ZPODAPI_URL -t $TOKEN
 
 docker compose logs -f
 ```
 
 Make the script executable
 
-``` { data-copy="chmod +x /root/git/zpodcore/deploy.sh" }
-❯ chmod +x /root/git/zpodcore/deploy.sh
-```
-
-Then you can build docker compose containers with the following command:
-
-``` { data-copy="docker compose build" }
-❯ docker compose build
+``` { data-copy="chmod +x $HOME/git/zpodcore/deploy.sh" }
+❯ chmod +x $HOME/git/zpodcore/deploy.sh
 ```
 
 Finally launch the docker compose application stack with our script:
