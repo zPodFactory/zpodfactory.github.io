@@ -80,14 +80,11 @@ Check the current `reserved` static entries:
 
 ``` { data-copy="cat /etc/hosts" }
 ❯ cat /etc/hosts
-127.0.0.1        localhost
+127.0.0.1       localhost
 10.196.131.2     zbox.paris.zpod.lab    zbox
+10.196.131.3     usagemeter
 
-10.196.131.4     usagemeter
-10.196.131.5     nsxt nsx
-10.196.131.6     nsxv
-10.196.131.7     avi
-
+10.196.131.9     nsxv
 10.196.131.10    vcsa
 
 10.196.131.11    esxi11
@@ -99,16 +96,15 @@ Check the current `reserved` static entries:
 10.196.131.17    esxi17
 10.196.131.18    esxi18
 
-10.196.131.20    hcx
-10.196.131.21    hcx-cgw
-10.196.131.22    hcx-l2c
+10.196.131.20    nsx nsxt
+10.196.131.21    nsx21
+10.196.131.22    nsx22
+10.196.131.23    nsx23
 
-10.196.131.25    cloudbuilder
+10.196.131.25    cloudbuilder vcf
 10.196.131.26    sddcmgr
 
-10.196.131.28    srm
-10.196.131.29    vr
-
+10.196.131.29    vrlcm
 10.196.131.30    vrops
 10.196.131.31    vrli log
 10.196.131.36    vrni
@@ -117,9 +113,20 @@ Check the current `reserved` static entries:
 10.196.131.40    vcd cloud
 10.196.131.41    vcda
 
-10.196.131.59    rabbitmq cse voss
+10.196.131.45    hcx
+10.196.131.46    hcx-cgw
+10.196.131.47    hcx-l2c
+
+#
+# 50-60 DHCP Range
+#
 
 10.196.131.62    vyos
+
+# VLAN 192 (NSX - Edge Cluster / Edge Nodes)
+10.196.131.250   edgecluster-vip
+10.196.131.251   edgenode251
+10.196.131.252   edgenode252
 ```
 
 !!! warning
@@ -200,7 +207,7 @@ Check the logs:
 
 ### The Prefect Flow engine UI
 
-- https://manager.zpodfactory.domain:8060 (TBD)
+- https://manager.zpodfactory.domain:8360 (TBD)
 
 
 ## How to update the project ?
@@ -215,39 +222,39 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
 
 !!! info
 
-    `zbox` component and `esxi` component are mandatory, all other components are optional.
-
+    `zbox` component and `esxi` components are mandatory, all other components are optional.
+    To find which components are available, check the `zcli component list` command, or check the zPodFactory [library](https://github.com/zPodFactory/zPodLibrary).
     Usually you want at least a `zbox`, a few `esxi` hosts and a `vcsa` as the base profile provides
 
 ``` json
 [
     {
-      "component_uid": "zbox-12.1"
+      "component_uid": "zbox-12.4"
     },
     [
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 11,
         "hostname": "esxi11",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 12,
         "hostname": "esxi12",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 13,
         "hostname": "esxi13",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u2",
+        "component_uid": "esxi-8.0u2b",
         "host_id": 14,
         "hostname": "esxi14",
         "vcpu": 8,
@@ -255,13 +262,13 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
       }
     ],
     {
-        "component_uid": "vcsa-8.0u2"
+        "component_uid": "vcsa-8.0u2b"
     },
     {
-        "component_uid": "vcd-10.5"
+        "component_uid": "vcd-10.5.1.1"
     },
     {
-        "component_uid": "nsx-4.1.1.0"
+        "component_uid": "nsx-4.1.2.3"
     }
 ]
 ```
@@ -281,28 +288,28 @@ Check the profiles list:
 ┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Profile    ┃ Components                                  ┃
 ┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ zbox       │ zbox-12.1                                   │
-│ hosts      │ zbox-12.1                                   │
+│ zbox       │ zbox-12.4                                   │
+│ hosts      │ zbox-12.4                                   │
 │            │ esxi-8.0u2 (Host Id: 11, CPU: 4, Mem: 12GB) │
 │            │ esxi-8.0u2 (Host Id: 12, CPU: 4, Mem: 12GB) │
 │ base       │ zbox-12.1                                   │
 │            │ esxi-8.0u2 (Host Id: 11, CPU: 4, Mem: 48GB) │
 │            │ esxi-8.0u2 (Host Id: 12, CPU: 4, Mem: 48GB) │
 │            │ vcsa-8.0u2                                  │
-│ sddc       │ zbox-12.1                                   │
+│ sddc       │ zbox-12.4                                   │
 │            │ esxi-8.0u2 (Host Id: 11, CPU: 6, Mem: 48GB) │
 │            │ esxi-8.0u2 (Host Id: 12, CPU: 6, Mem: 48GB) │
 │            │ esxi-8.0u2 (Host Id: 13, CPU: 6, Mem: 48GB) │
 │            │ vcsa-8.0u2                                  │
 │            │ nsx-4.1.1.0                                 │
-│ sddc-large │ zbox-12.1                                   │
+│ sddc-large │ zbox-12.4                                   │
 │            │ esxi-8.0u2 (Host Id: 11, CPU: 8, Mem: 64GB) │
 │            │ esxi-8.0u2 (Host Id: 12, CPU: 8, Mem: 64GB) │
 │            │ esxi-8.0u2 (Host Id: 13, CPU: 8, Mem: 64GB) │
 │            │ esxi-8.0u2 (Host Id: 14, CPU: 8, Mem: 64GB) │
 │            │ vcsa-8.0u2                                  │
 │            │ nsx-4.1.1.0                                 │
-│ sddc-vcd   │ zbox-12.1                                   │
+│ sddc-vcd   │ zbox-12.4                                   │
 │            │ esxi-8.0u2 (Host Id: 11, CPU: 8, Mem: 64GB) │
 │            │ esxi-8.0u2 (Host Id: 12, CPU: 8, Mem: 64GB) │
 │            │ esxi-8.0u2 (Host Id: 13, CPU: 8, Mem: 64GB) │
@@ -312,6 +319,42 @@ Check the profiles list:
 │            │ nsx-4.1.1.0                                 │
 └────────────┴─────────────────────────────────────────────┘
 ```
+
+## Why does preparing NSX hosts break my zPod ?
+
+The DLR feature in NSX will setup a very specific/hardcoded mac address `02:50:56:56:44:52` for the DLR interface. This mac address is also configured in *any new NSX host preparation step* by the nested environment, which makes any L3 forwarding impossible with the physical environment and creates a routing network blackhole between the physical environment and nested ESXi hosts.
+
+It will seem as if your zPod went down (vcsa,nsx,esxi unresponsive from routed networks).
+
+That said if you try to ping/connect/access the zbox vm of that zPod, it will have no networking issues as it isn't hosted by one of the nested zPod ESXi hosts.
+
+You will need to change this mac hardcoded mac address to a different one, as it will conflict with any new nested environment when prepared by NSX.
+
+You can also fix a broken zPod with the same steps from the zbox VM as L2 will work properly:
+
+- [Change the MAC Address of NSX Virtual Distributed Router](https://docs.vmware.com/en/VMware-NSX/4.1/migration/GUID-538774C2-DE66-4F24-B9B7-537CA2FA87E9.html)
+
+!!! info
+
+    We recommend that you apply this new mac address to the physical environment layer, so that all new nested labs will be ready to go with no extra steps.
+
+
+## Why does creating a vSAN datastore fails in my zPod ?
+
+If you are trying to setup/run nested vSAN over a physical vSAN, you might encounter some issues with the vSAN datastore creation.
+
+You will need to enable the `FakeSCSIReservations` setting on each host part of your physical vSphere vSAN cluster.
+
+Leverage `esxcli` on *every* vSAN physical host:
+
+``` { .sh data-copy="esxcli system settings advanced set -o /VSAN/FakeSCSIReservations -i 1" }
+❯ esxcli system settings advanced set -o /VSAN/FakeSCSIReservations -i 1
+```
+
+[William Lam](https://twitter.com/lamw) explains the issue and the workaround in one of his blog articles:
+
+- [How to run Nested ESXi on top of a VSAN datastore?](https://williamlam.com/2013/11/how-to-run-nested-esxi-on-top-of-vsan.html)
+- [PowerCLI Script](https://developer.vmware.com/samples/5388/set-fakescsi-reservations-on-vsan-to-allow-nested-esxi-vms-to-run-vsan) to set the FakeSCSIReservations on all hosts in a vSAN cluster
 
 
 ## How to add a new product ?
@@ -331,17 +374,17 @@ There can be multiple reasons for that:
 
     Let us know which products you would like to be supported by zPodFactory and the download engine, and if you can provide any automation bits around it, that would be awesome.
 
-## How to configure the Appliance Wireguard for external access ?
+## How to configure the Appliance WireGuard for external access ?
 
-The zPodFactory Appliance will have a docker container ready to be used as a Wireguard VPN server. This will allow you to connect to your zPodFactory Appliance and networks from anywhere in the world.
+The zPodFactory Appliance will have a docker container ready to be used as a WireGuard VPN server. This will allow you to connect to your zPodFactory Appliance and networks from anywhere in the world.
 
 We are leveraging this simple and efficient WireGuard container:
 
-- [https://hub.docker.com/r/weejewel/wg-easy](https://hub.docker.com/r/weejewel/wg-easy)
+- [https://github.com/wg-easy/wg-easy](https://github.com/wg-easy/wg-easy)
 
-This might change in the future, but for now it has been quite good for us and a pretty large teams (80+ VPN accounts accessing to nested labs)
+This might change in the future, but for now it has been quite good for us with pretty large teams (80+ VPN accounts accessing to nested labs)
 
 ## How to get help ?
 
-- For now probably just create GitHub Issues, and add as much information as you can.
-- We will likely add a Slack channel for discussions in the future.
+- For now probably just create [GitHub Issues](https://github.com/zPodFactory/zpodcore/issues), and add as much information as you can.
+- We will likely add a Slack/Discord channel for discussions in the future.

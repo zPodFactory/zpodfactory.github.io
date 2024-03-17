@@ -23,20 +23,22 @@ VMware SDDC:
     The zPodFactory Appliance will likely have a base 250GB disk, but usage will be much lower depending which products you download/use on your nested environments
     (you will be able to easily extend the disk using LVM if needed)
 
-- NSX-T 3.1+ (for `nsx` basic deployment) or NSX 4.1.1+ (for `nsx-projects` features)
+- NSX-T 3.1+ (for `nsxt` basic deployment) or NSX 4.1.1+ (for `nsxt-projects` features)
 
     - T0 & T1 Gateways pre-deployed and configured for proper N/S connectivity (a T1 could be used to host the zPodFactory appliance/management VM)
     - Layer 3 connectivity between the zPodFactory appliance/management VM and the target vCenter Server(ESXi hosts too for OVF/OVA tasks)/NSX Manager, and nested environments (zPodFactory will deploy a T1 linked to a specified T0 for all the nested environments)
     - a network supernet for deploying nested environments (`10.10.0.0/20` for example, as each nested environment will get a global `/24` subnet from this supernet, carved into 4 x `/26` subnets to be used with native vlan and guest vlan tagging within the nested environment)
+    - check [this FAQ section](../../faq/faq.md#why-does-preparing-nsx-hosts-break-my-zpod) for changing the DLR-MAC address
 
 - Decent Storage performance (SSD/NVMe) for the nested environments if possible (vSAN OSA/ESA is recommended) - 4TB+ of storage is recommended (depending on the number of nested environments you plan to deploy)
-    - the zPodFactory Appliance or management vm (if installed manually) should take between 40-300GB of storage (depending how many components will be downloaded/used, and could grow over time)
+    - the zPodFactory Appliance or management vm (if installed manually) should take between 50-500GB of storage (depending how many components will be downloaded/used, and could grow over time)
+    - check [this FAQ section](../../faq/faq.md/#why-does-creating-a-vsan-datastore-fails-in-my-zpod) if you are using vSAN on the physical environment.
 
 > Please apply common sense here, as this is a `it depends...` type of answer :-)
 
 Also from a networking perspective, in addition to the minimum requirements above, you will need to have a few things in place:
 
-- if you plan to connect zPodFactory to multiple  `endpoints` (an endpoint is a concept that depicts where you deploy a nested environment(zPod), and consists of a vcsa/nsx pair, and mainly a supernet for zPods)
+- if you plan to connect zPodFactory to multiple `endpoints` (an endpoint is a concept that depicts where you deploy a nested environment(zPod), and consists of a vcsa/nsx pair, and mainly a supernet for zPods)
 
 !!! info
     Please refer to the below [Network Section](./index.md#network-setup) that explains `endpoints` connectivity/requirements:
@@ -55,7 +57,7 @@ If you prefer to install zPodFactory manually and potentially set yourself a dev
 
 We recommend starting with a [zBox 12.5](https://cloud.tsugliani.fr/ova/zbox-12.5.ova) appliance, as it is also the Linux distribution used for all our development and testing, and for the zPodFactory Appliance.  This should ensure all the steps we provide are as accurate and informative as possible.
 
-Deploy the appliance and power it on with the correct networking ovf properties.
+Deploy the appliance and power it on with the correct network and ovf properties configuration.
 
 ### Network setup
 
@@ -67,8 +69,8 @@ You can setup any additional specific networking configuration you need for your
 - `eth1`: interface connected to the whole lab private network (L3/BGP fabric)
 
 > PS: Remember that for zPodFactory to work correctly you need L3 connectivity to `vCenter Server and ESXi Hosts` (OVA/OVF uploads), and `NSX Manager API Access`.
-Those will be necessary for automating the deployment of the Layer 1 nested part of the labs.
-> Also required will be `connectivity access to the networks that we provision in NSX-T` for the nested environments (zPods), so that we can deploy the Layer 2 part of the labs. (ovf deploys, connections etc to the nested esxi hosts that will be the foundation for any nested environment)
+Those will be necessary for automating the deployment of the nested Layer 1 part of the labs.
+> Also required will be `connectivity access to the networks that we provision in NSX-T` for the nested environments (zPods), so that we can deploy the nested Layer 2 part of the labs. (ovf deploys, connections etc to the nested ESXi hosts that will be the foundation for any nested environment)
 
 ### Storage setup
 
@@ -556,12 +558,17 @@ cd $HOME/git/zpodcore
 ```
 
 Create a `.env` file in the `$HOME/git/zpodcore` directory and set the required environment variables.
-(Change `X.X.X.X` at the bottom by the IP of this zPodFactory VM)
 
 ``` { data-copy="cp .env.default .env && vim .env" }
 ❯ cp .env.default .env
 ❯ vim .env
 ```
+
+!!!warning
+
+    Change `X.X.X.X` at the bottom by the IP of this zPodFactory VM
+
+
 
 Build the Docker container images for the zPodCore application stack.
 
@@ -581,7 +588,7 @@ apt update
 ❯ apt install just bc
 ```
 
-Here is a facility script called deploy.sh that will help launch the docker compose full application stack with some pre-configured settings through the zPodAPI. (curl is used for this)
+Here is a facility script called `deploy.sh` that will help launch the docker compose full application stack with some pre-configured settings through the zPodAPI. (`curl` is used for this)
 
 ``` sh title="/root/git/zpodcore/deploy.sh"
 #!/usr/bin/sh
@@ -685,7 +692,7 @@ curl -X POST http://$ZPODAPI_URL/endpoints -H "Content-Type: application/json" -
       "storage_policy": "zPods",
       "storage_datastore": "vsanDatastore",
       "contentlibrary": "zPodFactory",
-      "vmfolder": "zPods-OVH"
+      "vmfolder": "zPods-Paris"
     },
     "network": {
       "name": "nsxmanager.fqdn.com",
@@ -826,18 +833,44 @@ curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: applicati
     }
   ]
 }'
-TOKEN=$(docker compose logs | grep zpodapi | grep 'API Token:' | awk '{ print $5}')
+TOKEN=$(docker compose logs | grep zpodapi | grep 'API Token:' | awk '{ print $5 }')
 
-zcli connect -s http://$ZPODAPI_URL -t $TOKEN
+just zcli factory add -n zpodfactory -s http://$ZPODAPI_URL -t $TOKEN -a
 
 docker compose logs -f
 ```
+
+!!!warning
+
+    Change `X.X.X.X` by the IP of this zPodFactory VM
+
+    Change customer connect username and password credentials
+
+    Change the public SSH Key to the one you want to use to login to the nested environments components. (zbox, esxi mainly)
+
+    Change the vSphere/NSX target endpoint configuration to match your physical environment.
+    Make sure the values you specify for your environment do exist in vSphere and NSX.
+
+    Change the licenses keys
+
+    Adapt whatever you want for the profiles, those are provided examples.
 
 Make the script executable
 
 ``` { data-copy="chmod +x $HOME/git/zpodcore/deploy.sh" }
 ❯ chmod +x $HOME/git/zpodcore/deploy.sh
 ```
+
+Set python version in `$HOME/git/zpodcore` for `just zcli` to work properly
+
+
+``` { data-copy="pyenv local 3.12.1 && pyenv exec pip install poetry" }
+❯ pyenv local 3.12.1 && pyenv exec pip install poetry
+```
+
+!!!warning
+
+    ABOVE STEP TO BE REPLACED soon with a proper zcli installation via pip/pipx
 
 Finally launch the docker compose application stack with our script:
 
