@@ -9,11 +9,11 @@ zPodFactory exposes it's own API through [FastAPI](https://fastapi.tiangolo.com/
 
 It can be accessed on your zPodFactory instance at the following address:
 
-- `https://manager.zpodfactory.domain/openjson.json`
+- `http://zpodfactory.domain.lab:8000/openjson.json`
 
 If you want to access the Swagger/docs UI, you can access it at the following address:
 
-- `https://manager.zpodfactory.domain/docs`
+- `http://zpodfactory.domain.lab:8000/docs`
 
 That said, the API is not usually meant to be used directly, but rather through the SDK that is generated from the OpenAPI JSON schema.
 
@@ -23,7 +23,7 @@ SDK and CLI updates will be pushed to PyPi, but if you wanted to set up a develo
 
 ![img](https://raw.githubusercontent.com/casey/just/master/screenshot.png)
 
-Generate updated Python SDK binding from the running zPodFactory Project.
+Generate updated Python SDK bindings from the running zPodFactory Project.
 
 ```bash
 just zcli zpodsdk-update
@@ -33,23 +33,26 @@ We currently support a few just commands for this project and simplify some acti
 
 ```bash
 ❯ just
-Available recipes:
-    alembic *args              # Run alembic command in zpodapi container
-    alembic-downgrade rev="-1" # Downgrade database schema -1
+Commands:
+    alembic *args               # Run alembic command in zpodapi container
+    alembic-downgrade rev="-1"  # Downgrade database schema -1
     alembic-revision message='update' # Generate alembic revision
-    alembic-upgrade rev="head" # Upgrade database schema to head
-    docker-fullclean           # Docker prune everything
-    zcli *args                 # Run zcli command
-    zpodapi-coverage           # Generate coverage docs
-    zpodapi-exec *args="bash"  # Connect to zpodapi container and run command
-    zpodapi-generate-openapi   # Generate openapi json
-    zpodapi-pytest *args       # Run pytest in zpodapi
+    alembic-upgrade rev="head"  # Upgrade database schema to head
+    zcli *args                  # Run zcli command
+    zpod-release version        # Create a release version
+    zpod-update version         # Update to a release version
+    zpodapi-coverage            # Generate coverage docs
+    zpodapi-exec *args="bash"   # Connect to zpodapi container and run command
+    zpodapi-generate-openapi    # Generate openapi json
+    zpodapi-pytest *args        # Run pytest in zpodapi
     zpodcore-start $COLUMNS=rich_cols # Start Docker Environment
-    zpodcore-start-background $COLUMNS=rich_cols # Start Docker Env in BG
-    zpodcore-stop              # Stop Docker Environment
-    zpodengine-deploy-all      # Deploy all Flows
-    zpodengine-prefect *args   # Manually Run Prefect Command
-    zpodsdk-update             # Update zpodsdk
+    zpodcore-start-background $COLUMNS=rich_cols # Start Docker Environment in background
+    zpodcore-stop               # Stop Docker Environment
+    zpodengine-cmd *args        # Manually Run Command
+    zpodengine-deploy-all       # Deploy all Flows
+    zpodengine-prefect *args    # Manually Run Prefect Command
+    zpodengine-run *args="bash" # Run command using zpodengine container
+    zpodsdk-update              # Update zpodsdk
 ```
 
 ## SDK

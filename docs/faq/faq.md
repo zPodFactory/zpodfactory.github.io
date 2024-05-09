@@ -4,22 +4,22 @@ Frequently asked questions.
 
 ## How is DNS configured and how does it work ?
 
-DNS is a hierarchical system that resolves names to IP addresses. In zPodFactory the main domain is set using the `zpodfactory_instance_domain` variable
+DNS is a hierarchical system that resolves names to IP addresses. In zPodFactory the main domain is set using the `zpodfactory_default_domain` variable
 
-This domain is used to configure the DNS server running on the zPodFactory VM. The DNS server is configured to resolve all domain set by the `zpodfactory_instance_domain` to the IP address of the zPodFactory VM
+This domain is used to configure the DNS server running on the zPodFactory VM. The DNS server is configured to resolve all domain set by the `zpodfactory_default_domain` to the IP address of the zPodFactory VM
 
-Then for EACH zPod/Instance deployed, they get their own unique subdomain
+Then for **EACH** zPod deployed, they get their own unique subdomain
 
-The subdomain is composed of the instance name and the `zpodfactory_instance_domain`
+The subdomain is composed of the zPod name and the `zpodfactory_default_domain`
 
-For example, if the `zpodfactory_instance_domain` is set to `zpodfactory.local` and the instance/zPod name is `instance-a`, then the subdomain will be `instance-a.zpodfactory.local`.
+For example, if the `zpodfactory_default_domain` is set to `zpodfactory.local` and the zPod name is `zpod-a`, then the subdomain will be `zpod-a.zpodfactory.local`.
 
 !!! warning
-    This means every zPod/Instance has a unique name, as it's used to generate the subdomain. If you try to deploy a zPod/Instance with the same name as an existing one, the deployment will fail
+    This means every zPod has a unique name, as it's used to generate the subdomain. If you try to deploy a zPod with the same name as an existing one, the deployment will fail
 
 Quick representation on how it works:
 
-- The `zpodfactory_instance_domain` is set to `zpod.lab` in this example, and is hosted by the zPodFactory VM.
+- The `zpodfactory_default_domain` is set to `zpod.lab` in this example, and is hosted by the zPodFactory VM.
     - the local dnsmasq service is configured to resolve `zpod.lab`
     - the subdomain `chicago.zpod.lab` is delegated to the zPod Chicago  `zbox`
     - the subdomain `paris.zpod.lab` is delegated to the zPod Paris `zbox`
@@ -35,7 +35,7 @@ Quick representation on how it works:
 graph TD
 
     subgraph zpodfactory["zPodFactory VM"]
-        setting["setting 'zpodfactory_instance_domain' = 'zpod.lab'"]
+        setting["setting 'zpodfactory_default_domain' = 'zpod.lab'"]
         global_domain("zpod.lab")
 
         setting -- "managed by dnsmasq\n\ndomain=zpod.lab\nlocal=/zpod.lab/" --> global_domain
@@ -171,7 +171,7 @@ The download engine is then wrapping the [VMware Customer Connect CLI](https://g
 
 ## How to configure product licenses ?
 
-Right now only VMware vCenter licenses are added to a deployed instance, we hope to add more products in the future. (NSX will be next one to be supported)
+Right now only VMware vCenter licenses are added to a deployed zPod, we hope to add more products in the future. (NSX will be next one to be supported)
 
 !!! info
     Please refer to the following related sections for setting up the download engine correctly and use it:
@@ -182,7 +182,7 @@ Right now only VMware vCenter licenses are added to a deployed instance, we hope
 
 For a visual view of everything executed/launched by the zPodFactory flow engine, you can access the Prefect Flow engine UI here:
 
-- https://manager.zpodfactory.domain:8060 (TBD)
+- http://zpodfactory.domain.lab:8060 (TBD)
 
 ## How to troubleshoot something ?
 
@@ -223,8 +223,10 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
 !!! info
 
     `zbox` component and `esxi` components are mandatory, all other components are optional.
+
     To find which components are available, check the `zcli component list` command, or check the zPodFactory [library](https://github.com/zPodFactory/zPodLibrary).
-    Usually you want at least a `zbox`, a few `esxi` hosts and a `vcsa` as the base profile provides
+
+    Usually you want at least a `zbox`, a few `esxi` hosts and a `vcsa` or `vcf` as the base profile for any work/testing.
 
 ``` json
 [
@@ -275,8 +277,8 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
 
 Next use zcli to create the profile:
 
-``` { data-copy="zcli profile create -n sddc-vcd -pf profile.json" }
-❯ zcli profile create -n sddc-vcd -pf profile.json
+``` { data-copy="zcli profile create sddc-vcd -pf profile.json" }
+❯ zcli profile create sddc-vcd -pf profile.json
 Profile sddc-vcd has been created.
 ```
 
@@ -284,41 +286,9 @@ Check the profiles list:
 
 ``` { data-copy="zcli profile list" }
 ❯ zcli profile list
-                       List Profile
-┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Profile    ┃ Components                                  ┃
-┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ zbox       │ zbox-12.4                                   │
-│ hosts      │ zbox-12.4                                   │
-│            │ esxi-8.0u2 (Host Id: 11, CPU: 4, Mem: 12GB) │
-│            │ esxi-8.0u2 (Host Id: 12, CPU: 4, Mem: 12GB) │
-│ base       │ zbox-12.1                                   │
-│            │ esxi-8.0u2 (Host Id: 11, CPU: 4, Mem: 48GB) │
-│            │ esxi-8.0u2 (Host Id: 12, CPU: 4, Mem: 48GB) │
-│            │ vcsa-8.0u2                                  │
-│ sddc       │ zbox-12.4                                   │
-│            │ esxi-8.0u2 (Host Id: 11, CPU: 6, Mem: 48GB) │
-│            │ esxi-8.0u2 (Host Id: 12, CPU: 6, Mem: 48GB) │
-│            │ esxi-8.0u2 (Host Id: 13, CPU: 6, Mem: 48GB) │
-│            │ vcsa-8.0u2                                  │
-│            │ nsx-4.1.1.0                                 │
-│ sddc-large │ zbox-12.4                                   │
-│            │ esxi-8.0u2 (Host Id: 11, CPU: 8, Mem: 64GB) │
-│            │ esxi-8.0u2 (Host Id: 12, CPU: 8, Mem: 64GB) │
-│            │ esxi-8.0u2 (Host Id: 13, CPU: 8, Mem: 64GB) │
-│            │ esxi-8.0u2 (Host Id: 14, CPU: 8, Mem: 64GB) │
-│            │ vcsa-8.0u2                                  │
-│            │ nsx-4.1.1.0                                 │
-│ sddc-vcd   │ zbox-12.4                                   │
-│            │ esxi-8.0u2 (Host Id: 11, CPU: 8, Mem: 64GB) │
-│            │ esxi-8.0u2 (Host Id: 12, CPU: 8, Mem: 64GB) │
-│            │ esxi-8.0u2 (Host Id: 13, CPU: 8, Mem: 64GB) │
-│            │ esxi-8.0u2 (Host Id: 14, CPU: 8, Mem: 64GB) │
-│            │ vcsa-8.0u2                                  │
-│            │ vcd-10.5                                    │
-│            │ nsx-4.1.1.0                                 │
-└────────────┴─────────────────────────────────────────────┘
 ```
+
+![img](../../img/zcli_profile_list.svg)
 
 ## Why does preparing NSX hosts break my zPod ?
 
@@ -330,7 +300,7 @@ That said if you try to ping/connect/access the zbox vm of that zPod, it will ha
 
 You will need to change this mac hardcoded mac address to a different one, as it will conflict with any new nested environment when prepared by NSX.
 
-You can also fix a broken zPod with the same steps from the zbox VM as L2 will work properly:
+You can also fix a broken zPod with the same steps from the zbox VM as L2 connectivity will work properly:
 
 - [Change the MAC Address of NSX Virtual Distributed Router](https://docs.vmware.com/en/VMware-NSX/4.1/migration/GUID-538774C2-DE66-4F24-B9B7-537CA2FA87E9.html)
 
@@ -382,7 +352,7 @@ We are leveraging this simple and efficient WireGuard container:
 
 - [https://github.com/wg-easy/wg-easy](https://github.com/wg-easy/wg-easy)
 
-This might change in the future, but for now it has been quite good for us with pretty large teams (80+ VPN accounts accessing to nested labs)
+This might change in the future, but for now it has been quite good for us with pretty large teams (80+ VPN accounts accessing the nested labs)
 
 ## How to get help ?
 

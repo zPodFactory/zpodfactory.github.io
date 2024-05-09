@@ -20,15 +20,14 @@ VMware SDDC:
 - vCenter Server 7.0u3+ or later
     - At least `4 vCPU / 16GB RAM / 250GB Storage` (SSD/NVMe recommended) for the zPodFactory appliance/management VM
 
-    The zPodFactory Appliance will likely have a base 250GB disk, but usage will be much lower depending which products you download/use on your nested environments
-    (you will be able to easily extend the disk using LVM if needed)
+    The zPodFactory Appliance will likely have a base 50GB disk, but usage will be much lower depending which products you download/use on your nested environments (you will be able to easily extend the disk using LVM if needed, highly recommended to extend the disk to 500GB+ if you plan to use a lot of products)
 
 - NSX-T 3.1+ (for `nsxt` basic deployment) or NSX 4.1.1+ (for `nsxt-projects` features)
 
     - T0 & T1 Gateways pre-deployed and configured for proper N/S connectivity (a T1 could be used to host the zPodFactory appliance/management VM)
     - Layer 3 connectivity between the zPodFactory appliance/management VM and the target vCenter Server(ESXi hosts too for OVF/OVA tasks)/NSX Manager, and nested environments (zPodFactory will deploy a T1 linked to a specified T0 for all the nested environments)
     - a network supernet for deploying nested environments (`10.10.0.0/20` for example, as each nested environment will get a global `/24` subnet from this supernet, carved into 4 x `/26` subnets to be used with native vlan and guest vlan tagging within the nested environment)
-    - check [this FAQ section](../../faq/faq.md#why-does-preparing-nsx-hosts-break-my-zpod) for changing the DLR-MAC address
+    - check [this FAQ section](../../faq/faq.md#why-does-preparing-nsx-hosts-break-my-zpod) for changing the NSX default DLR-MAC address
 
 - Decent Storage performance (SSD/NVMe) for the nested environments if possible (vSAN OSA/ESA is recommended) - 4TB+ of storage is recommended (depending on the number of nested environments you plan to deploy)
     - the zPodFactory Appliance or management vm (if installed manually) should take between 50-500GB of storage (depending how many components will be downloaded/used, and could grow over time)
@@ -38,7 +37,7 @@ VMware SDDC:
 
 Also from a networking perspective, in addition to the minimum requirements above, you will need to have a few things in place:
 
-- if you plan to connect zPodFactory to multiple `endpoints` (an endpoint is a concept that depicts where you deploy a nested environment(zPod), and consists of a vcsa/nsx pair, and mainly a supernet for zPods)
+- if you plan to connect zPodFactory to multiple `endpoints` (an endpoint is a concept that depicts where you deploy a nested environment(zPod), and consists of a vcsa/nsx pair, and mainly a network supernet for zPods)
 
 !!! info
     Please refer to the below [Network Section](./index.md#network-setup) that explains `endpoints` connectivity/requirements:
@@ -51,13 +50,31 @@ The zPodFactory appliance is a pre-built virtual machine that contains all the r
 
 It is the recommended way to deploy zPodFactory, as it will simplify the installation process and will ensure that all the required components are installed and pre-configured properly.
 
-## Manual Installation (not recommended)
+[Download the latest zPodFactory Appliance OVA release](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.1.ova)
+
+- :material-calendar: 08/05/2024 - zPodFactory Appliance 0.6.1:
+    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.1.ova) [825MB]
+    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.6.0...v0.6.1)
+
+- :material-calendar: 05/05/2024 - zPodFactory Appliance 0.6.0:
+    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.0.ova) [824MB]
+    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.5.0...v0.6.0)
+
+
+- :material-calendar: 05/04/2024 - zPodFactory Appliance 0.5.0:
+    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.5.0.ova) [783MB]
+    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.4.0...v0.5.0)
+
+
+[TBD: Add a link to the blog post describing the installation & setup process with the appliance]
+
+## Manual Installation (not recommended, devs only)
 
 If you prefer to install zPodFactory manually and potentially set yourself a dev environment for it, you can follow the below instructions.
 
 We recommend starting with a [zBox 12.5](https://cloud.tsugliani.fr/ova/zbox-12.5.ova) appliance, as it is also the Linux distribution used for all our development and testing, and for the zPodFactory Appliance.  This should ensure all the steps we provide are as accurate and informative as possible.
 
-Deploy the appliance and power it on with the correct network and ovf properties configuration.
+Deploy the appliance and power it on with the correct network and OVF properties configuration.
 
 ### Network setup
 
@@ -112,7 +129,7 @@ Setting up cloud-guest-utils (0.33-1) ...
 Processing triggers for man-db (2.11.2-2) ...
 ```
 
-Check current partition scheme (we growed the VM disk to 750GB on vCenter):
+Check current partition scheme (we grew the VM disk to 750GB on vCenter):
 
 ``` { data-copy="fdisk -l" hl_lines="12 13 22"  }
 ❯ fdisk -l
@@ -625,8 +642,8 @@ curl -X PATCH http://$ZPODAPI_URL/settings/name=zpodfactory_host -H "Content-Typ
   "value": "X.X.X.X"
 }'
 
-# Set zpodfactory_instances_domain
-curl -X PATCH http://$ZPODAPI_URL/settings/name=zpodfactory_instances_domain -H "Content-Type: application/json" -d '{
+# Set zpodfactory_default_domain
+curl -X PATCH http://$ZPODAPI_URL/settings/name=zpodfactory_default_domain -H "Content-Type: application/json" -d '{
   "value": "zpod.lab"
 }'
 
@@ -868,9 +885,6 @@ Set python version in `$HOME/git/zpodcore` for `just zcli` to work properly
 ❯ pyenv local 3.12.1 && pyenv exec pip install poetry
 ```
 
-!!!warning
-
-    ABOVE STEP TO BE REPLACED soon with a proper zcli installation via pip/pipx
 
 Finally launch the docker compose application stack with our script:
 
@@ -878,6 +892,6 @@ Finally launch the docker compose application stack with our script:
 ❯ ./deploy.sh
 ```
 
-This should take a while at first launch, and display everything happening in the background as we are tailing the docker compose logs in the end.
+This should take a while at first launch, and display everything happening in the background as we are automatically following the docker compose logs.
 
 You can now head to the [Administration Guide](../admin/index.md) to learn how to setup/manage zPodFactory.

@@ -1,6 +1,6 @@
 # Admin Guide
 
-To understand the zPodFactory framework, you need to understand the following concepts depicted in the diagram below:
+To use efficiently the zPodFactory framework, you need to understand the following concepts depicted in the diagram below:
 
 ## Overview High Level Diagram
 
@@ -15,7 +15,7 @@ To understand the zPodFactory framework, you need to understand the following co
 
 - Center Left in Orange, you can see the nested environment from an administrator perspective, basically all the Layer 1 VMs. You can see the main components that are deployed at L1 which are the `zbox` and the `esxi` components. The `zbox` component is the main component that is used to manage the nested environment, and the `esxi` component is the nested environment hosts, the main important part here is the zPod Network, which is managed by an admin, and protecting every nested environment from each other and also the physical environment.
 
-- Bottom left in Green shows what a User can see from his POV, he will never see the 2 above layers, unless he is a zPodFactory administrator, but he will see the nested environment from his perspective, which is usually the vCenter Server, and the components in it and have full control over those components as the Instance password is admin for every component in that nested environment. In the Center part, you could see what a User would potentially build in the nested environment, which is usually a vCenter Server, a NSX-T Manager, a NSX-T overlay network on top of the zPod Network and then VMs connected to that overlay network.
+- Bottom left in Green shows what a User can see from his POV, he will never see the 2 above layers, unless he is a zPodFactory administrator, but he will see/access the nested environment from his perspective, which is usually the vCenter Server, and the components in it and have full control over those components as the zPod password is admin for every component in that nested environment. In the Center part, you could see what a User would potentially build in the nested environment, which is usually a vCenter Server, a NSX-T Manager, a NSX-T overlay network on top of the zPod Network and then VMs connected to that overlay network.
 
 
 ## Network High Level Diagram
@@ -24,7 +24,7 @@ Now from a more detailed networking perspective that shows 2 main NSX capabiliti
 
 ![img](../../img/zPodFactory-networking-nsx-overview.svg)
 
-Depending on which NSX version you have installed at the physical layer, you may be able to use the recent NSX Projects features, which aims to build multi-tenancy in the NSX environment.
+Depending on which NSX version you have installed at the physical layer, you may be able to use the recent `NSX Projects` feature, which aims to build multi-tenancy in the NSX environment.
 
 - On the bottom left side you can see a Project construct that encompasses 1 or more zPods (2 in this example)
 - On the bottom right side you can see a zPod not using Projects at all.
@@ -34,20 +34,20 @@ Depending on which NSX version you have installed at the physical layer, you may
     To leverage NSX Projects you will need to use NSX 4.1.1 or above for full support.
 
 
-Using NSX Projects are highly recommended as they provide a lot of benefits around the permissions that we can provide on the networking layer of the nested environments.  This gives users a lot of flexibility (creating VLANs/subnets, and routing them without any administrator interaction), and also to provide security for admins who can filter the routes being advertised to the main T0.
+Using NSX Projects are highly recommended as they provide a lot of benefits around the permissions that we can provide on the networking layer of the nested environments.  This gives users a lot of flexibility (creating VLANs/subnets, and routing them without any administrator interaction), and also to provide security for admins who can filter the routes being advertised from the zPod Network T1 Connected Segment to the main T0 of the physical environment.
 
 
 Once the zPodFactory framework is deployed and running, you can start using the CLI to configure and manage the framework.
 
 ## Nested Networking Diagram
 
-This is what a user will be to use/leverage on any nested Instance/zPod he deploys.
+This is what a user will be able to use/leverage on any nested zPod he deploys.
 
 ![img](../../img/zPodFactory-instance-networking.svg)
 
-Each Instance/zPod has 1 overall network (1 x /24 subnet that we carve into 4 x /26)
+Each zPod has 1 overall network (1 x /24 subnet that we carve into 4 x /26)
 
-Example: Instance "test" has `10.96.10.0/24`
+Example: zPod "test" has `10.96.10.0/24`
 
 We will have the following networks managed:
 
@@ -61,9 +61,9 @@ Those VLANs should simplify the initial deployment and configuration of NSX in t
 !!! info
     This does not mean you cannot add any new VLANs, those are just the default networks/VLANs configured that are configured AND advertised upstream through the T0.
 
-    As you can imagine, we need to avoid advertising any non managed networks upstream or 2 users could for example try to advertise back the same subnet such as 192.168.1.0/24 and this would bring many issues we want to avoid.
+    As you can imagine, we need to avoid advertising any non-managed networks upstream or 2 users could for example try to advertise back the same subnet such as 192.168.1.0/24 and this would bring many issues we want to avoid.
 
-    **PS:** You will have control on the T1 of your instance to add any static routes as you see fit, meaning you could for example add VLAN 100 with the subnet `192.168.1.0/24` and it will be ONLY be available on your Instance. As you can imagine if you add a subnet, you'll need to route that subnet to a next hop that you have to manage yourself using `zbox`, `vyos`, or `NSX` if this is an overlay networking sitting on Geneve for example.
+    **PS:** When using NSX Projects you can have control on the T1 of your zPod to add any static routes as you see fit, meaning you could for example add VLAN 100 with the subnet `192.168.1.0/24` and it will be ONLY be available on your zPod. As you can imagine if you add a subnet, you'll need to route that subnet to a next hop that you have to manage yourself using `zbox`, `vyos`, or `NSX` if this is an overlay networking sitting on Geneve for example.
 
 
 
@@ -76,37 +76,63 @@ Those VLANs should simplify the initial deployment and configuration of NSX in t
 
 Using `pip`:
 
-``` { data-copy="pip install zcli" }
-❯ pip install zcli
+``` { data-copy="pip install zpodcli" }
+❯ pip install zpodcli
 ```
 
 Verify that the CLI is now available and working:
 
-![img](../../img/zcli_help.png)
+``` { data-copy="zcli"}
+❯ zcli
+
+ Usage: zcli [OPTIONS] COMMAND [ARGS]...
+
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --factory             -f      TEXT  Use specified factory for current commmand.                                       │
+│ --output-svg                        Output an SVG file for any list command.                                          │
+│ --version             -V            Display version information.                                                      │
+│ --install-completion                Install completion for the current shell.                                         │
+│ --show-completion                   Show completion for the current shell, to copy it or customize the installation.  │
+│ --help                              Show this message and exit.                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ component                          Manage Components                                                                  │
+│ endpoint                           Manage Endpoints                                                                   │
+│ enet                               Manage ENets                                                                       │
+│ factory                            Manage Factories                                                                   │
+│ group                              Manage Permission Groups                                                           │
+│ library                            Manage Libraries                                                                   │
+│ profile                            Manage Profiles                                                                    │
+│ setting                            Manage Settings                                                                    │
+│ user                               Manage Users                                                                       │
+│ zpod                               Manage zPods                                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 ## Authentication
 
-The first thing you need to do is to connect to the zPodFactory API as an administrator which is called `superadmin`.
+The first thing you need to do is to connect to the zPodFactory API as an administrator which is called `superuser` which has `superadmin` privileges.
+
+`superadmin` is a special role that has **ALL** the permissions in the zPodFactory framework.
+
 
 This user has the ability to do everything in the zPodFactory framework.
 
-First thing is to connect to the server with the superadmin token provided.
+First thing is to connect to the server with the superuser token provided. (This is done automatically within the zPodFactory appliance)
 
-``` {data-copy="zcli connect -s https://manager.zpodfactory.domain -t XXXX-TOKEN-XXXX"}
-❯ zcli connect -s https://manager.zpodfactory.domain -t "XXXX-TOKEN-XXXX"
+``` {data-copy="zcli factory add myfactory -s http://zpodfactory.domain.lab:8000 -t TOKEN -a}
+❯ zcli factory add myfactory -s http://zpodfactory.domain.lab:8000 -t "TOKEN" -a
 ```
-
-> The process for the initial token is still under discussion, but it will be created at the first connection to the API and provided back to the user and saved in the zcli configuration file. (Basically the first api connection will become the `superadmin` user)
 
 ## Manage settings
 
 This is the main entry point to configure the framework, which requires very important information to be able to operate correctly.
 
-In the manual setup, we provided a `deploy.sh` script to help setup those settings correctly, but we will explain every relevant one here:
+In the manual setup, we provided an example `deploy.sh` script to help setup those settings correctly, but we will explain every relevant one here:
 
 - `zpodfactory_host`: This is the IP of the VM zPodFactory has been installed/running on.
-- `zpodfactory_instances_domain`: This is the base domain name that will be used for each deployed zPod/Instance. (e.g. if `test` is your zPod/Instance name, and if zpodfactory_instances_domain is `zpodfactory.domain`, the FQDN of the zPod/Instance will be `test.zpodfactory.domain`)
-- `zpodfactory_ssh_key`: This is the SSH Key that will be pushed to the zPod/Instance `zbox`, and `esxi` components to allow SSH access to those components.
+- `zpodfactory_default_domain`: This is the base domain name that will be used for each deployed zPod. (e.g. if `test` is your zPod name, and if zpodfactory_default_domain is `zpodfactory.domain`, the FQDN of the zPod will be `test.zpodfactory.domain`)
+- `zpodfactory_ssh_key`: This is the SSH Key that will be pushed to the zPod `zbox`, and `esxi` components to allow SSH access to those components.
 - `zpodfactory_customerconnect_username`: This is the username of the customer connect account that will be used to download the VMware products binaries.
 - `zpodfactory_customerconnect_password`: This is the password of the customer connect account that will be used to download the VMware products binaries.
 
@@ -118,14 +144,14 @@ In the manual setup, we provided a `deploy.sh` script to help setup those settin
 
     Right now there is no manual documentation/process that explains how to provide binaries/checksums etc to the zPodFramework yet !
 
-- `license_<component>-<version>`: This is a facility to push automatically some licenses to components once deployed, right now we only support vcenter licenses, but very likely nsx will be the next to be supported.
+- `license_<component>-<version>`: This is a facility to push automatically some licenses to components once deployed, right now we only support vCenter licenses, but very likely nsx will be the next to be supported.
 
 
 ``` {data-copy="zcli setting list"}
 ❯ zcli setting list
 ```
 
-![img](../../img/zcli_setting_list.png)
+![img](../../img/zcli_setting_list.svg)
 
 ## Manage users
 
@@ -135,7 +161,7 @@ List users
 ❯ zcli user list
 ```
 
-![img](../../img/zcli_user_list.png)
+![img](../../img/zcli_user_list.svg)
 
 TBD
 
@@ -151,7 +177,7 @@ TBD
 
 By default zPodFactory comes with a default library that contains all the "official" vmware and misc supported `components` supported by the framework.
 
-This library is stored in a [git repository](https://github.com/zpodfactory/zpodlibrary) and is cloned locally, and used to fetch all `components` metadata (mainly OVA binary files with some misc information) we use to manage the products.
+This library is stored in a [git repository](https://github.com/zpodfactory/zpodlibrary) and is cloned locally, and used to fetch all `components` metadata (mainly the OVA binary files with some misc information) we use to manage the products.
 
 Listing libraries:
 
@@ -159,14 +185,14 @@ Listing libraries:
 ❯ zcli library list
 ```
 
-![img](../../img/zcli_library_list.png)
+![img](../../img/zcli_library_list.svg)
 
 > PS: The `default` library is the only one available for now, but the framework is designed to be able to support multiple libraries.
 
 Resync the library:
 
-``` {data-copy="zcli library resync -n default"}
-❯ zcli library resync -n default
+``` {data-copy="zcli library resync default"}
+❯ zcli library resync default
 ```
 
 > PS: The `resync` command will refresh all the `components` metadata from the git repository, and will update the local database with the new information.
@@ -179,7 +205,7 @@ List all `components`:
 ❯ zcli component list -a
 ```
 
-![img](../../img/zcli_component_list_all.png)
+![img](../../img/zcli_component_list_all.svg)
 
 List all available components (ready to deploy):
 
@@ -187,25 +213,23 @@ List all available components (ready to deploy):
 ❯ zcli component list
 ```
 
-![img](../../img/zcli_component_list.png)
+![img](../../img/zcli_component_list.svg)
 
 Enable a `component` (make it available for deployment):
 
 This will trigger the embedded download engine (Make sure that you configured your customer connect credentials in the settings or this task will fail)
 
-You will need to use the `component` uuid (long unique name of the `component`)
+You will need to use the `component` UID (unique name of the `component`, as depicted in the list command above)
 
-``` {data-copy="zcli component enable --uid vcsa-8.0u2"}
-❯ zcli component enable --uid vcsa-8.0u2
+``` {data-copy="zcli component enable vcsa-8.0u2"}
+❯ zcli component enable vcsa-8.0u2
 ```
 
-you can then follow the progress using `zcli component list -a`, or get on a specific `component` uuid as depicted below:
+you can then follow the progress using `zcli component list -a`, or get on a specific `component` UID as depicted below:
 
-``` {data-copy="zcli component get --uid vcsa-8.0u2"}
-❯ zcli component get --uid vcsa-8.0u2
+``` {data-copy="zcli component get vcsa-8.0u2"}
+❯ zcli component get vcsa-8.0u2
 ```
-
-![img](../../img/zcli_component_get.png)
 
 ## Manage endpoints
 
@@ -230,56 +254,65 @@ List all endpoints:
 ❯ zcli endpoint list
 ```
 
-![img](../../img/zcli_endpoint_list.png)
+![img](../../img/zcli_endpoint_list.svg)
 
-Add an endpoint (MISSING COMMAND)
+Create an endpoint:
 
 ``` {data-copy="zcli endpoint add"}
-❯ zcli endpoint add
+❯ zcli endpoint create
+
+ Usage: zcli endpoint create [OPTIONS] ENDPOINT_NAME
+
+ Endpoint Create
+
+╭─ Arguments ──────────────────────────────────────────────────────────╮
+│ *    endpoint_name      TEXT  Endpoint name [required]               │
+╰──────────────────────────────────────────────────────────────────────╯
+╭─ Options ────────────────────────────────────────────────────────────╮
+│ --description     -d       TEXT  Description                         │
+│ --endpoints       -e       TEXT  Endpoints json                      │
+│ --endpoints-file  -ef      PATH  File containing endpoints json      │
+│ --help                           Show this message and exit.         │
+╰──────────────────────────────────────────────────────────────────────╯
+
 ```
 
-Curl workaround for now until the command is implemented:
+If you just want to create a simple endpoint, you can use the following command:
 
-``` { hl_lines="25"}
-# Create SDDC-Lab endpoint
-curl -X POST http://$ZPODAPI_URL/endpoints -H "Content-Type: application/json" -d '{
-  "name": "sddc-lab",
-  "description": "SDDC Lab Environment",
-  "endpoints": {
-    "compute": {
-      "name": "vcsa.sddc.lab",
-      "driver": "vsphere",
-      "hostname": "vcsa.sddc.lab",
-      "username": "administrator@vsphere.local",
-      "password": "VMware1!",
-      "datacenter": "Chicago",
-      "resource_pool": "SDDC",
-      "storage_policy": "zPods",
-      "storage_datastore": "vsanDatastore",
-      "contentlibrary": "zPodFactory",
-      "vmfolder": "zPods-SDDC"
-    },
-    "network": {
-      "name": "nsx.sddc.lab",
-      "driver": "nsxt-projects",
-      "hostname": "nsx.sddc.lab",
-      "username": "admin",
-      "password": "VMware1!VMware1!",
-      "networks": "10.20.128.0/17",
-      "transportzone": "nsx-overlay-transportzone",
-      "edgecluster": "edgecluster-sddc",
-      "t0": "T0-SDDC"
-    }
-  },
-  "enabled": true
-}'
+``` {data-copy="zcli endpoint create sddc-lab"}
+❯ just zcli endpoint create testendpoint
+
+Compute Endpoint
+driver [vsphere] (vsphere):
+hostname: vcenter.fqdn.lab
+username: zpodserviceuser@fqdn.lab
+password: ********
+datacenter: Datacenter-Paris
+resource_pool: Cluster-SDDC
+storage_datastore: vsanDatastore
+vmfolder: zPods-Paris
+
+Network Endpoint
+driver [nsxt/nsxt_projects] (nsxt_projects):
+hostname: nsx.fqdn.lab
+username (admin):
+password: ********
+networks: 10.130.0.0/16
+transportzone: default-tz-overlay
+edgecluster: edgeclustername
+t0: T0-Lab
+Endpoint testendpoint has been created.
+
 ```
+
+This will allow for interactive creation of an endpoint and prompt for all the required information.
+
 
 ## Manage profiles
 
-`Profiles` are a collections of `components` that are grouped together to form an initial nested environment.
+`Profiles` are a collection of `components` that are grouped together to form an initial nested environment.
 
-They are the main entry point to deploy a nested environment and require some mandatory `components` such as `zbox` which is the default appliance to manage the nested environment domain name/DHCP Server (dnsmasq), the NFS storage used for the ESXi hosts, and the router of the 3 additional /26 subnets routed on their respective VLAN (64/128/192) of an Instance (zPod).
+They are the main entry point to deploy a nested environment and require some mandatory `components` such as `zbox` which is the default appliance to manage the nested environment domain name/DHCP Server (dnsmasq), the NFS storage used for the ESXi hosts, and the router of the 3 additional /26 subnets routed on their respective VLAN (64/128/192) of an zPod.
 
 ![img](../../img/zPodFactory-instance-networking.svg)
 
@@ -287,4 +320,4 @@ They are the main entry point to deploy a nested environment and require some ma
 ❯ zcli profile list
 ```
 
-![img](../../img/zcli_profile_list.png)
+![img](../../img/zcli_profile_list.svg)

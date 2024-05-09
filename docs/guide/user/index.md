@@ -10,20 +10,45 @@ Once the zPodFactory framework is deployed and running, and has been configured 
 
 Using `pip`:
 
-``` { data-copy="pip install zcli" }
-❯ pip install zcli
+``` { data-copy="pip install zpodcli" }
+❯ pip install zpodcli
 ```
 
 Verify that the CLI is now available and working:
 
-![img](../../img/zcli_help.png)
+``` { data-copy="zcli"}
+❯ zcli
+
+ Usage: zcli [OPTIONS] COMMAND [ARGS]...
+
+╭─ Options ─────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --factory             -f      TEXT  Use specified factory for current commmand.                                       │
+│ --output-svg                        Output an SVG file for any list command.                                          │
+│ --version             -V            Display version information.                                                      │
+│ --install-completion                Install completion for the current shell.                                         │
+│ --show-completion                   Show completion for the current shell, to copy it or customize the installation.  │
+│ --help                              Show this message and exit.                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ component                          Manage Components                                                                  │
+│ endpoint                           Manage Endpoints                                                                   │
+│ enet                               Manage ENets                                                                       │
+│ factory                            Manage Factories                                                                   │
+│ group                              Manage Permission Groups                                                           │
+│ library                            Manage Libraries                                                                   │
+│ profile                            Manage Profiles                                                                    │
+│ setting                            Manage Settings                                                                    │
+│ user                               Manage Users                                                                       │
+│ zpod                               Manage zPods                                                                       │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+```
 
 ## Authentication
 
 The first thing you need to do is to connect to the zPodFactory API with the token an Administrator provided you.
 
-``` {data-copy="zcli connect -s https://manager.zpodfactory.domain -t XXXX-TOKEN-XXXX"}
-❯ zcli connect -s https://manager.zpodfactory.domain -t "XXXX-TOKEN-XXXX"
+``` {data-copy="zcli factory add myfactory -s http://zpodfactory.domain.lab:8000 -t TOKEN -a}
+❯ zcli factory add myfactory -s http://zpodfactory.domain.lab:8000 -t "TOKEN" -a
 ```
 
 Verify that the connection was successfull and that you are connected to the API:
@@ -32,18 +57,19 @@ Verify that the connection was successfull and that you are connected to the API
 ❯ zcli user list
 ```
 
+![img](../../img/zcli_user_list.svg)
 
 ## Manage zPods
 
-zPods are known as a `Instance` in the zPodFactory framework.
+zPods are the nested environments name in the zPodFactory framework.
 
 ### List zPods
 
-``` {data-copy="zcli instance list"}
-❯ zcli instance list
+``` {data-copy="zcli zpod list"}
+❯ zcli zpod list
 ```
 
-![img](../../img/zcli_instance_list.png)
+![img](../../img/zcli_zpod_list.svg)
 
 ### Create zPods
 
@@ -53,14 +79,14 @@ To create a zPod you will need to provide a few parameters:
 - `profile`: The profile to use to deploy the zPod (use `zcli profile list` to list available profiles)
 - `endpoint`: The endpoint to use to deploy the zPod (use `zcli endpoint list` to list available endpoints)
 
-``` {data-copy="zcli instance create -n name -p profile -e endpoint"}
-❯ zcli instance create -n name -p profile -e endpoint
+``` {data-copy="zcli zpod create name -p profile -e endpoint"}
+❯ zcli zpod create name -p profile -e endpoint
 ```
 
 For example:
 
-``` {data-copy="zcli instance create -n test -p base -e sddc-lab"}
-❯ zcli instance create -n test -p base -e sddc-lab
+``` {data-copy="zcli zpod create test -p base -e sddc-lab"}
+❯ zcli zpod create test -p base -e sddc-lab
 ```
 
 This will create a zPod with the following attributes:
@@ -69,11 +95,14 @@ This will create a zPod with the following attributes:
 
 !!! info
     The `zpodfactory.domain` is a setting that can ONLY be configured by an Administrator.
+
+    It is configured by the `zpodfactory_default_domain` setting. This setting should be configured at initial setup of this framework and **SHOULD NEVER BE MODIFIED**.
+
     Check [Manage settings](../admin/index.md#manage-settings) for more information.
 
 - `profile`: `base` This is the profile that will be used to deploy the zPod. It will be used to deploy the `zbox` component, and any other component that is required by the profile. The `base` profile actually entitles to the following components in our current configuration :
 
-    - `zbox-12.1` (mandatory `component` to manage DNS/DHCP, 3 additional zPod /26 subnets on VLAN 64/128/192, and also the NFS datastore for the nested hosts)
+    - `zbox-12.4` (mandatory `component` to manage DNS/DHCP, 3 additional zPod /26 subnets on tagged VLAN 64/128/192, and also the NFS datastore for the nested hosts)
     - `esxi-8.0u2` (Host Id: 11, CPU: 4, Mem: 48GB)
     - `esxi-8.0u2` (Host Id: 12, CPU: 4, Mem: 48GB)
     - `vcsa-8.0u2`
@@ -95,20 +124,20 @@ Once the zPod is deployed, you can access it using the following credentials
 
 for vcsa (VMware vCenter Server):
 
-- `username`: `administrator@name.zpodfactory.domain` (This can be fetched using the `zcli instance list` command)
-- `password`: Each Instance/zPod has its password generated.  Password can be fetched by using the `zcli instance list` command)
+- `username`: `administrator@name.zpodfactory.domain`
+- `password`: Each zPod has its password generated.  Password can be fetched by using the `zcli zpod list` command)
 
-For every other component, the username is the default for that component.  For example, on many VMware products the default administrator account is either `root` or `admin`, such as `nsx-v`, `nsx-t`, `nsx`, `vcda`, `vrops`, `vrli`.  However, for `vcd`, the default administrator account is `administrator`.  The password is always the Instance/zPod Password.
+For every other component, the username is the default for that component.  For example, on many VMware products the default administrator account is either `root` or `admin`, such as `nsx-v`, `nsx-t`, `nsx`, `vcda`, `vrops`, `vrli`.  However, for `vcd`, the default administrator account is `administrator`.  The password is **always** the zPod Password.
 
 
-### Delete zPods
+### Destroy zPods
 
-``` {data-copy="zcli instance delete -n name"}
-❯ zcli instance delete -n name
+``` {data-copy="zcli zpod destroy delete name"}
+❯ zcli zpod destroy name
 ```
 
 !!! warning
-    This will delete the zPod and all its components without confirmation, and will not be recoverable.
+    This will destroy the zPod and all its components without confirmation, and will not be recoverable.
 
 
 ## Manage components
@@ -122,31 +151,31 @@ Here we will show you how to list the available components, and add a new compon
 ❯ zcli component list
 ```
 
-![img](../../img/zcli_component_list.png)
+![img](../../img/zcli_component_list.svg)
 
 
-### List component of an instance/zPod
+### List components of a zPod
 
-You will need to provide the instance name parameter so that the CLI knows which instance/zPod to list the components from.
+You will need to provide the zpod name parameter so that the CLI knows which zPod to list the components from.
 
-``` {data-copy="zcli instance component list -i instance_name"}
-❯ zcli instance component list -i instance_name
+``` {data-copy="zcli zpod component list zpod_name"}
+❯ zcli zpod component list zpod_name
 ```
 
-![img](../../img/zcli_instance_component_list.png)
+![img](../../img/zcli_zpod_component_list.svg)
 
-### Add components to an Instance/zPod
+### Add components to a zPod
 
-If you want to add a new component to an instance, you will need to provide the component_uid.  component_uid is a combination of a product name and a version, as many products/versions exist for a given component.
+If you want to add a new component to a zpod, you will need to provide the `component_uid`.  Component UID is a combination of a product name and a version, as many products/versions exist for a given component. (use `zcli component list` to list available components)
 
-``` {data-copy="zcli instance component add -i instance_name -c component_uid"}
-❯ zcli instance component add -i instance_name -c component_uid
+``` {data-copy="zcli zpod component add zpod_name -c component_uid"}
+❯ zcli zpod component add zpod_name -c component_uid
 ```
 
 For example in our case:
 
-``` {data-copy="zcli instance component add -i team.beta -c vcd-10.5}
-❯ zcli instance component add -i team.beta -c vcd-10.5
+``` {data-copy="zcli zpod component add team.beta -c vcd-10.5}
+❯ zcli zpod component add team.beta -c vcd-10.5
 ```
 
-This will add the `vcd-10.5` component to the `team.beta` instance/zPod.
+This will add the `vcd-10.5` component to the `team.beta` zPod.

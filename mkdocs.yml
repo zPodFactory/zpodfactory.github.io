@@ -5,11 +5,13 @@ site_name: zPodFactory
 repo_name: GitHub
 repo_url: https://github.com/zpodfactory
 
+
 theme:
   name: material
   font:
     text: Roboto
-    code: Fire Code
+    code: Fira Code
+
   features:
     - navigation.tabs
     - navigation.indexes
@@ -35,6 +37,8 @@ plugins:
 - blog:
     archive: false
 - search
+- inline-select-svg:
+    pattern: "zcli_.*svg$"
 - glightbox
 
 
