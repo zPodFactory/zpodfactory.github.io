@@ -146,7 +146,31 @@ Save and exit, and reload the dnsmasq service.
 ❯ systemctl reload dnsmasq
 ```
 
+!!! info
+
+    Since zPodFactory version 0.7.2, the latest zbox-12.5 component has a zBox DNS API endpoint implemented, which will be automatically leveraged when using profiles and specific components, and you can also add your A records directly from the zPodFactory CLI, check the CLI help:
+
+    ``` { data-copy="zcli zpod dns add --help" }
+    ❯ zcli zpod dns add --help
+    ```
+
+
 ## How does the embedded download engine work ?
+
+!!! warning
+
+    **Since April 2024**
+
+    The download engine is not working for VMware products anymore since Broadcom terminated the customer connect VMware website.
+    It will still work for non VMware products, such as zbox download, etc.
+
+    To workaround the issue, we have built an embedded `component upload` feature that allows you to upload your own OVA files to the framework using the `zcli` command.
+
+    By checking the file checksum, it will be able to cross-check automatically from all supported components and will enable the appropriate component.
+
+    Check [Manage components](../guide/admin/index.md#manage-components) section
+
+
 
 The download engine has been designed to be as simple as possible for the end user. That said it does have some very specific requirements to work properly.
 
@@ -171,7 +195,7 @@ The download engine is then wrapping the [VMware Customer Connect CLI](https://g
 
 ## How to configure product licenses ?
 
-Right now only VMware vCenter licenses are added to a deployed zPod, we hope to add more products in the future. (NSX will be next one to be supported)
+Right now only VMware vCenter licenses are added to a deployed zPod, we hope to add more products in the future. (NSX will be the next one to be supported)
 
 !!! info
     Please refer to the following related sections for setting up the download engine correctly and use it:
@@ -182,7 +206,7 @@ Right now only VMware vCenter licenses are added to a deployed zPod, we hope to 
 
 For a visual view of everything executed/launched by the zPodFactory flow engine, you can access the Prefect Flow engine UI here:
 
-- http://zpodfactory.domain.lab:8060 (TBD)
+- http://zpodfactory.domain.lab:8060
 
 ## How to troubleshoot something ?
 
@@ -212,7 +236,7 @@ Check the logs:
 
 ## How to update the project ?
 
-TBD (will likely be git based with a provided update script)
+TBD (will likely be git based with a provided update command)
 
 ## How to add a new profile ?
 
@@ -288,7 +312,7 @@ Check the profiles list:
 ❯ zcli profile list
 ```
 
-![img](../../img/zcli_profile_list.svg)
+![img](../img/zcli_profile_list.svg)
 
 ## Why does preparing NSX hosts break my zPod ?
 
@@ -298,7 +322,7 @@ It will seem as if your zPod went down (vcsa,nsx,esxi unresponsive from routed n
 
 That said if you try to ping/connect/access the zbox vm of that zPod, it will have no networking issues as it isn't hosted by one of the nested zPod ESXi hosts.
 
-You will need to change this mac hardcoded mac address to a different one, as it will conflict with any new nested environment when prepared by NSX.
+You will need to change this hardcoded mac address to a different one, as it will conflict with any new nested environment when prepared by NSX.
 
 You can also fix a broken zPod with the same steps from the zbox VM as L2 connectivity will work properly:
 

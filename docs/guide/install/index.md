@@ -50,7 +50,11 @@ The zPodFactory appliance is a pre-built virtual machine that contains all the r
 
 It is the recommended way to deploy zPodFactory, as it will simplify the installation process and will ensure that all the required components are installed and pre-configured properly.
 
-[Download the latest zPodFactory Appliance OVA release](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.1.ova)
+[Download the latest zPodFactory Appliance OVA release](https://cloud.tsugliani.fr/ova/zpodfactory-0.7.2.ova)
+
+- :material-calendar: 27/06/2024 - zPodFactory Appliance 0.7.2:
+    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.7.2.ova) [861MB]
+    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.6.1...v0.7.2)
 
 - :material-calendar: 08/05/2024 - zPodFactory Appliance 0.6.1:
     - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.1.ova) [825MB]
@@ -59,7 +63,6 @@ It is the recommended way to deploy zPodFactory, as it will simplify the install
 - :material-calendar: 05/05/2024 - zPodFactory Appliance 0.6.0:
     - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.0.ova) [824MB]
     - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.5.0...v0.6.0)
-
 
 - :material-calendar: 05/04/2024 - zPodFactory Appliance 0.5.0:
     - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.5.0.ova) [783MB]

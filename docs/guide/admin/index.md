@@ -219,17 +219,41 @@ Enable a `component` (make it available for deployment):
 
 This will trigger the embedded download engine (Make sure that you configured your customer connect credentials in the settings or this task will fail)
 
+!!! warning
+
+    **Since April 2024**
+
+    The download engine is not working for VMware products anymore since Broadcom terminated the customer connect VMware website.
+    It will still work for non VMware products, such as zbox download, etc.
+
+    To workaround the issue, we have built an embedded `upload` feature that allows you to upload your own OVA files to the framework using the `zcli` command.
+
+    By checking the file checksum, it will be able to cross-check automatically from all supported components and will enable the appropriate component.
+
+
 You will need to use the `component` UID (unique name of the `component`, as depicted in the list command above)
 
-``` {data-copy="zcli component enable vcsa-8.0u2"}
-❯ zcli component enable vcsa-8.0u2
+``` {data-copy="zcli component enable zbox-12.5"}
+❯ zcli component enable zbox-12.5
+```
+!!! info
+
+    Until there is an official method to download VMware products automatically with the Broadcom Support Portal, you can use the `upload` feature to upload your own OVA files to the framework.
+
+Upload a `component` to zPodFactory:
+
+``` {data-copy="zcli component upoad /path/to/vmware-product.extension"}
+❯ zcli component upload /tmp/VMware-Cloud-Builder-5.1.1.0-23480823_OVF10.ova
 ```
 
-you can then follow the progress using `zcli component list -a`, or get on a specific `component` UID as depicted below:
+you can then follow the progress using `zcli component list`, or get on a specific `component` UID as depicted below:
 
 ``` {data-copy="zcli component get vcsa-8.0u2"}
 ❯ zcli component get vcsa-8.0u2
 ```
+
+
+
 
 ## Manage endpoints
 
