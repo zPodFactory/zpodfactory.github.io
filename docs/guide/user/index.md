@@ -245,7 +245,7 @@ Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):
 ```
 
 
-This will result into the zpod deploying with `podname` as it's name and `zpodfactory.domain` as the the **zpodfactory_default_domain** with the following components in it:
+This will result into the zpod deploying with `podname` as it's name and `zpodfactory.domain` set as the **zpodfactory_default_domain** with the following components in it:
 
 - 1 x `zbox-12.5` component
 - 2 x `esxi-8.0u2b` components with `host_id` 11 and 12 respectively
@@ -274,8 +274,8 @@ As you can imagine setting any ip, allows you to setup hostnames for any IP addr
 Remove a DNS record can be done using the below command line:
 
 ``` {data-copy="zcli zpod dns remove zpod_name --hostname samplename --ip 10.10.10.11"}
-zcli zpod dns remove zpod_name --hostname samplename --ip 10.10.10.11
+❯ zcli zpod dns remove zpod_name --hostname samplename --ip 10.10.10.11
 ```
 
 !!! warning
-    You are responsible for anything you do with the DNS records, as deleting one of the core components could completely break the zPod.
+    You are responsible for any DNS record change, as deleting one of the core components **WILL** completely break the zPod.
