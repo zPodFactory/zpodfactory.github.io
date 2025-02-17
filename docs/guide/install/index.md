@@ -855,12 +855,14 @@ curl -X POST http://$ZPODAPI_URL/profiles?force=true -H "Content-Type: applicati
 }'
 TOKEN=$(docker compose logs | grep zpodapi | grep 'API Token:' | awk '{ print $5 }')
 
-just zcli factory add -n zpodfactory -s http://$ZPODAPI_URL -t $TOKEN -a
+just zcli factory add zpodfactory -s http://$ZPODAPI_URL -t $TOKEN -a
 
 docker compose logs -f
 ```
 
 !!!warning
+
+    Add `ZPODAPI_DEV_AUTOAUTH_USER=1` in your .env file if you want to work easily without setting up an authentication token.
 
     Change `X.X.X.X` by the IP of this zPodFactory VM
 
