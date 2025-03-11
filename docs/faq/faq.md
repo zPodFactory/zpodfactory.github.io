@@ -255,32 +255,32 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
 ``` json
 [
     {
-      "component_uid": "zbox-12.4"
+      "component_uid": "zbox-12.7"
     },
     [
       {
-        "component_uid": "esxi-8.0u2b",
+        "component_uid": "esxi-8.0u3c",
         "host_id": 11,
         "hostname": "esxi11",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u2b",
+        "component_uid": "esxi-8.0u3c",
         "host_id": 12,
         "hostname": "esxi12",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u2b",
+        "component_uid": "esxi-8.0u3c",
         "host_id": 13,
         "hostname": "esxi13",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u2b",
+        "component_uid": "esxi-8.0u3c",
         "host_id": 14,
         "hostname": "esxi14",
         "vcpu": 8,
@@ -288,13 +288,13 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
       }
     ],
     {
-        "component_uid": "vcsa-8.0u2b"
+        "component_uid": "vcsa-8.0u3d"
     },
     {
-        "component_uid": "vcd-10.5.1.1"
+        "component_uid": "vcd-10.6.1"
     },
     {
-        "component_uid": "nsx-4.1.2.3"
+        "component_uid": "nsx-4.2.1.3"
     }
 ]
 ```

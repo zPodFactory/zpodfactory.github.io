@@ -101,10 +101,10 @@ This will create a zPod with the following attributes:
 
 - `profile`: `base` This is the profile that will be used to deploy the zPod. It will be used to deploy the `zbox` component, and any other component that is required by the profile. The `base` profile actually entitles to the following components in our current configuration :
 
-    - `zbox-12.4` (mandatory `component` to manage DNS/DHCP, 3 additional zPod /26 subnets on tagged VLAN 64/128/192, and also the NFS datastore for the nested hosts)
-    - `esxi-8.0u2` (Host Id: 11, CPU: 4, Mem: 48GB)
-    - `esxi-8.0u2` (Host Id: 12, CPU: 4, Mem: 48GB)
-    - `vcsa-8.0u2`
+    - `zbox-12.7` (mandatory `component` to manage DNS/DHCP, 3 additional zPod /26 subnets on tagged VLAN 64/128/192, and also the NFS datastore for the nested hosts)
+    - `esxi-8.0u3c` (Host Id: 11, CPU: 4, Mem: 48GB)
+    - `esxi-8.0u3c` (Host Id: 12, CPU: 4, Mem: 48GB)
+    - `vcsa-8.0u3d`
 
 !!! info
     The `base` profile is a profile that can ONLY be configured by an Administrator.
@@ -173,18 +173,18 @@ If you want to add a new component to a zpod, you will need to provide the `comp
 
 For example in our case:
 
-``` {data-copy="zcli zpod component add team.beta -c vcd-10.5}
-❯ zcli zpod component add team.beta -c vcd-10.5
+``` {data-copy="zcli zpod component add team.beta -c vcd-10.6.1"}
+❯ zcli zpod component add team.beta -c vcd-10.6.1
 ```
 
-This will add the `vcd-10.5` component to the `team.beta` zPod.
+This will add the `vcd-10.6.1` component to the `team.beta` zPod.
 
 
 ## Manage DNS records
 
-Since version 0.7.2, it is now possible to manage  DNS records dynamically through the CLI  to a zPod.  This is useful when you want to add/update/remove a DNS record to a zPod that is not managed by the default `zbox` component.
+Since version 0.7.2, it is now possible to manage  DNS records dynamically through the CLI to a zPod.  This is useful when you want to add/update/remove a DNS record to a zPod that is not managed by the default `zbox` component.
 
-This will require the new `zbox-12.5` component to be part of the deployment profile.
+This will require the new `zbox-12.7` component to be part of the deployment profile.
 
 ### List DNS records to a zPod
 
@@ -220,18 +220,18 @@ Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):
 ```json
 [
   {
-    "component_uid": "zbox-12.5"
+    "component_uid": "zbox-12.7"
   },
   [
     {
-      "component_uid": "esxi-8.0u2b",
+      "component_uid": "esxi-8.0u3c",
       "host_id": 11,
       "hostname": "esxi11",
       "vcpu": 6,
       "vmem": 48
     },
     {
-      "component_uid": "esxi-8.0u2b",
+      "component_uid": "esxi-8.0u3c",
       "host_id": 12,
       "hostname": "esxi12",
       "vcpu": 6,
@@ -239,7 +239,7 @@ Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):
     }
   ],
   {
-    "component_uid": "vcsa-8.0u2b"
+    "component_uid": "vcsa-8.0u3d"
   }
 ]
 ```
@@ -247,9 +247,9 @@ Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):
 
 This will result into the zpod deploying with `podname` as it's name and `zpodfactory.domain` set as the **zpodfactory_default_domain** with the following components in it:
 
-- 1 x `zbox-12.5` component
-- 2 x `esxi-8.0u2b` components with `host_id` 11 and 12 respectively
-- 1 x `vcsa-8.0u2b` component
+- 1 x `zbox-12.7` component
+- 2 x `esxi-8.0u3c` components with `host_id` 11 and 12 respectively
+- 1 x `vcsa-8.0u3d` component
 
 
 From a DNS perspective you will have the following DNS records:

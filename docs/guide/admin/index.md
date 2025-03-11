@@ -233,8 +233,8 @@ This will trigger the embedded download engine (Make sure that you configured yo
 
 You will need to use the `component` UID (unique name of the `component`, as depicted in the list command above)
 
-``` {data-copy="zcli component enable zbox-12.5"}
-❯ zcli component enable zbox-12.5
+``` {data-copy="zcli component enable zbox-12.7"}
+❯ zcli component enable zbox-12.7
 ```
 !!! info
 
@@ -248,8 +248,8 @@ Upload a `component` to zPodFactory:
 
 you can then follow the progress using `zcli component list`, or get on a specific `component` UID as depicted below:
 
-``` {data-copy="zcli component get vcsa-8.0u2"}
-❯ zcli component get vcsa-8.0u2
+``` {data-copy="zcli component get vcsa-8.0u3d"}
+❯ zcli component get vcsa-8.0u3d
 ```
 
 

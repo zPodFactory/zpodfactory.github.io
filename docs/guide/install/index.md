@@ -44,40 +44,31 @@ Also from a networking perspective, in addition to the minimum requirements abov
 
 
 
-## Using the zPodFactory Appliance (recommended)
+## Using the zPodFactory Appliance (HIGHLY recommended)
 
 The zPodFactory appliance is a pre-built virtual machine that contains all the required components to run zPodFactory.
 
 It is the recommended way to deploy zPodFactory, as it will simplify the installation process and will ensure that all the required components are installed and pre-configured properly.
 
-[Download the latest zPodFactory Appliance OVA release](https://cloud.tsugliani.fr/ova/zpodfactory-0.7.2.ova)
+!!!warning
 
-- :material-calendar: 27/06/2024 - zPodFactory Appliance 0.7.2:
-    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.7.2.ova) [861MB]
-    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.6.1...v0.7.2)
+    Make sure that the OVF Properties are set correctly, and the networking settings will provide internet access to the zPodFactory Appliance. (The appliance will stop the installation process if it doesn't have internet access)
 
-- :material-calendar: 08/05/2024 - zPodFactory Appliance 0.6.1:
-    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.1.ova) [825MB]
-    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.6.0...v0.6.1)
 
-- :material-calendar: 05/05/2024 - zPodFactory Appliance 0.6.0:
-    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.6.0.ova) [824MB]
-    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.5.0...v0.6.0)
-
-- :material-calendar: 05/04/2024 - zPodFactory Appliance 0.5.0:
-    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-0.5.0.ova) [783MB]
-    - :simple-github: [Git Changelog](https://github.com/zPodFactory/zpodcore/compare/v0.4.0...v0.5.0)
+- :material-calendar: 11/03/2025 - zPodFactory Appliance latest:
+    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-latest.ova) [792MB]
+    - :simple-github: [Git Commit Log](https://github.com/zPodFactory/zpodcore/commits/main/)
 
 
 [TBD: Add a link to the blog post describing the installation & setup process with the appliance]
 
-## Manual Installation (not recommended, devs only)
+## Manual Installation (not recommended, devs only, DEPRECATED)
 
 If you prefer to install zPodFactory manually and potentially set yourself a dev environment for it, you can follow the below instructions.
 
-We recommend starting with a [zBox 12.5](https://cloud.tsugliani.fr/ova/zbox-12.5.ova) appliance, as it is also the Linux distribution used for all our development and testing, and for the zPodFactory Appliance.  This should ensure all the steps we provide are as accurate and informative as possible.
+We recommend starting with a [zBox 12.9](https://cloud.tsugliani.fr/ova/zbox-12.9.ova) appliance, as it is also the Linux distribution used for all our development and testing, and for the zPodFactory Appliance.  This should ensure all the steps we provide are as accurate and informative as possible.
 
-Deploy the appliance and power it on with the correct network and OVF properties configuration.
+Deploy the zBox appliance and power it on with the correct network and OVF properties configuration.
 
 ### Network setup
 
@@ -609,6 +600,13 @@ apt update
 ```
 
 Here is a facility script called `deploy.sh` that will help launch the docker compose full application stack with some pre-configured settings through the zPodAPI. (`curl` is used for this)
+
+!!!warning
+
+    This script is **HIGHLY** deprecated, we recommend using the zPodFactory Appliance instead.
+    Check the [zPodFactory Appliance installation script](https://github.com/zPodFactory/packer-zpodfactory/blob/main/files/zpodfactory.sh) for more information if you really want to install this manually.
+
+    We will keep this script for reference purposes, but we will not update it anymore.
 
 ``` sh title="/root/git/zpodcore/deploy.sh"
 #!/usr/bin/sh
