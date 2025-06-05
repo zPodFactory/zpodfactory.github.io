@@ -326,7 +326,7 @@ You will need to change this hardcoded mac address to a different one, as it wil
 
 You can also fix a broken zPod with the same steps from the zbox VM as L2 connectivity will work properly:
 
-- [Change the MAC Address of NSX Virtual Distributed Router](https://docs.vmware.com/en/VMware-NSX/4.1/migration/GUID-538774C2-DE66-4F24-B9B7-537CA2FA87E9.html)
+- [Change the MAC Address of NSX Virtual Distributed Router](https://techdocs.broadcom.com/us/en/vmware-cis/nsx/vmware-nsx/4-2/migration-guide/preparing-layer-2-bridging-for-lift-and-shift-migration/change-the-mac-address-of-nsx-t-virtual-distributed-router.html)
 
 !!! info
 
