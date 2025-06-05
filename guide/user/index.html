@@ -1,0 +1,1926 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../admin/">
+      
+      
+        <link rel="next" href="../../api/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>User Guide - zPodFactory</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#user-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="zPodFactory" class="md-header__button md-logo" aria-label="zPodFactory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            zPodFactory
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              User Guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/zpodfactory" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../.." class="md-tabs__link">
+          
+  
+  
+    
+  
+  Introduction
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../blog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../install/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Installation & Configuration Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../admin/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Admin Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  API/SDK
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../roadmap/roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../faq/faq/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FAQ
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="zPodFactory" class="md-nav__button md-logo" aria-label="zPodFactory" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    zPodFactory
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/zpodfactory" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../.." class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Introduction
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Introduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../install/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Installation & Configuration Guide
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Installation & Configuration Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../admin/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Admin Guide
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Admin Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../api/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    API/SDK
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            API/SDK
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../roadmap/roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Roadmap
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cli-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      CLI Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#authentication" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authentication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-zpods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manage zPods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage zPods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-zpods" class="md-nav__link">
+    <span class="md-ellipsis">
+      List zPods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-zpods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create zPods
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accessing-the-zpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing the zPod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#destroy-zpods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Destroy zPods
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manage components
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage components">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      List components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-components-of-a-zpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      List components of a zPod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-components-to-a-zpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add components to a zPod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manage-dns-records" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manage DNS records
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manage DNS records">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#list-dns-records-to-a-zpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      List DNS records to a zPod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-dns-record-to-a-zpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add DNS record to a zPod
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#remove-dns-record-from-a-zpod" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove DNS record from a zPod
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="user-guide">User Guide</h1>
+<p>Once the zPodFactory framework is deployed and running, and has been configured by an Administrator you can start using the CLI to deploy nested environments.</p>
+<h2 id="introduction">Introduction</h2>
+<p><code>zcli</code> is a command line tool that allows you to manage your zPods and the whole zPodFactory framework.</p>
+<h2 id="cli-installation">CLI Installation</h2>
+<p>Using <code>pip</code>:</p>
+<div class="highlight" data-copy="pip install zpodcli"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>❯ pip install zpodcli
+</code></pre></div>
+<p>Verify that the CLI is now available and working:</p>
+<div class="highlight" data-copy="zcli"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>❯ zcli
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a> Usage: zcli [OPTIONS] COMMAND [ARGS]...
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>╭─ Options ───────────────────────────────────────────────────────────────────╮
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>│ --factory             -f      TEXT  Use specific factory for this commmand. │
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>│ --output-svg                        Output an SVG file for any list command.│
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>│ --version             -V            Display version information.            │
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>│ --install-completion                Install completion for this shell.      │
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>│ --help                              Show this message and exit.             │
+<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a>╰─────────────────────────────────────────────────────────────────────────────╯
+<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a>╭─ Commands ──────────────────────────────────────────────────────────────────╮
+<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a>│ component                          Manage Components                        │
+<a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a>│ endpoint                           Manage Endpoints                         │
+<a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a>│ enet                               Manage ENets                             │
+<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a>│ factory                            Manage Factories                         │
+<a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a>│ group                              Manage Permission Groups                 │
+<a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a>│ library                            Manage Libraries                         │
+<a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a>│ profile                            Manage Profiles                          │
+<a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a>│ setting                            Manage Settings                          │
+<a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a>│ user                               Manage Users                             │
+<a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a>│ zpod                               Manage zPods                             │
+<a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a>╰─────────────────────────────────────────────────────────────────────────────╯
+</code></pre></div>
+<h2 id="authentication">Authentication</h2>
+<p>The first thing you need to do is to connect to the zPodFactory API with the token an Administrator provided you.</p>
+<div class="highlight" data-copy="" zcli"=""><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>❯ zcli factory add myfactory -s http://zpodfactory.domain.lab:8000 -t "TOKEN" -a
+</code></pre></div>
+<p>Verify that the connection was successfull and that you are connected to the API:</p>
+<div class="highlight" data-copy="zcli user list"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>❯ zcli user list
+</code></pre></div>
+<p><svg class="rich-terminal" viewBox="0 0 1373 196.39999999999998" xmlns="http://www.w3.org/2000/svg">
+<!-- Generated with Rich https://www.textualize.io -->
+<style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-2479493627-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-2479493627-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-2479493627-r1 { fill: #b9bcba;font-weight: bold }
+.terminal-2479493627-r2 { fill: #b9bcba }
+.terminal-2479493627-r3 { fill: #578fa4;font-weight: bold }
+.terminal-2479493627-r4 { fill: #87afff }
+.terminal-2479493627-r5 { fill: #d7af87 }
+.terminal-2479493627-r6 { fill: #855c8d }
+.terminal-2479493627-r7 { fill: #5faf5f }
+    </style>
+<defs>
+<clipPath id="terminal-2479493627-clip-terminal">
+<rect height="145.39999999999998" width="1353.1999999999998" x="0" y="0"/>
+</clipPath>
+<clipPath id="terminal-2479493627-line-0">
+<rect height="24.65" width="1354.2" x="0" y="1.5"/>
+</clipPath>
+<clipPath id="terminal-2479493627-line-1">
+<rect height="24.65" width="1354.2" x="0" y="25.9"/>
+</clipPath>
+<clipPath id="terminal-2479493627-line-2">
+<rect height="24.65" width="1354.2" x="0" y="50.3"/>
+</clipPath>
+<clipPath id="terminal-2479493627-line-3">
+<rect height="24.65" width="1354.2" x="0" y="74.7"/>
+</clipPath>
+<clipPath id="terminal-2479493627-line-4">
+<rect height="24.65" width="1354.2" x="0" y="99.1"/>
+</clipPath>
+</defs>
+<rect fill="#191919" height="194.4" rx="8" stroke="rgba(255,255,255,0.35)" stroke-width="1" width="1371" x="1" y="1"/>
+<g transform="translate(26,22)">
+<circle cx="0" cy="0" fill="#ff5f57" r="7"/>
+<circle cx="22" cy="0" fill="#febc2e" r="7"/>
+<circle cx="44" cy="0" fill="#28c840" r="7"/>
+</g>
+<g clip-path="url(#terminal-2479493627-clip-terminal)" transform="translate(9, 41)">
+<g class="terminal-2479493627-matrix">
+<text class="terminal-2479493627-r1" clip-path="url(#terminal-2479493627-line-0)" textLength="1354.2" x="0" y="20">                                                   User List                                                   </text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-0)" textLength="12.2" x="1354.2" y="20">
+</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-1)" textLength="1354.2" x="0" y="44.4">┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┓</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-1)" textLength="12.2" x="1354.2" y="44.4">
+</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="0" y="68.8">┃</text><text class="terminal-2479493627-r3" clip-path="url(#terminal-2479493627-line-2)" textLength="109.8" x="24.4" y="68.8">Username </text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="146.4" y="68.8">┃</text><text class="terminal-2479493627-r3" clip-path="url(#terminal-2479493627-line-2)" textLength="292.8" x="170.8" y="68.8">Email                   </text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="475.8" y="68.8">┃</text><text class="terminal-2479493627-r3" clip-path="url(#terminal-2479493627-line-2)" textLength="134.2" x="500.2" y="68.8">Description</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="646.6" y="68.8">┃</text><text class="terminal-2479493627-r3" clip-path="url(#terminal-2479493627-line-2)" textLength="231.8" x="671" y="68.8">Creation Date      </text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="915" y="68.8">┃</text><text class="terminal-2479493627-r3" clip-path="url(#terminal-2479493627-line-2)" textLength="231.8" x="939.4" y="68.8">Last Connection    </text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="1183.4" y="68.8">┃</text><text class="terminal-2479493627-r3" clip-path="url(#terminal-2479493627-line-2)" textLength="122" x="1207.8" y="68.8">Superadmin</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="1342" y="68.8">┃</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-2)" textLength="12.2" x="1354.2" y="68.8">
+</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-3)" textLength="1354.2" x="0" y="93.2">┡━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━┩</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-3)" textLength="12.2" x="1354.2" y="93.2">
+</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="0" y="117.6">│</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="109.8" x="24.4" y="117.6">superuser</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="146.4" y="117.6">│</text><text class="terminal-2479493627-r4" clip-path="url(#terminal-2479493627-line-4)" textLength="292.8" x="170.8" y="117.6">superuser@zpodfactory.io</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="475.8" y="117.6">│</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="646.6" y="117.6">│</text><text class="terminal-2479493627-r5" clip-path="url(#terminal-2479493627-line-4)" textLength="231.8" x="671" y="117.6">2024-03-15 21:39:58</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="915" y="117.6">│</text><text class="terminal-2479493627-r6" clip-path="url(#terminal-2479493627-line-4)" textLength="231.8" x="939.4" y="117.6">2024-05-09 14:38:38</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="1183.4" y="117.6">│</text><text class="terminal-2479493627-r7" clip-path="url(#terminal-2479493627-line-4)" textLength="48.8" x="1207.8" y="117.6">True</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="1342" y="117.6">│</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-4)" textLength="12.2" x="1354.2" y="117.6">
+</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-5)" textLength="1354.2" x="0" y="142">└───────────┴──────────────────────────┴─────────────┴─────────────────────┴─────────────────────┴────────────┘</text><text class="terminal-2479493627-r2" clip-path="url(#terminal-2479493627-line-5)" textLength="12.2" x="1354.2" y="142">
+</text>
+</g>
+</g>
+</svg></p>
+<h2 id="manage-zpods">Manage zPods</h2>
+<p>zPods are the nested environments name in the zPodFactory framework.</p>
+<h3 id="list-zpods">List zPods</h3>
+<div class="highlight" data-copy="zcli zpod list"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>❯ zcli zpod list
+</code></pre></div>
+<p><svg class="rich-terminal" viewBox="0 0 1617 660.0" xmlns="http://www.w3.org/2000/svg">
+<!-- Generated with Rich https://www.textualize.io -->
+<style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-3490334548-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-3490334548-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-3490334548-r1 { fill: #b9bcba;font-weight: bold }
+.terminal-3490334548-r2 { fill: #b9bcba }
+.terminal-3490334548-r3 { fill: #578fa4;font-weight: bold }
+.terminal-3490334548-r4 { fill: #87afff }
+.terminal-3490334548-r5 { fill: #d7af87 }
+.terminal-3490334548-r6 { fill: #d7d700 }
+.terminal-3490334548-r7 { fill: #afaf5f }
+.terminal-3490334548-r8 { fill: #5f87ff }
+.terminal-3490334548-r9 { fill: #ffafaf }
+.terminal-3490334548-r10 { fill: #5faf5f }
+    </style>
+<defs>
+<clipPath id="terminal-3490334548-clip-terminal">
+<rect height="609.0" width="1597.1999999999998" x="0" y="0"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-0">
+<rect height="24.65" width="1598.2" x="0" y="1.5"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-1">
+<rect height="24.65" width="1598.2" x="0" y="25.9"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-2">
+<rect height="24.65" width="1598.2" x="0" y="50.3"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-3">
+<rect height="24.65" width="1598.2" x="0" y="74.7"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-4">
+<rect height="24.65" width="1598.2" x="0" y="99.1"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-5">
+<rect height="24.65" width="1598.2" x="0" y="123.5"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-6">
+<rect height="24.65" width="1598.2" x="0" y="147.9"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-7">
+<rect height="24.65" width="1598.2" x="0" y="172.3"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-8">
+<rect height="24.65" width="1598.2" x="0" y="196.7"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-9">
+<rect height="24.65" width="1598.2" x="0" y="221.1"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-10">
+<rect height="24.65" width="1598.2" x="0" y="245.5"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-11">
+<rect height="24.65" width="1598.2" x="0" y="269.9"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-12">
+<rect height="24.65" width="1598.2" x="0" y="294.3"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-13">
+<rect height="24.65" width="1598.2" x="0" y="318.7"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-14">
+<rect height="24.65" width="1598.2" x="0" y="343.1"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-15">
+<rect height="24.65" width="1598.2" x="0" y="367.5"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-16">
+<rect height="24.65" width="1598.2" x="0" y="391.9"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-17">
+<rect height="24.65" width="1598.2" x="0" y="416.3"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-18">
+<rect height="24.65" width="1598.2" x="0" y="440.7"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-19">
+<rect height="24.65" width="1598.2" x="0" y="465.1"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-20">
+<rect height="24.65" width="1598.2" x="0" y="489.5"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-21">
+<rect height="24.65" width="1598.2" x="0" y="513.9"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-22">
+<rect height="24.65" width="1598.2" x="0" y="538.3"/>
+</clipPath>
+<clipPath id="terminal-3490334548-line-23">
+<rect height="24.65" width="1598.2" x="0" y="562.7"/>
+</clipPath>
+</defs>
+<rect fill="#191919" height="658" rx="8" stroke="rgba(255,255,255,0.35)" stroke-width="1" width="1615" x="1" y="1"/>
+<g transform="translate(26,22)">
+<circle cx="0" cy="0" fill="#ff5f57" r="7"/>
+<circle cx="22" cy="0" fill="#febc2e" r="7"/>
+<circle cx="44" cy="0" fill="#28c840" r="7"/>
+</g>
+<g clip-path="url(#terminal-3490334548-clip-terminal)" transform="translate(9, 41)">
+<g class="terminal-3490334548-matrix">
+<text class="terminal-3490334548-r1" clip-path="url(#terminal-3490334548-line-0)" textLength="1598.2" x="0" y="20">                                                             zPod List                                                             </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-0)" textLength="12.2" x="1598.2" y="20">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-1)" textLength="1598.2" x="0" y="44.4">┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━┓</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-1)" textLength="12.2" x="1598.2" y="44.4">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="0" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="97.6" x="24.4" y="68.8">Name    </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="134.2" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="207.4" x="158.6" y="68.8">Domain           </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="378.2" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="134.2" x="402.6" y="68.8">Profile    </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="549" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="122" x="573.4" y="68.8">Components</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="707.6" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="134.2" x="732" y="68.8">Endpoint   </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="878.4" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="231.8" x="902.8" y="68.8">Networks           </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="1146.8" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="109.8" x="1171.2" y="68.8">Owner(s) </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="1293.2" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="146.4" x="1317.6" y="68.8">Password    </text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="1476.2" y="68.8">┃</text><text class="terminal-3490334548-r3" clip-path="url(#terminal-3490334548-line-2)" textLength="73.2" x="1500.6" y="68.8">Status</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="1586" y="68.8">┃</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-2)" textLength="12.2" x="1598.2" y="68.8">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-3)" textLength="1598.2" x="0" y="93.2">┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━┩</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-3)" textLength="12.2" x="1598.2" y="93.2">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="0" y="117.6">│</text><text class="terminal-3490334548-r1" clip-path="url(#terminal-3490334548-line-4)" textLength="97.6" x="24.4" y="117.6">demo.vcf</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="134.2" y="117.6">│</text><text class="terminal-3490334548-r4" clip-path="url(#terminal-3490334548-line-4)" textLength="207.4" x="158.6" y="117.6">demo.vcf.zpod.lab</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="378.2" y="117.6">│</text><text class="terminal-3490334548-r5" clip-path="url(#terminal-3490334548-line-4)" textLength="134.2" x="402.6" y="117.6">vcf511-mgmt</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="549" y="117.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="48.8" x="573.4" y="117.6">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-4)" textLength="48.8" x="622.2" y="117.6">zbox</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="707.6" y="117.6">│</text><text class="terminal-3490334548-r7" clip-path="url(#terminal-3490334548-line-4)" textLength="134.2" x="732" y="117.6">ovh-pcc-hci</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="878.4" y="117.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="36.6" x="902.8" y="117.6"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-4)" textLength="146.4" x="939.4" y="117.6">10.96.9.0/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="1146.8" y="117.6">│</text><text class="terminal-3490334548-r9" clip-path="url(#terminal-3490334548-line-4)" textLength="109.8" x="1171.2" y="117.6">superuser</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="1293.2" y="117.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="146.4" x="1317.6" y="117.6">zdf!!VG3tqyh</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="1476.2" y="117.6">│</text><text class="terminal-3490334548-r10" clip-path="url(#terminal-3490334548-line-4)" textLength="73.2" x="1500.6" y="117.6">ACTIVE</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="1586" y="117.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-4)" textLength="12.2" x="1598.2" y="117.6">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="0" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="134.2" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="378.2" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="549" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="48.8" x="573.4" y="142">4 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-5)" textLength="48.8" x="622.2" y="142">esxi</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="707.6" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="878.4" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="36.6" x="902.8" y="142"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-5)" textLength="158.6" x="939.4" y="142">10.96.9.64/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="1146.8" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="1293.2" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="1476.2" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="1586" y="142">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-5)" textLength="12.2" x="1598.2" y="142">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="0" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="134.2" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="378.2" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="549" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="48.8" x="573.4" y="166.4">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-6)" textLength="36.6" x="622.2" y="166.4">vcf</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="707.6" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="878.4" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="36.6" x="902.8" y="166.4"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-6)" textLength="170.8" x="939.4" y="166.4">10.96.9.128/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="1146.8" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="1293.2" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="1476.2" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="1586" y="166.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-6)" textLength="12.2" x="1598.2" y="166.4">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="0" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="134.2" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="378.2" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="549" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="707.6" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="878.4" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="36.6" x="902.8" y="190.8"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-7)" textLength="170.8" x="939.4" y="190.8">10.96.9.192/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="1146.8" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="1293.2" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="1476.2" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="1586" y="190.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-7)" textLength="12.2" x="1598.2" y="190.8">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="0" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="134.2" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="378.2" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="549" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="707.6" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="878.4" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="1146.8" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="1293.2" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="1476.2" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="1586" y="215.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-8)" textLength="12.2" x="1598.2" y="215.2">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="0" y="239.6">│</text><text class="terminal-3490334548-r1" clip-path="url(#terminal-3490334548-line-9)" textLength="85.4" x="24.4" y="239.6">ovh.vcf</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="134.2" y="239.6">│</text><text class="terminal-3490334548-r4" clip-path="url(#terminal-3490334548-line-9)" textLength="195.2" x="158.6" y="239.6">ovh.vcf.zpod.lab</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="378.2" y="239.6">│</text><text class="terminal-3490334548-r5" clip-path="url(#terminal-3490334548-line-9)" textLength="134.2" x="402.6" y="239.6">vcf511-mgmt</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="549" y="239.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="48.8" x="573.4" y="239.6">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-9)" textLength="48.8" x="622.2" y="239.6">zbox</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="707.6" y="239.6">│</text><text class="terminal-3490334548-r7" clip-path="url(#terminal-3490334548-line-9)" textLength="134.2" x="732" y="239.6">ovh-pcc-hci</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="878.4" y="239.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="36.6" x="902.8" y="239.6"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-9)" textLength="170.8" x="939.4" y="239.6">10.96.241.0/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="1146.8" y="239.6">│</text><text class="terminal-3490334548-r9" clip-path="url(#terminal-3490334548-line-9)" textLength="109.8" x="1171.2" y="239.6">superuser</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="1293.2" y="239.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="146.4" x="1317.6" y="239.6">N0f!l!xvvjTp</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="1476.2" y="239.6">│</text><text class="terminal-3490334548-r10" clip-path="url(#terminal-3490334548-line-9)" textLength="73.2" x="1500.6" y="239.6">ACTIVE</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="1586" y="239.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-9)" textLength="12.2" x="1598.2" y="239.6">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="0" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="134.2" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="378.2" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="549" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="48.8" x="573.4" y="264">4 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-10)" textLength="48.8" x="622.2" y="264">esxi</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="707.6" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="878.4" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="36.6" x="902.8" y="264"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-10)" textLength="183" x="939.4" y="264">10.96.241.64/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="1146.8" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="1293.2" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="1476.2" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="1586" y="264">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-10)" textLength="12.2" x="1598.2" y="264">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="0" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="134.2" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="378.2" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="549" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="48.8" x="573.4" y="288.4">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-11)" textLength="36.6" x="622.2" y="288.4">vcf</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="707.6" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="878.4" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="36.6" x="902.8" y="288.4"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-11)" textLength="195.2" x="939.4" y="288.4">10.96.241.128/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="1146.8" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="1293.2" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="1476.2" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="1586" y="288.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-11)" textLength="12.2" x="1598.2" y="288.4">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="0" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="134.2" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="378.2" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="549" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="707.6" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="878.4" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="36.6" x="902.8" y="312.8"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-12)" textLength="195.2" x="939.4" y="312.8">10.96.241.192/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="1146.8" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="1293.2" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="1476.2" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="1586" y="312.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-12)" textLength="12.2" x="1598.2" y="312.8">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="0" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="134.2" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="378.2" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="549" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="707.6" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="878.4" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="1146.8" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="1293.2" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="1476.2" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="1586" y="337.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-13)" textLength="12.2" x="1598.2" y="337.2">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="0" y="361.6">│</text><text class="terminal-3490334548-r1" clip-path="url(#terminal-3490334548-line-14)" textLength="73.2" x="24.4" y="361.6">packer</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="134.2" y="361.6">│</text><text class="terminal-3490334548-r4" clip-path="url(#terminal-3490334548-line-14)" textLength="183" x="158.6" y="361.6">packer.zpod.lab</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="378.2" y="361.6">│</text><text class="terminal-3490334548-r5" clip-path="url(#terminal-3490334548-line-14)" textLength="73.2" x="402.6" y="361.6">packer</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="549" y="361.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="48.8" x="573.4" y="361.6">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-14)" textLength="48.8" x="622.2" y="361.6">zbox</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="707.6" y="361.6">│</text><text class="terminal-3490334548-r7" clip-path="url(#terminal-3490334548-line-14)" textLength="134.2" x="732" y="361.6">ovh-pcc-hci</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="878.4" y="361.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="36.6" x="902.8" y="361.6"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-14)" textLength="170.8" x="939.4" y="361.6">10.96.230.0/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="1146.8" y="361.6">│</text><text class="terminal-3490334548-r9" clip-path="url(#terminal-3490334548-line-14)" textLength="109.8" x="1171.2" y="361.6">superuser</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="1293.2" y="361.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="146.4" x="1317.6" y="361.6">!Z7ys!avqEes</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="1476.2" y="361.6">│</text><text class="terminal-3490334548-r10" clip-path="url(#terminal-3490334548-line-14)" textLength="73.2" x="1500.6" y="361.6">ACTIVE</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="1586" y="361.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-14)" textLength="12.2" x="1598.2" y="361.6">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="0" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="134.2" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="378.2" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="549" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="48.8" x="573.4" y="386">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-15)" textLength="48.8" x="622.2" y="386">esxi</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="707.6" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="878.4" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="36.6" x="902.8" y="386"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-15)" textLength="183" x="939.4" y="386">10.96.230.64/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="1146.8" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="1293.2" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="1476.2" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="1586" y="386">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-15)" textLength="12.2" x="1598.2" y="386">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="0" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="134.2" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="378.2" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="549" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="707.6" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="878.4" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="36.6" x="902.8" y="410.4"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-16)" textLength="195.2" x="939.4" y="410.4">10.96.230.128/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="1146.8" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="1293.2" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="1476.2" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="1586" y="410.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-16)" textLength="12.2" x="1598.2" y="410.4">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="0" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="134.2" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="378.2" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="549" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="707.6" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="878.4" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="36.6" x="902.8" y="434.8"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-17)" textLength="195.2" x="939.4" y="434.8">10.96.230.192/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="1146.8" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="1293.2" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="1476.2" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="1586" y="434.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-17)" textLength="12.2" x="1598.2" y="434.8">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="0" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="134.2" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="378.2" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="549" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="707.6" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="878.4" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="1146.8" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="1293.2" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="1476.2" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="1586" y="459.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-18)" textLength="12.2" x="1598.2" y="459.2">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="0" y="483.6">│</text><text class="terminal-3490334548-r1" clip-path="url(#terminal-3490334548-line-19)" textLength="73.2" x="24.4" y="483.6">spacex</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="134.2" y="483.6">│</text><text class="terminal-3490334548-r4" clip-path="url(#terminal-3490334548-line-19)" textLength="183" x="158.6" y="483.6">spacex.zpod.lab</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="378.2" y="483.6">│</text><text class="terminal-3490334548-r5" clip-path="url(#terminal-3490334548-line-19)" textLength="48.8" x="402.6" y="483.6">sddc</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="549" y="483.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="48.8" x="573.4" y="483.6">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-19)" textLength="48.8" x="622.2" y="483.6">zbox</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="707.6" y="483.6">│</text><text class="terminal-3490334548-r7" clip-path="url(#terminal-3490334548-line-19)" textLength="134.2" x="732" y="483.6">ovh-pcc-hci</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="878.4" y="483.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="36.6" x="902.8" y="483.6"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-19)" textLength="158.6" x="939.4" y="483.6">10.96.48.0/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="1146.8" y="483.6">│</text><text class="terminal-3490334548-r9" clip-path="url(#terminal-3490334548-line-19)" textLength="109.8" x="1171.2" y="483.6">superuser</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="1293.2" y="483.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="146.4" x="1317.6" y="483.6">rf!djG7wuztm</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="1476.2" y="483.6">│</text><text class="terminal-3490334548-r10" clip-path="url(#terminal-3490334548-line-19)" textLength="73.2" x="1500.6" y="483.6">ACTIVE</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="1586" y="483.6">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-19)" textLength="12.2" x="1598.2" y="483.6">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="0" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="134.2" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="378.2" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="549" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="48.8" x="573.4" y="508">3 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-20)" textLength="48.8" x="622.2" y="508">esxi</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="707.6" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="878.4" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="36.6" x="902.8" y="508"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-20)" textLength="170.8" x="939.4" y="508">10.96.48.64/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="1146.8" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="1293.2" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="1476.2" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="1586" y="508">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-20)" textLength="12.2" x="1598.2" y="508">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="0" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="134.2" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="378.2" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="549" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="48.8" x="573.4" y="532.4">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-21)" textLength="48.8" x="622.2" y="532.4">vcsa</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="707.6" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="878.4" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="36.6" x="902.8" y="532.4"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-21)" textLength="183" x="939.4" y="532.4">10.96.48.128/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="1146.8" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="1293.2" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="1476.2" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="1586" y="532.4">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-21)" textLength="12.2" x="1598.2" y="532.4">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="0" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="134.2" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="378.2" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="549" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="48.8" x="573.4" y="556.8">1 x </text><text class="terminal-3490334548-r6" clip-path="url(#terminal-3490334548-line-22)" textLength="36.6" x="622.2" y="556.8">nsx</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="707.6" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="878.4" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="36.6" x="902.8" y="556.8"> - </text><text class="terminal-3490334548-r8" clip-path="url(#terminal-3490334548-line-22)" textLength="183" x="939.4" y="556.8">10.96.48.192/26</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="1146.8" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="1293.2" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="1476.2" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="1586" y="556.8">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-22)" textLength="12.2" x="1598.2" y="556.8">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="0" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="134.2" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="378.2" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="549" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="707.6" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="878.4" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="1146.8" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="1293.2" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="1476.2" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="1586" y="581.2">│</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-23)" textLength="12.2" x="1598.2" y="581.2">
+</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-24)" textLength="1598.2" x="0" y="605.6">└──────────┴───────────────────┴─────────────┴────────────┴─────────────┴─────────────────────┴───────────┴──────────────┴────────┘</text><text class="terminal-3490334548-r2" clip-path="url(#terminal-3490334548-line-24)" textLength="12.2" x="1598.2" y="605.6">
+</text>
+</g>
+</g>
+</svg></p>
+<h3 id="create-zpods">Create zPods</h3>
+<p>To create a zPod you will need to provide a few parameters:</p>
+<ul>
+<li><code>name</code>: The name of the zPod</li>
+<li><code>profile</code>: The profile to use to deploy the zPod (use <code>zcli profile list</code> to list available profiles)</li>
+<li><code>endpoint</code>: The endpoint to use to deploy the zPod (use <code>zcli endpoint list</code> to list available endpoints)</li>
+</ul>
+<div class="highlight" data-copy="zcli zpod create name -p profile -e endpoint"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>❯ zcli zpod create name -p profile -e endpoint
+</code></pre></div>
+<p>For example:</p>
+<div class="highlight" data-copy="zcli zpod create test -p base -e sddc-lab"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>❯ zcli zpod create test -p base -e sddc-lab
+</code></pre></div>
+<p>This will create a zPod with the following attributes:</p>
+<ul>
+<li><code>name</code>: <code>test</code> This will be the name of the zPod, that also means it will concatenate this name with the <code>zpodfactory.domain</code> to create the FQDN of the zPod. In this case it will be <code>test.zpodfactory.domain</code>, and any component, such as <code>zbox</code> component will be <code>zbox.test.zpodfactory.domain</code>.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>zpodfactory.domain</code> is a setting that can ONLY be configured by an Administrator.</p>
+<p>It is configured by the <code>zpodfactory_default_domain</code> setting. This setting should be configured at initial setup of this framework and <strong>SHOULD NEVER BE MODIFIED</strong>.</p>
+<p>Check <a href="../admin/#manage-settings">Manage settings</a> for more information.</p>
+</div>
+<ul>
+<li>
+<p><code>profile</code>: <code>base</code> This is the profile that will be used to deploy the zPod. It will be used to deploy the <code>zbox</code> component, and any other component that is required by the profile. The <code>base</code> profile actually entitles to the following components in our current configuration :</p>
+<ul>
+<li><code>zbox-12.7</code> (mandatory <code>component</code> to manage DNS/DHCP, 3 additional zPod /26 subnets on tagged VLAN 64/128/192, and also the NFS datastore for the nested hosts)</li>
+<li><code>esxi-8.0u3c</code> (Host Id: 11, CPU: 4, Mem: 48GB)</li>
+<li><code>esxi-8.0u3c</code> (Host Id: 12, CPU: 4, Mem: 48GB)</li>
+<li><code>vcsa-8.0u3d</code></li>
+</ul>
+</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>base</code> profile is a profile that can ONLY be configured by an Administrator.
+Check <a href="../admin/#manage-profiles">Manage profiles</a> for more information.</p>
+</div>
+<ul>
+<li><code>endpoint</code>: <code>sddc-lab</code> will reference the endpoint to use to deploy the zPod. In this case it will be the <code>sddc-lab</code> endpoint that is configured by an Administrator, and should link to the physical environment that will host this zPod nested environment.</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The <code>sddc-lab</code> endpoint is an endpoint that can ONLY be configured by an Administrator.
+Check <a href="../admin/#manage-endpoints">Manage endpoints</a> for more information.</p>
+</div>
+<h3 id="accessing-the-zpod">Accessing the zPod</h3>
+<p>Once the zPod is deployed, you can access it using the following credentials</p>
+<p>for vcsa (VMware vCenter Server):</p>
+<ul>
+<li><code>username</code>: <code>administrator@name.zpodfactory.domain</code></li>
+<li><code>password</code>: Each zPod has its password generated.  Password can be fetched by using the <code>zcli zpod list</code> command)</li>
+</ul>
+<p>For every other component, the username is the default for that component.  For example, on many VMware products the default administrator account is either <code>root</code> or <code>admin</code>, such as <code>nsx-v</code>, <code>nsx-t</code>, <code>nsx</code>, <code>vcda</code>, <code>vrops</code>, <code>vrli</code>.  However, for <code>vcd</code>, the default administrator account is <code>administrator</code>.  The password is <strong>always</strong> the zPod Password.</p>
+<h3 id="destroy-zpods">Destroy zPods</h3>
+<div class="highlight" data-copy="zcli zpod destroy delete name"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a>❯ zcli zpod destroy name
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This will destroy the zPod and all its components without confirmation, and will not be recoverable.</p>
+</div>
+<h2 id="manage-components">Manage components</h2>
+<p>In the previous section we deployed a zPod with the <code>base</code> profile, which does not contain many products, but only the bare minimum to have a functional nested environment.
+Here we will show you how to list the available components, and add a new component to a deployed/available zPod.</p>
+<h3 id="list-components">List components</h3>
+<div class="highlight" data-copy="zcli component list"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>❯ zcli component list
+</code></pre></div>
+<p><svg class="rich-terminal" viewBox="0 0 1824 464.79999999999995" xmlns="http://www.w3.org/2000/svg">
+<!-- Generated with Rich https://www.textualize.io -->
+<style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1457479908-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1457479908-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1457479908-r1 { fill: #b9bcba;font-weight: bold }
+.terminal-1457479908-r2 { fill: #b9bcba }
+.terminal-1457479908-r3 { fill: #578fa4;font-weight: bold }
+.terminal-1457479908-r4 { fill: #d7d700 }
+.terminal-1457479908-r5 { fill: #af87ff }
+.terminal-1457479908-r6 { fill: #5f87ff }
+.terminal-1457479908-r7 { fill: #879a3b }
+.terminal-1457479908-r8 { fill: #5faf5f }
+    </style>
+<defs>
+<clipPath id="terminal-1457479908-clip-terminal">
+<rect height="413.79999999999995" width="1804.6" x="0" y="0"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-0">
+<rect height="24.65" width="1805.6" x="0" y="1.5"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-1">
+<rect height="24.65" width="1805.6" x="0" y="25.9"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-2">
+<rect height="24.65" width="1805.6" x="0" y="50.3"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-3">
+<rect height="24.65" width="1805.6" x="0" y="74.7"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-4">
+<rect height="24.65" width="1805.6" x="0" y="99.1"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-5">
+<rect height="24.65" width="1805.6" x="0" y="123.5"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-6">
+<rect height="24.65" width="1805.6" x="0" y="147.9"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-7">
+<rect height="24.65" width="1805.6" x="0" y="172.3"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-8">
+<rect height="24.65" width="1805.6" x="0" y="196.7"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-9">
+<rect height="24.65" width="1805.6" x="0" y="221.1"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-10">
+<rect height="24.65" width="1805.6" x="0" y="245.5"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-11">
+<rect height="24.65" width="1805.6" x="0" y="269.9"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-12">
+<rect height="24.65" width="1805.6" x="0" y="294.3"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-13">
+<rect height="24.65" width="1805.6" x="0" y="318.7"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-14">
+<rect height="24.65" width="1805.6" x="0" y="343.1"/>
+</clipPath>
+<clipPath id="terminal-1457479908-line-15">
+<rect height="24.65" width="1805.6" x="0" y="367.5"/>
+</clipPath>
+</defs>
+<rect fill="#191919" height="462.8" rx="8" stroke="rgba(255,255,255,0.35)" stroke-width="1" width="1822" x="1" y="1"/>
+<g transform="translate(26,22)">
+<circle cx="0" cy="0" fill="#ff5f57" r="7"/>
+<circle cx="22" cy="0" fill="#febc2e" r="7"/>
+<circle cx="44" cy="0" fill="#28c840" r="7"/>
+</g>
+<g clip-path="url(#terminal-1457479908-clip-terminal)" transform="translate(9, 41)">
+<g class="terminal-1457479908-matrix">
+<text class="terminal-1457479908-r1" clip-path="url(#terminal-1457479908-line-0)" textLength="1732.4" x="0" y="20">                                                                Component List                                                                </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-0)" textLength="12.2" x="1805.6" y="20">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-1)" textLength="1732.4" x="0" y="44.4">┏━━━━━━━━━━━━━━━━━┳━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━┓</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-1)" textLength="12.2" x="1805.6" y="44.4">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="0" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="183" x="24.4" y="68.8">UID            </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="219.6" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="61" x="244" y="68.8">Name </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="317.2" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="122" x="341.6" y="68.8">Version   </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="475.8" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="85.4" x="500.2" y="68.8">Library</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="597.8" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="756.4" x="622.2" y="68.8">Description                                                   </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="1390.8" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="183" x="1415.2" y="68.8">Download Status</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="1610.4" y="68.8">┃</text><text class="terminal-1457479908-r3" clip-path="url(#terminal-1457479908-line-2)" textLength="73.2" x="1634.8" y="68.8">Status</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="1720.2" y="68.8">┃</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-2)" textLength="12.2" x="1805.6" y="68.8">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-3)" textLength="1732.4" x="0" y="93.2">┡━━━━━━━━━━━━━━━━━╇━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━┩</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-3)" textLength="12.2" x="1805.6" y="93.2">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="0" y="117.6">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-4)" textLength="170.8" x="24.4" y="117.6">esxi-8.0u2-dev</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="219.6" y="117.6">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-4)" textLength="48.8" x="244" y="117.6">esxi</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="317.2" y="117.6">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-4)" textLength="109.8" x="341.6" y="117.6">8.0u2-dev</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="475.8" y="117.6">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-4)" textLength="36.6" x="500.2" y="117.6">dev</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="597.8" y="117.6">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="756.4" x="622.2" y="117.6">VMware ESXi Template                                          </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="1390.8" y="117.6">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-4)" textLength="109.8" x="1415.2" y="117.6">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="1610.4" y="117.6">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-4)" textLength="73.2" x="1634.8" y="117.6">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="1720.2" y="117.6">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-4)" textLength="12.2" x="1805.6" y="117.6">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="0" y="142">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-5)" textLength="134.2" x="24.4" y="142">esxi-8.0u2b</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="219.6" y="142">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-5)" textLength="48.8" x="244" y="142">esxi</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="317.2" y="142">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-5)" textLength="73.2" x="341.6" y="142">8.0u2b</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="475.8" y="142">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-5)" textLength="85.4" x="500.2" y="142">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="597.8" y="142">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="756.4" x="622.2" y="142">VMware ESXi Template                                          </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="1390.8" y="142">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-5)" textLength="109.8" x="1415.2" y="142">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="1610.4" y="142">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-5)" textLength="73.2" x="1634.8" y="142">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="1720.2" y="142">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-5)" textLength="12.2" x="1805.6" y="142">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="0" y="166.4">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-6)" textLength="183" x="24.4" y="166.4">esxi-8.0u2b-dev</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="219.6" y="166.4">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-6)" textLength="48.8" x="244" y="166.4">esxi</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="317.2" y="166.4">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-6)" textLength="122" x="341.6" y="166.4">8.0u2b-dev</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="475.8" y="166.4">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-6)" textLength="36.6" x="500.2" y="166.4">dev</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="597.8" y="166.4">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="756.4" x="622.2" y="166.4">VMware ESXi Template                                          </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="1390.8" y="166.4">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-6)" textLength="109.8" x="1415.2" y="166.4">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="1610.4" y="166.4">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-6)" textLength="73.2" x="1634.8" y="166.4">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="1720.2" y="166.4">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-6)" textLength="12.2" x="1805.6" y="166.4">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="0" y="190.8">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-7)" textLength="134.2" x="24.4" y="190.8">nsx-4.1.2.3</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="219.6" y="190.8">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-7)" textLength="36.6" x="244" y="190.8">nsx</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="317.2" y="190.8">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-7)" textLength="85.4" x="341.6" y="190.8">4.1.2.3</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="475.8" y="190.8">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-7)" textLength="85.4" x="500.2" y="190.8">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="597.8" y="190.8">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="756.4" x="622.2" y="190.8">VMware NSX                                                    </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="1390.8" y="190.8">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-7)" textLength="109.8" x="1415.2" y="190.8">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="1610.4" y="190.8">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-7)" textLength="73.2" x="1634.8" y="190.8">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="1720.2" y="190.8">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-7)" textLength="12.2" x="1805.6" y="190.8">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="0" y="215.2">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-8)" textLength="146.4" x="24.4" y="215.2">vcd-10.5.1.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="219.6" y="215.2">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-8)" textLength="36.6" x="244" y="215.2">vcd</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="317.2" y="215.2">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-8)" textLength="97.6" x="341.6" y="215.2">10.5.1.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="475.8" y="215.2">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-8)" textLength="85.4" x="500.2" y="215.2">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="597.8" y="215.2">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="756.4" x="622.2" y="215.2">VMware Cloud Director                                         </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="1390.8" y="215.2">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-8)" textLength="109.8" x="1415.2" y="215.2">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="1610.4" y="215.2">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-8)" textLength="73.2" x="1634.8" y="215.2">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="1720.2" y="215.2">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-8)" textLength="12.2" x="1805.6" y="215.2">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="0" y="239.6">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-9)" textLength="85.4" x="24.4" y="239.6">vcf-5.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="219.6" y="239.6">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-9)" textLength="36.6" x="244" y="239.6">vcf</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="317.2" y="239.6">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-9)" textLength="36.6" x="341.6" y="239.6">5.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="475.8" y="239.6">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-9)" textLength="85.4" x="500.2" y="239.6">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="597.8" y="239.6">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="756.4" x="622.2" y="239.6">VMware Cloud Foundation                                       </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="1390.8" y="239.6">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-9)" textLength="109.8" x="1415.2" y="239.6">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="1610.4" y="239.6">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-9)" textLength="73.2" x="1634.8" y="239.6">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="1720.2" y="239.6">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-9)" textLength="12.2" x="1805.6" y="239.6">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="0" y="264">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-10)" textLength="109.8" x="24.4" y="264">vcf-5.1.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="219.6" y="264">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-10)" textLength="36.6" x="244" y="264">vcf</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="317.2" y="264">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-10)" textLength="61" x="341.6" y="264">5.1.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="475.8" y="264">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-10)" textLength="85.4" x="500.2" y="264">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="597.8" y="264">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="756.4" x="622.2" y="264">VMware Cloud Foundation                                       </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="1390.8" y="264">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-10)" textLength="109.8" x="1415.2" y="264">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="1610.4" y="264">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-10)" textLength="73.2" x="1634.8" y="264">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="1720.2" y="264">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-10)" textLength="12.2" x="1805.6" y="264">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="0" y="288.4">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-11)" textLength="134.2" x="24.4" y="288.4">vcsa-8.0u2b</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="219.6" y="288.4">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-11)" textLength="48.8" x="244" y="288.4">vcsa</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="317.2" y="288.4">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-11)" textLength="73.2" x="341.6" y="288.4">8.0u2b</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="475.8" y="288.4">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-11)" textLength="85.4" x="500.2" y="288.4">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="597.8" y="288.4">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="756.4" x="622.2" y="288.4">VMware vCenter Server                                         </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="1390.8" y="288.4">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-11)" textLength="109.8" x="1415.2" y="288.4">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="1610.4" y="288.4">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-11)" textLength="73.2" x="1634.8" y="288.4">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="1720.2" y="288.4">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-11)" textLength="12.2" x="1805.6" y="288.4">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="0" y="312.8">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-12)" textLength="134.2" x="24.4" y="312.8">vcsa-8.0u2c</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="219.6" y="312.8">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-12)" textLength="48.8" x="244" y="312.8">vcsa</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="317.2" y="312.8">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-12)" textLength="73.2" x="341.6" y="312.8">8.0u2c</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="475.8" y="312.8">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-12)" textLength="85.4" x="500.2" y="312.8">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="597.8" y="312.8">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="756.4" x="622.2" y="312.8">VMware vCenter Server                                         </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="1390.8" y="312.8">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-12)" textLength="109.8" x="1415.2" y="312.8">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="1610.4" y="312.8">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-12)" textLength="73.2" x="1634.8" y="312.8">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="1720.2" y="312.8">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-12)" textLength="12.2" x="1805.6" y="312.8">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="0" y="337.2">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-13)" textLength="146.4" x="24.4" y="337.2">vrops-8.16.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="219.6" y="337.2">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-13)" textLength="61" x="244" y="337.2">vrops</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="317.2" y="337.2">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-13)" textLength="73.2" x="341.6" y="337.2">8.16.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="475.8" y="337.2">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-13)" textLength="85.4" x="500.2" y="337.2">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="597.8" y="337.2">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="756.4" x="622.2" y="337.2">VMware vRealize Operations                                    </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="1390.8" y="337.2">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-13)" textLength="109.8" x="1415.2" y="337.2">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="1610.4" y="337.2">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-13)" textLength="73.2" x="1634.8" y="337.2">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="1720.2" y="337.2">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-13)" textLength="12.2" x="1805.6" y="337.2">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="0" y="361.6">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-14)" textLength="146.4" x="24.4" y="361.6">vrops-8.17.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="219.6" y="361.6">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-14)" textLength="61" x="244" y="361.6">vrops</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="317.2" y="361.6">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-14)" textLength="73.2" x="341.6" y="361.6">8.17.1</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="475.8" y="361.6">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-14)" textLength="85.4" x="500.2" y="361.6">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="597.8" y="361.6">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="756.4" x="622.2" y="361.6">VMware vRealize Operations                                    </text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="1390.8" y="361.6">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-14)" textLength="109.8" x="1415.2" y="361.6">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="1610.4" y="361.6">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-14)" textLength="73.2" x="1634.8" y="361.6">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="1720.2" y="361.6">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-14)" textLength="12.2" x="1805.6" y="361.6">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="0" y="386">│</text><text class="terminal-1457479908-r4" clip-path="url(#terminal-1457479908-line-15)" textLength="109.8" x="24.4" y="386">zbox-12.4</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="219.6" y="386">│</text><text class="terminal-1457479908-r5" clip-path="url(#terminal-1457479908-line-15)" textLength="48.8" x="244" y="386">zbox</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="317.2" y="386">│</text><text class="terminal-1457479908-r6" clip-path="url(#terminal-1457479908-line-15)" textLength="48.8" x="341.6" y="386">12.4</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="475.8" y="386">│</text><text class="terminal-1457479908-r7" clip-path="url(#terminal-1457479908-line-15)" textLength="85.4" x="500.2" y="386">default</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="597.8" y="386">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="756.4" x="622.2" y="386">zBox Utility VM with core services (DNS, DHCP, NTP, NFS, etc.)</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="1390.8" y="386">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-15)" textLength="109.8" x="1415.2" y="386">COMPLETED</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="1610.4" y="386">│</text><text class="terminal-1457479908-r8" clip-path="url(#terminal-1457479908-line-15)" textLength="73.2" x="1634.8" y="386">ACTIVE</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="1720.2" y="386">│</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-15)" textLength="12.2" x="1805.6" y="386">
+</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-16)" textLength="1732.4" x="0" y="410.4">└─────────────────┴───────┴────────────┴─────────┴────────────────────────────────────────────────────────────────┴─────────────────┴────────┘</text><text class="terminal-1457479908-r2" clip-path="url(#terminal-1457479908-line-16)" textLength="12.2" x="1805.6" y="410.4">
+</text>
+</g>
+</g>
+</svg></p>
+<h3 id="list-components-of-a-zpod">List components of a zPod</h3>
+<p>You will need to provide the zpod name parameter so that the CLI knows which zPod to list the components from.</p>
+<div class="highlight" data-copy="zcli zpod component list zpod_name"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a>❯ zcli zpod component list zpod_name
+</code></pre></div>
+<p><svg class="rich-terminal" viewBox="0 0 1617 342.79999999999995" xmlns="http://www.w3.org/2000/svg">
+<!-- Generated with Rich https://www.textualize.io -->
+<style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-583458011-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-583458011-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-583458011-r1 { fill: #b9bcba;font-weight: bold }
+.terminal-583458011-r2 { fill: #b9bcba }
+.terminal-583458011-r3 { fill: #578fa4;font-weight: bold }
+.terminal-583458011-r4 { fill: #87afff }
+.terminal-583458011-r5 { fill: #d7d700 }
+.terminal-583458011-r6 { fill: #ff8787 }
+.terminal-583458011-r7 { fill: #5f87ff }
+.terminal-583458011-r8 { fill: #5faf5f }
+    </style>
+<defs>
+<clipPath id="terminal-583458011-clip-terminal">
+<rect height="291.79999999999995" width="1597.1999999999998" x="0" y="0"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-0">
+<rect height="24.65" width="1598.2" x="0" y="1.5"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-1">
+<rect height="24.65" width="1598.2" x="0" y="25.9"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-2">
+<rect height="24.65" width="1598.2" x="0" y="50.3"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-3">
+<rect height="24.65" width="1598.2" x="0" y="74.7"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-4">
+<rect height="24.65" width="1598.2" x="0" y="99.1"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-5">
+<rect height="24.65" width="1598.2" x="0" y="123.5"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-6">
+<rect height="24.65" width="1598.2" x="0" y="147.9"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-7">
+<rect height="24.65" width="1598.2" x="0" y="172.3"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-8">
+<rect height="24.65" width="1598.2" x="0" y="196.7"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-9">
+<rect height="24.65" width="1598.2" x="0" y="221.1"/>
+</clipPath>
+<clipPath id="terminal-583458011-line-10">
+<rect height="24.65" width="1598.2" x="0" y="245.5"/>
+</clipPath>
+</defs>
+<rect fill="#191919" height="340.8" rx="8" stroke="rgba(255,255,255,0.35)" stroke-width="1" width="1615" x="1" y="1"/>
+<g transform="translate(26,22)">
+<circle cx="0" cy="0" fill="#ff5f57" r="7"/>
+<circle cx="22" cy="0" fill="#febc2e" r="7"/>
+<circle cx="44" cy="0" fill="#28c840" r="7"/>
+</g>
+<g clip-path="url(#terminal-583458011-clip-terminal)" transform="translate(9, 41)">
+<g class="terminal-583458011-matrix">
+<text class="terminal-583458011-r1" clip-path="url(#terminal-583458011-line-0)" textLength="1598.2" x="0" y="20">                                                        zPod Component List                                                        </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-0)" textLength="12.2" x="1598.2" y="20">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-1)" textLength="1598.2" x="0" y="44.4">┏━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┓</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-1)" textLength="12.2" x="1598.2" y="44.4">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="0" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="97.6" x="24.4" y="68.8">Hostname</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="134.2" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="378.2" x="158.6" y="68.8">FQDN                           </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="549" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="183" x="573.4" y="68.8">Component UID  </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="768.6" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="48.8" x="793" y="68.8">Name</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="854" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="122" x="878.4" y="68.8">Version   </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="1012.6" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="427" x="1037" y="68.8">Description                        </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="1476.2" y="68.8">┃</text><text class="terminal-583458011-r3" clip-path="url(#terminal-583458011-line-2)" textLength="73.2" x="1500.6" y="68.8">Status</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="1586" y="68.8">┃</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-2)" textLength="12.2" x="1598.2" y="68.8">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-3)" textLength="1598.2" x="0" y="93.2">┡━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━┩</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-3)" textLength="12.2" x="1598.2" y="93.2">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="0" y="117.6">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-4)" textLength="73.2" x="24.4" y="117.6">esxi11</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="134.2" y="117.6">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-4)" textLength="378.2" x="158.6" y="117.6">https://esxi11.ovh.vcf.zpod.lab</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="549" y="117.6">│</text><text class="terminal-583458011-r5" clip-path="url(#terminal-583458011-line-4)" textLength="183" x="573.4" y="117.6">esxi-8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="768.6" y="117.6">│</text><text class="terminal-583458011-r6" clip-path="url(#terminal-583458011-line-4)" textLength="48.8" x="793" y="117.6">esxi</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="854" y="117.6">│</text><text class="terminal-583458011-r7" clip-path="url(#terminal-583458011-line-4)" textLength="122" x="878.4" y="117.6">8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="1012.6" y="117.6">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="427" x="1037" y="117.6">VMware ESXi Template               </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="1476.2" y="117.6">│</text><text class="terminal-583458011-r8" clip-path="url(#terminal-583458011-line-4)" textLength="73.2" x="1500.6" y="117.6">ACTIVE</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="1586" y="117.6">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-4)" textLength="12.2" x="1598.2" y="117.6">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="0" y="142">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-5)" textLength="73.2" x="24.4" y="142">esxi12</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="134.2" y="142">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-5)" textLength="378.2" x="158.6" y="142">https://esxi12.ovh.vcf.zpod.lab</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="549" y="142">│</text><text class="terminal-583458011-r5" clip-path="url(#terminal-583458011-line-5)" textLength="183" x="573.4" y="142">esxi-8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="768.6" y="142">│</text><text class="terminal-583458011-r6" clip-path="url(#terminal-583458011-line-5)" textLength="48.8" x="793" y="142">esxi</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="854" y="142">│</text><text class="terminal-583458011-r7" clip-path="url(#terminal-583458011-line-5)" textLength="122" x="878.4" y="142">8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="1012.6" y="142">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="427" x="1037" y="142">VMware ESXi Template               </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="1476.2" y="142">│</text><text class="terminal-583458011-r8" clip-path="url(#terminal-583458011-line-5)" textLength="73.2" x="1500.6" y="142">ACTIVE</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="1586" y="142">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-5)" textLength="12.2" x="1598.2" y="142">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="0" y="166.4">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-6)" textLength="73.2" x="24.4" y="166.4">esxi13</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="134.2" y="166.4">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-6)" textLength="378.2" x="158.6" y="166.4">https://esxi13.ovh.vcf.zpod.lab</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="549" y="166.4">│</text><text class="terminal-583458011-r5" clip-path="url(#terminal-583458011-line-6)" textLength="183" x="573.4" y="166.4">esxi-8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="768.6" y="166.4">│</text><text class="terminal-583458011-r6" clip-path="url(#terminal-583458011-line-6)" textLength="48.8" x="793" y="166.4">esxi</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="854" y="166.4">│</text><text class="terminal-583458011-r7" clip-path="url(#terminal-583458011-line-6)" textLength="122" x="878.4" y="166.4">8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="1012.6" y="166.4">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="427" x="1037" y="166.4">VMware ESXi Template               </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="1476.2" y="166.4">│</text><text class="terminal-583458011-r8" clip-path="url(#terminal-583458011-line-6)" textLength="73.2" x="1500.6" y="166.4">ACTIVE</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="1586" y="166.4">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-6)" textLength="12.2" x="1598.2" y="166.4">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="0" y="190.8">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-7)" textLength="73.2" x="24.4" y="190.8">esxi14</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="134.2" y="190.8">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-7)" textLength="378.2" x="158.6" y="190.8">https://esxi14.ovh.vcf.zpod.lab</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="549" y="190.8">│</text><text class="terminal-583458011-r5" clip-path="url(#terminal-583458011-line-7)" textLength="183" x="573.4" y="190.8">esxi-8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="768.6" y="190.8">│</text><text class="terminal-583458011-r6" clip-path="url(#terminal-583458011-line-7)" textLength="48.8" x="793" y="190.8">esxi</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="854" y="190.8">│</text><text class="terminal-583458011-r7" clip-path="url(#terminal-583458011-line-7)" textLength="122" x="878.4" y="190.8">8.0u2b-dev</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="1012.6" y="190.8">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="427" x="1037" y="190.8">VMware ESXi Template               </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="1476.2" y="190.8">│</text><text class="terminal-583458011-r8" clip-path="url(#terminal-583458011-line-7)" textLength="73.2" x="1500.6" y="190.8">ACTIVE</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="1586" y="190.8">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-7)" textLength="12.2" x="1598.2" y="190.8">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="0" y="215.2">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-8)" textLength="36.6" x="24.4" y="215.2">vcf</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="134.2" y="215.2">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-8)" textLength="341.6" x="158.6" y="215.2">https://vcf.ovh.vcf.zpod.lab</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="549" y="215.2">│</text><text class="terminal-583458011-r5" clip-path="url(#terminal-583458011-line-8)" textLength="109.8" x="573.4" y="215.2">vcf-5.1.1</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="768.6" y="215.2">│</text><text class="terminal-583458011-r6" clip-path="url(#terminal-583458011-line-8)" textLength="36.6" x="793" y="215.2">vcf</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="854" y="215.2">│</text><text class="terminal-583458011-r7" clip-path="url(#terminal-583458011-line-8)" textLength="61" x="878.4" y="215.2">5.1.1</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="1012.6" y="215.2">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="427" x="1037" y="215.2">VMware Cloud Foundation            </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="1476.2" y="215.2">│</text><text class="terminal-583458011-r8" clip-path="url(#terminal-583458011-line-8)" textLength="73.2" x="1500.6" y="215.2">ACTIVE</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="1586" y="215.2">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-8)" textLength="12.2" x="1598.2" y="215.2">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="0" y="239.6">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-9)" textLength="48.8" x="24.4" y="239.6">zbox</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="134.2" y="239.6">│</text><text class="terminal-583458011-r4" clip-path="url(#terminal-583458011-line-9)" textLength="353.8" x="158.6" y="239.6">https://zbox.ovh.vcf.zpod.lab</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="549" y="239.6">│</text><text class="terminal-583458011-r5" clip-path="url(#terminal-583458011-line-9)" textLength="109.8" x="573.4" y="239.6">zbox-12.4</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="768.6" y="239.6">│</text><text class="terminal-583458011-r6" clip-path="url(#terminal-583458011-line-9)" textLength="48.8" x="793" y="239.6">zbox</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="854" y="239.6">│</text><text class="terminal-583458011-r7" clip-path="url(#terminal-583458011-line-9)" textLength="48.8" x="878.4" y="239.6">12.4</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="1012.6" y="239.6">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="427" x="1037" y="239.6">zBox Utility VM with core services </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="1476.2" y="239.6">│</text><text class="terminal-583458011-r8" clip-path="url(#terminal-583458011-line-9)" textLength="73.2" x="1500.6" y="239.6">ACTIVE</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="1586" y="239.6">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-9)" textLength="12.2" x="1598.2" y="239.6">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="0" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="134.2" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="549" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="768.6" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="854" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="1012.6" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="427" x="1037" y="264">(DNS, DHCP, NTP, NFS, etc.)        </text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="1476.2" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="1586" y="264">│</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-10)" textLength="12.2" x="1598.2" y="264">
+</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-11)" textLength="1598.2" x="0" y="288.4">└──────────┴─────────────────────────────────┴─────────────────┴──────┴────────────┴─────────────────────────────────────┴────────┘</text><text class="terminal-583458011-r2" clip-path="url(#terminal-583458011-line-11)" textLength="12.2" x="1598.2" y="288.4">
+</text>
+</g>
+</g>
+</svg></p>
+<h3 id="add-components-to-a-zpod">Add components to a zPod</h3>
+<p>If you want to add a new component to a zpod, you will need to provide the <code>component_uid</code>.  Component UID is a combination of a product name and a version, as many versions can exist for a given product. (use <code>zcli component list</code> to list available components)</p>
+<div class="highlight" data-copy="zcli zpod component add zpod_name -c component_uid"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>❯ zcli zpod component add zpod_name -c component_uid
+</code></pre></div>
+<p>For example in our case:</p>
+<div class="highlight" data-copy="zcli zpod component add team.beta -c vcd-10.6.1"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a>❯ zcli zpod component add team.beta -c vcd-10.6.1
+</code></pre></div>
+<p>This will add the <code>vcd-10.6.1</code> component to the <code>team.beta</code> zPod.</p>
+<h2 id="manage-dns-records">Manage DNS records</h2>
+<p>Since version 0.7.2, it is now possible to manage  DNS records dynamically through the CLI to a zPod.  This is useful when you want to add/update/remove a DNS record to a zPod that is not managed by the default <code>zbox</code> component.</p>
+<p>This will require the new <code>zbox-12.7</code> component to be part of the deployment profile.</p>
+<h3 id="list-dns-records-to-a-zpod">List DNS records to a zPod</h3>
+<p>List DNS records to a zPod that is not managed by the default <code>zbox</code> component.</p>
+<div class="highlight" data-copy="zcli zpod dns list zpod_name"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a>❯ zcli zpod dns list zpod_name
+</code></pre></div>
+<p><svg class="rich-terminal" viewBox="0 0 1104 489.2" xmlns="http://www.w3.org/2000/svg">
+<!-- Generated with Rich https://www.textualize.io -->
+<style>
+
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Regular"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Regular.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Regular.woff") format("woff");
+        font-style: normal;
+        font-weight: 400;
+    }
+    @font-face {
+        font-family: "Fira Code";
+        src: local("FiraCode-Bold"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff2/FiraCode-Bold.woff2") format("woff2"),
+                url("https://cdnjs.cloudflare.com/ajax/libs/firacode/6.2.0/woff/FiraCode-Bold.woff") format("woff");
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    .terminal-1881465696-matrix {
+        font-family: Fira Code, monospace;
+        font-size: 20px;
+        line-height: 24.4px;
+        font-variant-east-asian: full-width;
+    }
+
+    .terminal-1881465696-title {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: arial;
+    }
+
+    .terminal-1881465696-r1 { fill: #b9bcba;font-weight: bold }
+.terminal-1881465696-r2 { fill: #b9bcba }
+.terminal-1881465696-r3 { fill: #578fa4;font-weight: bold }
+.terminal-1881465696-r4 { fill: #87afff }
+    </style>
+<defs>
+<clipPath id="terminal-1881465696-clip-terminal">
+<rect height="438.2" width="1084.8" x="0" y="0"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-0">
+<rect height="24.65" width="1085.8" x="0" y="1.5"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-1">
+<rect height="24.65" width="1085.8" x="0" y="25.9"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-2">
+<rect height="24.65" width="1085.8" x="0" y="50.3"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-3">
+<rect height="24.65" width="1085.8" x="0" y="74.7"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-4">
+<rect height="24.65" width="1085.8" x="0" y="99.1"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-5">
+<rect height="24.65" width="1085.8" x="0" y="123.5"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-6">
+<rect height="24.65" width="1085.8" x="0" y="147.9"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-7">
+<rect height="24.65" width="1085.8" x="0" y="172.3"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-8">
+<rect height="24.65" width="1085.8" x="0" y="196.7"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-9">
+<rect height="24.65" width="1085.8" x="0" y="221.1"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-10">
+<rect height="24.65" width="1085.8" x="0" y="245.5"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-11">
+<rect height="24.65" width="1085.8" x="0" y="269.9"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-12">
+<rect height="24.65" width="1085.8" x="0" y="294.3"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-13">
+<rect height="24.65" width="1085.8" x="0" y="318.7"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-14">
+<rect height="24.65" width="1085.8" x="0" y="343.1"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-15">
+<rect height="24.65" width="1085.8" x="0" y="367.5"/>
+</clipPath>
+<clipPath id="terminal-1881465696-line-16">
+<rect height="24.65" width="1085.8" x="0" y="391.9"/>
+</clipPath>
+</defs>
+<rect fill="#191919" height="487.2" rx="8" stroke="rgba(255,255,255,0.35)" stroke-width="1" width="1102" x="1" y="1"/>
+<g transform="translate(26,22)">
+<circle cx="0" cy="0" fill="#ff5f57" r="7"/>
+<circle cx="22" cy="0" fill="#febc2e" r="7"/>
+<circle cx="44" cy="0" fill="#28c840" r="7"/>
+</g>
+<g clip-path="url(#terminal-1881465696-clip-terminal)" transform="translate(9, 41)">
+<g class="terminal-1881465696-matrix">
+<text class="terminal-1881465696-r1" clip-path="url(#terminal-1881465696-line-0)" textLength="500.2" x="0" y="20">              zPod DNS List              </text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-0)" textLength="12.2" x="1085.8" y="20">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-1)" textLength="500.2" x="0" y="44.4">┏━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━┓</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-1)" textLength="12.2" x="1085.8" y="44.4">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-2)" textLength="12.2" x="0" y="68.8">┃</text><text class="terminal-1881465696-r3" clip-path="url(#terminal-1881465696-line-2)" textLength="146.4" x="24.4" y="68.8">IP          </text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-2)" textLength="12.2" x="183" y="68.8">┃</text><text class="terminal-1881465696-r3" clip-path="url(#terminal-1881465696-line-2)" textLength="268.4" x="207.4" y="68.8">Hostname              </text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-2)" textLength="12.2" x="488" y="68.8">┃</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-2)" textLength="12.2" x="1085.8" y="68.8">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-3)" textLength="500.2" x="0" y="93.2">┡━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━┩</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-3)" textLength="12.2" x="1085.8" y="93.2">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-4)" textLength="12.2" x="0" y="117.6">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-4)" textLength="109.8" x="24.4" y="117.6">127.0.0.1</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-4)" textLength="12.2" x="183" y="117.6">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-4)" textLength="109.8" x="207.4" y="117.6">localhost</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-4)" textLength="12.2" x="488" y="117.6">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-4)" textLength="12.2" x="1085.8" y="117.6">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-5)" textLength="12.2" x="0" y="142">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-5)" textLength="134.2" x="24.4" y="142">10.96.233.2</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-5)" textLength="12.2" x="183" y="142">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-5)" textLength="48.8" x="207.4" y="142">zbox</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-5)" textLength="12.2" x="488" y="142">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-5)" textLength="12.2" x="1085.8" y="142">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-6)" textLength="12.2" x="0" y="166.4">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-6)" textLength="134.2" x="24.4" y="166.4">10.96.233.2</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-6)" textLength="12.2" x="183" y="166.4">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-6)" textLength="268.4" x="207.4" y="166.4">zbox.sddctest.zpod.lab</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-6)" textLength="12.2" x="488" y="166.4">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-6)" textLength="12.2" x="1085.8" y="166.4">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-7)" textLength="12.2" x="0" y="190.8">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-7)" textLength="146.4" x="24.4" y="190.8">10.96.233.10</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-7)" textLength="12.2" x="183" y="190.8">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-7)" textLength="48.8" x="207.4" y="190.8">vcsa</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-7)" textLength="12.2" x="488" y="190.8">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-7)" textLength="12.2" x="1085.8" y="190.8">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-8)" textLength="12.2" x="0" y="215.2">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-8)" textLength="146.4" x="24.4" y="215.2">10.96.233.11</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-8)" textLength="12.2" x="183" y="215.2">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-8)" textLength="73.2" x="207.4" y="215.2">esxi11</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-8)" textLength="12.2" x="488" y="215.2">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-8)" textLength="12.2" x="1085.8" y="215.2">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-9)" textLength="12.2" x="0" y="239.6">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-9)" textLength="146.4" x="24.4" y="239.6">10.96.233.12</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-9)" textLength="12.2" x="183" y="239.6">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-9)" textLength="73.2" x="207.4" y="239.6">esxi12</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-9)" textLength="12.2" x="488" y="239.6">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-9)" textLength="12.2" x="1085.8" y="239.6">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-10)" textLength="12.2" x="0" y="264">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-10)" textLength="146.4" x="24.4" y="264">10.96.233.13</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-10)" textLength="12.2" x="183" y="264">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-10)" textLength="73.2" x="207.4" y="264">esxi13</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-10)" textLength="12.2" x="488" y="264">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-10)" textLength="12.2" x="1085.8" y="264">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-11)" textLength="12.2" x="0" y="288.4">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-11)" textLength="146.4" x="24.4" y="288.4">10.96.233.20</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-11)" textLength="12.2" x="183" y="288.4">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-11)" textLength="36.6" x="207.4" y="288.4">nsx</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-11)" textLength="12.2" x="488" y="288.4">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-11)" textLength="12.2" x="1085.8" y="288.4">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-12)" textLength="12.2" x="0" y="312.8">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-12)" textLength="146.4" x="24.4" y="312.8">10.96.233.31</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-12)" textLength="12.2" x="183" y="312.8">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-12)" textLength="109.8" x="207.4" y="312.8">vrops8172</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-12)" textLength="12.2" x="488" y="312.8">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-12)" textLength="12.2" x="1085.8" y="312.8">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-13)" textLength="12.2" x="0" y="337.2">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-13)" textLength="146.4" x="24.4" y="337.2">10.96.233.32</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-13)" textLength="12.2" x="183" y="337.2">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-13)" textLength="109.8" x="207.4" y="337.2">vrops8171</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-13)" textLength="12.2" x="488" y="337.2">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-13)" textLength="12.2" x="1085.8" y="337.2">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-14)" textLength="12.2" x="0" y="361.6">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-14)" textLength="146.4" x="24.4" y="361.6">10.96.233.33</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-14)" textLength="12.2" x="183" y="361.6">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-14)" textLength="109.8" x="207.4" y="361.6">vrops8161</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-14)" textLength="12.2" x="488" y="361.6">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-14)" textLength="12.2" x="1085.8" y="361.6">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-15)" textLength="12.2" x="0" y="386">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-15)" textLength="146.4" x="24.4" y="386">10.96.233.41</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-15)" textLength="12.2" x="183" y="386">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-15)" textLength="97.6" x="207.4" y="386">vrli8161</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-15)" textLength="12.2" x="488" y="386">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-15)" textLength="12.2" x="1085.8" y="386">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-16)" textLength="12.2" x="0" y="410.4">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-16)" textLength="146.4" x="24.4" y="410.4">10.96.233.51</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-16)" textLength="12.2" x="183" y="410.4">│</text><text class="terminal-1881465696-r4" clip-path="url(#terminal-1881465696-line-16)" textLength="73.2" x="207.4" y="410.4">vcd106</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-16)" textLength="12.2" x="488" y="410.4">│</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-16)" textLength="12.2" x="1085.8" y="410.4">
+</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-17)" textLength="500.2" x="0" y="434.8">└──────────────┴────────────────────────┘</text><text class="terminal-1881465696-r2" clip-path="url(#terminal-1881465696-line-17)" textLength="12.2" x="1085.8" y="434.8">
+</text>
+</g>
+</g>
+</svg></p>
+<h3 id="add-dns-record-to-a-zpod">Add DNS record to a zPod</h3>
+<p>Adding a DNS record to a zPod is useful when you want to add a DNS record to a zPod that is not managed by the default <code>zbox</code> component.</p>
+<p>You can use 2 different ways to achieve this:</p>
+<p>Using <code>--host-id</code> which allows you to set the host id on the management network of a zPod.</p>
+<p><div class="highlight" data-copy="zcli zpod dns add zpod_name --hostname samplename --host-id 11"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a>❯ zcli zpod dns add zpod_name --hostname samplename --host-id 11
+</code></pre></div>
+in this case if your zpod management network was for example 192.168.10.0/26, the IP address of the DNS record will be <code>192.168.10.11</code></p>
+<p><code>host-id</code> is the host id on the management network of a zPod. This is explicitely used for <code>profiles</code> so we can easily set specific <code>components</code> configuration that will be deployed on the zpod management subnet and just have to make sure the <code>host-id</code> is set correctly/unique per <code>profile</code>.</p>
+<p>Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="p">[</span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="w">  </span><span class="p">{</span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="w">    </span><span class="nt">"component_uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"zbox-12.7"</span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">  </span><span class="p">},</span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">  </span><span class="p">[</span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">    </span><span class="p">{</span>
+<a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">      </span><span class="nt">"component_uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esxi-8.0u3c"</span><span class="p">,</span>
+<a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">      </span><span class="nt">"host_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<a href="#__codelineno-14-9" id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">      </span><span class="nt">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esxi11"</span><span class="p">,</span>
+<a href="#__codelineno-14-10" id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">      </span><span class="nt">"vcpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<a href="#__codelineno-14-11" id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">      </span><span class="nt">"vmem"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span>
+<a href="#__codelineno-14-12" id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">    </span><span class="p">},</span>
+<a href="#__codelineno-14-13" id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">    </span><span class="p">{</span>
+<a href="#__codelineno-14-14" id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">      </span><span class="nt">"component_uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esxi-8.0u3c"</span><span class="p">,</span>
+<a href="#__codelineno-14-15" id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">      </span><span class="nt">"host_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<a href="#__codelineno-14-16" id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">      </span><span class="nt">"hostname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"esxi12"</span><span class="p">,</span>
+<a href="#__codelineno-14-17" id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">      </span><span class="nt">"vcpu"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<a href="#__codelineno-14-18" id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">      </span><span class="nt">"vmem"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span>
+<a href="#__codelineno-14-19" id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-14-20" id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="w">  </span><span class="p">],</span>
+<a href="#__codelineno-14-21" id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">  </span><span class="p">{</span>
+<a href="#__codelineno-14-22" id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="w">    </span><span class="nt">"component_uid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vcsa-8.0u3d"</span>
+<a href="#__codelineno-14-23" id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">  </span><span class="p">}</span>
+<a href="#__codelineno-14-24" id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="p">]</span>
+</code></pre></div>
+<p>This will result into the zpod deploying with <code>podname</code> as it's name and <code>zpodfactory.domain</code> set as the <strong>zpodfactory_default_domain</strong> with the following components in it:</p>
+<ul>
+<li>1 x <code>zbox-12.7</code> component</li>
+<li>2 x <code>esxi-8.0u3c</code> components with <code>host_id</code> 11 and 12 respectively</li>
+<li>1 x <code>vcsa-8.0u3d</code> component</li>
+</ul>
+<p>From a DNS perspective you will have the following DNS records:</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>zbox.podname.zpodfactory.domain -&gt; 10.10.11.2
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>esxi11.podname.zpodfactory.domain -&gt; 10.10.11.11
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a>esxi12.podname.zpodfactory.domain -&gt; 10.10.11.12
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a>vcsa.podname.zpodfactory.domain -&gt; 10.10.11.10
+</code></pre></div>
+<p>Using <code>--ip</code> which allows you to set any IP.</p>
+<div class="highlight" data-copy="zcli zpod dns add zpod_name --hostname samplename --ip 10.10.10.11"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>❯ zcli zpod dns add zpod_name --hostname samplename --ip 10.10.10.11
+</code></pre></div>
+<p>As you can imagine setting any ip, allows you to setup hostnames for any IP address, which can be useful for any use cases leveraging other network subnets (like any overlay network managed by NSX that might be routed within the zPod, etc)</p>
+<h3 id="remove-dns-record-from-a-zpod">Remove DNS record from a zPod</h3>
+<p>Remove a DNS record can be done using the below command line:</p>
+<div class="highlight" data-copy="zcli zpod dns remove zpod_name --hostname samplename --ip 10.10.10.11"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a>❯ zcli zpod dns remove zpod_name --hostname samplename --ip 10.10.10.11
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You are responsible for any DNS record change, as deleting one of the core components <strong>WILL</strong> completely break the zPod.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../admin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Admin Guide">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Admin Guide
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../api/" class="md-footer__link md-footer__link--next" aria-label="Next: API &amp;amp; SDK">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                API &amp; SDK
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.indexes", "navigation.tabs.sticky", "navigation.footer", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
