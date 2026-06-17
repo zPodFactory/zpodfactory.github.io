@@ -11,7 +11,11 @@ repo_url = "https://github.com/zpodfactory"
 # Zensical ships its blog module).
 # Custom dark-mode color scheme (Catppuccin Mocha) + layout tweaks.
 # Paths are relative to docs_dir.
-extra_css = ["stylesheets/catppuccin-mocha.css", "stylesheets/extra.css"]
+extra_css = [
+  "stylesheets/catppuccin-mocha.css",  # dark (slate) scheme
+  "stylesheets/catppuccin-latte.css",  # light (default) scheme
+  "stylesheets/extra.css",             # scheme-neutral; consumes --ctp-* vars
+]
 
 nav = [
   { "Introduction" = ["index.md"] },

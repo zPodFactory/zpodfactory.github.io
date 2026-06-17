@@ -1,44 +1,43 @@
 /* ===========================================================================
-   Catppuccin Mocha palette for the dark (slate) color scheme.
-   Loaded via `extra_css` in zensical.toml. Only the slate scheme is repainted,
-   so the light scheme keeps Zensical's defaults.
-   Palette reference: https://catppuccin.com/palette (Mocha)
+   Catppuccin Latte palette for the light (default) color scheme.
+   Loaded via `extra_css` in zensical.toml. Mirrors catppuccin-mocha.css.
+   Palette reference: https://catppuccin.com/palette (Latte)
    =========================================================================== */
 
-[data-md-color-scheme="slate"] {
-  /* --- Catppuccin Mocha base palette ------------------------------------ */
-  --ctp-rosewater: #f5e0dc;
-  --ctp-flamingo:  #f2cdcd;
-  --ctp-pink:      #f5c2e7;
-  --ctp-mauve:     #cba6f7;
-  --ctp-red:       #f38ba8;
-  --ctp-maroon:    #eba0ac;
-  --ctp-peach:     #fab387;
-  --ctp-yellow:    #f9e2af;
-  --ctp-green:     #a6e3a1;
-  --ctp-teal:      #94e2d5;
-  --ctp-sky:       #89dceb;
-  --ctp-sapphire:  #74c7ec;
-  --ctp-blue:      #89b4fa;
-  --ctp-lavender:  #b4befe;
-  --ctp-text:      #cdd6f4;
-  --ctp-subtext1:  #bac2de;
-  --ctp-subtext0:  #a6adc8;
-  --ctp-overlay2:  #9399b2;
-  --ctp-overlay1:  #7f849c;
-  --ctp-overlay0:  #6c7086;
-  --ctp-surface2:  #585b70;
-  --ctp-surface1:  #45475a;
-  --ctp-surface0:  #313244;
-  --ctp-base:      #1e1e2e;
-  --ctp-mantle:    #181825;
-  --ctp-crust:     #11111b;
+[data-md-color-scheme="default"] {
+  /* --- Catppuccin Latte base palette ------------------------------------ */
+  --ctp-rosewater: #dc8a78;
+  --ctp-flamingo:  #dd7878;
+  --ctp-pink:      #ea76cb;
+  --ctp-mauve:     #8839ef;
+  --ctp-red:       #d20f39;
+  --ctp-maroon:    #e64553;
+  --ctp-peach:     #fe640b;
+  --ctp-yellow:    #df8e1d;
+  --ctp-green:     #40a02b;
+  --ctp-teal:      #179299;
+  --ctp-sky:       #04a5e5;
+  --ctp-sapphire:  #209fb5;
+  --ctp-blue:      #1e66f5;
+  --ctp-lavender:  #7287fd;
+  --ctp-text:      #4c4f69;
+  --ctp-subtext1:  #5c5f77;
+  --ctp-subtext0:  #6c6f85;
+  --ctp-overlay2:  #7c7f93;
+  --ctp-overlay1:  #8c8fa1;
+  --ctp-overlay0:  #9ca0b0;
+  --ctp-surface2:  #acb0be;
+  --ctp-surface1:  #bcc0cc;
+  --ctp-surface0:  #ccd0da;
+  --ctp-base:      #eff1f5;
+  --ctp-mantle:    #e6e9ef;
+  --ctp-crust:     #dce0e8;
 
   /* --- Default background (page) ---------------------------------------- */
   --md-default-bg-color:           var(--ctp-base);
-  --md-default-bg-color--light:    #1e1e2ecc; /* base @ ~80% */
-  --md-default-bg-color--lighter:  #1e1e2e66; /* base @ ~40% */
-  --md-default-bg-color--lightest: #1e1e2e1f; /* base @ ~12% */
+  --md-default-bg-color--light:    #eff1f5cc;
+  --md-default-bg-color--lighter:  #eff1f566;
+  --md-default-bg-color--lightest: #eff1f51f;
 
   /* --- Default foreground (text) ---------------------------------------- */
   --md-default-fg-color:           var(--ctp-subtext1); /* softer than Text */
@@ -54,11 +53,11 @@
   --md-primary-bg-color:           var(--ctp-text);
   --md-primary-bg-color--light:    var(--ctp-subtext0);
 
-  /* --- Accent (hover / active links, focus, scrollbar thumb) ------------ */
+  /* --- Accent (hover / active links, focus) ----------------------------- */
   --md-accent-fg-color:            var(--ctp-mauve);
-  --md-accent-fg-color--transparent: #cba6f71a;
-  --md-accent-bg-color:            var(--ctp-crust);
-  --md-accent-bg-color--light:     var(--ctp-base);
+  --md-accent-fg-color--transparent: #8839ef1a;
+  --md-accent-bg-color:            var(--ctp-base);
+  --md-accent-bg-color--light:     var(--ctp-mantle);
 
   /* --- Links ------------------------------------------------------------ */
   --md-typeset-a-color:            var(--ctp-blue);
@@ -66,12 +65,12 @@
   /* --- Code blocks & inline code ---------------------------------------- */
   --md-code-fg-color:              var(--ctp-text);
   --md-code-bg-color:              var(--ctp-mantle);
-  --md-code-bg-color--light:       #18182566;
-  --md-code-bg-color--lighter:     #1818251f;
+  --md-code-bg-color--light:       #e6e9ef66;
+  --md-code-bg-color--lighter:     #e6e9ef1f;
 
   /* --- Syntax highlighting (Catppuccin mapping) ------------------------- */
-  --md-code-hl-color:              #89b4fa40;
-  --md-code-hl-color--light:       #89b4fa1a;
+  --md-code-hl-color:              #1e66f540;
+  --md-code-hl-color--light:       #1e66f51a;
   --md-code-hl-number-color:       var(--ctp-peach);
   --md-code-hl-special-color:      var(--ctp-pink);
   --md-code-hl-function-color:     var(--ctp-blue);
@@ -86,12 +85,12 @@
   --md-code-hl-variable-color:     var(--ctp-red);
 
   /* --- Typeset extras: mark, keys, tables ------------------------------- */
-  --md-typeset-mark-color:         #f9e2af4d; /* yellow @ ~30% */
+  --md-typeset-mark-color:         #df8e1d4d; /* yellow @ ~30% */
   --md-typeset-kbd-color:          var(--ctp-surface0);
   --md-typeset-kbd-accent-color:   var(--ctp-surface2);
   --md-typeset-kbd-border-color:   var(--ctp-crust);
-  --md-typeset-table-color:        #cdd6f41f;
-  --md-typeset-table-color--light: #cdd6f40d;
+  --md-typeset-table-color:        #4c4f691f;
+  --md-typeset-table-color--light: #4c4f690d;
 
   /* --- Footer ----------------------------------------------------------- */
   --md-footer-bg-color:            var(--ctp-mantle);
@@ -100,10 +99,5 @@
   --md-footer-fg-color--light:     var(--ctp-subtext0);
   --md-footer-fg-color--lighter:   var(--ctp-overlay1);
 
-  color-scheme: dark;
+  color-scheme: light;
 }
-
-/* Material derives admonition title tints from --md-default-fg-color by
-   blending; the base/text values above keep them legible on Catppuccin base.
-   Header, tabs, admonitions, selection and tables are styled in extra.css using
-   the --ctp-* variables, so they adapt to both the Mocha and Latte schemes. */
