@@ -31,7 +31,7 @@ VMware SDDC:
 
 - Decent Storage performance (SSD/NVMe) for the nested environments if possible (vSAN OSA/ESA is recommended) - 4TB+ of storage is recommended (depending on the number of nested environments you plan to deploy)
     - the zPodFactory Appliance or management vm (if installed manually) should take between 50-500GB of storage (depending how many components will be downloaded/used, and could grow over time)
-    - check [this FAQ section](../../faq/faq.md/#why-does-creating-a-vsan-datastore-fails-in-my-zpod) if you are using vSAN on the physical environment.
+    - check [this FAQ section](../../faq/faq.md#why-does-creating-a-vsan-datastore-fails-in-my-zpod) if you are using vSAN on the physical environment.
 
 > Please apply common sense here, as this is a `it depends...` type of answer :-)
 
@@ -56,11 +56,11 @@ It is the recommended way to deploy zPodFactory, as it will simplify the install
 
 
 - :material-calendar: 11/03/2025 - zPodFactory Appliance latest:
-    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-latest.ova) [792MB]
+    - :material-download: [Download OVA](https://cloud.tsugliani.fr/ova/zpodfactory-latest.ova) (792MB)
     - :simple-github: [Git Commit Log](https://github.com/zPodFactory/zpodcore/commits/main/)
 
 
-[TBD: Add a link to the blog post describing the installation & setup process with the appliance]
+<!-- TBD: Add a link to the blog post describing the installation & setup process with the appliance -->
 
 ## Manual Installation (not recommended, devs only, DEPRECATED)
 

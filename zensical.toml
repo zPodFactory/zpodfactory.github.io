@@ -1,0 +1,76 @@
+# Zensical configuration for the zPodFactory documentation site.
+# Migrated from mkdocs.yml + mkdocs-nav.yml. See https://zensical.org/docs/
+
+[project]
+site_name = "zPodFactory"
+repo_name = "GitHub"
+repo_url = "https://github.com/zpodfactory"
+# site_url = "https://zpodfactory.github.io/"   # set for canonical URLs / sitemap
+
+# Navigation (ported from mkdocs-nav.yml; the Blog section is dropped until
+# Zensical ships its blog module).
+# Custom dark-mode color scheme (Catppuccin Mocha) + layout tweaks.
+# Paths are relative to docs_dir.
+extra_css = ["stylesheets/catppuccin-mocha.css", "stylesheets/extra.css"]
+
+nav = [
+  { "Introduction" = ["index.md"] },
+  { "Installation & Configuration Guide" = ["guide/install/index.md"] },
+  { "Admin Guide" = ["guide/admin/index.md"] },
+  { "User Guide" = ["guide/user/index.md"] },
+  { "API/SDK" = ["api/index.md"] },
+  "roadmap/roadmap.md",
+  "faq/faq.md",
+]
+
+# ----------------------------------------------------------------------------
+# Theme
+# ----------------------------------------------------------------------------
+[project.theme]
+name = "material"
+features = [
+  "navigation.tabs",
+  "navigation.tabs.sticky",
+  "navigation.indexes",
+  "navigation.footer",
+  "content.code.annotate",
+  "content.code.copy",
+]
+
+[project.theme.font]
+text = "Roboto"
+code = "Fira Code"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: light)"
+scheme = "default"
+toggle.icon = "material/weather-sunny"
+toggle.name = "Switch to dark mode"
+
+[[project.theme.palette]]
+media = "(prefers-color-scheme: dark)"
+scheme = "slate"
+toggle.icon = "material/weather-night"
+toggle.name = "Switch to light mode"
+
+# ----------------------------------------------------------------------------
+# Markdown extensions (ported from mkdocs.yml; emoji uses the zensical.*
+# namespace, which extends pymdownx to support icon/emoji SVG inlining).
+# ----------------------------------------------------------------------------
+[project.markdown_extensions.admonition]
+[project.markdown_extensions.attr_list]
+
+[project.markdown_extensions.pymdownx.highlight]
+anchor_linenums = true
+
+[project.markdown_extensions.pymdownx.superfences]
+custom_fences = [
+  { name = "mermaid", class = "mermaid", format = "pymdownx.superfences.fence_code_format" },
+]
+
+[project.markdown_extensions.pymdownx.emoji]
+emoji_index = "zensical.extensions.emoji.twemoji"
+emoji_generator = "zensical.extensions.emoji.to_svg"
+
+# Image lightbox / zoom (native replacement for the mkdocs-glightbox plugin).
+[project.markdown_extensions.zensical.extensions.glightbox]

@@ -1,0 +1,14 @@
+/* ===========================================================================
+   Scheme-independent layout tweaks. Loaded via `extra_css` in zensical.toml.
+   =========================================================================== */
+
+/* GLightbox: Zensical's bundled lightbox applies no size constraint to images
+   (`.gslide-image img` only sets a background), so an image displays at its
+   intrinsic size. The zcli terminal screenshots are very wide (and some very
+   tall), so clamp them to the viewport and let them scale up to fill it. */
+.gslide-image img {
+  width: auto;
+  height: auto;
+  max-width: 92vw;
+  max-height: 88vh;
+}
