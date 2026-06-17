@@ -1,0 +1,109 @@
+/* ===========================================================================
+   Catppuccin Mocha palette for the dark (slate) color scheme.
+   Loaded via `extra_css` in zensical.toml. Only the slate scheme is repainted,
+   so the light scheme keeps Zensical's defaults.
+   Palette reference: https://catppuccin.com/palette (Mocha)
+   =========================================================================== */
+
+[data-md-color-scheme="slate"] {
+  /* --- Catppuccin Mocha base palette ------------------------------------ */
+  --ctp-rosewater: #f5e0dc;
+  --ctp-flamingo:  #f2cdcd;
+  --ctp-pink:      #f5c2e7;
+  --ctp-mauve:     #cba6f7;
+  --ctp-red:       #f38ba8;
+  --ctp-maroon:    #eba0ac;
+  --ctp-peach:     #fab387;
+  --ctp-yellow:    #f9e2af;
+  --ctp-green:     #a6e3a1;
+  --ctp-teal:      #94e2d5;
+  --ctp-sky:       #89dceb;
+  --ctp-sapphire:  #74c7ec;
+  --ctp-blue:      #89b4fa;
+  --ctp-lavender:  #b4befe;
+  --ctp-text:      #cdd6f4;
+  --ctp-subtext1:  #bac2de;
+  --ctp-subtext0:  #a6adc8;
+  --ctp-overlay2:  #9399b2;
+  --ctp-overlay1:  #7f849c;
+  --ctp-overlay0:  #6c7086;
+  --ctp-surface2:  #585b70;
+  --ctp-surface1:  #45475a;
+  --ctp-surface0:  #313244;
+  --ctp-base:      #1e1e2e;
+  --ctp-mantle:    #181825;
+  --ctp-crust:     #11111b;
+
+  /* --- Default background (page) ---------------------------------------- */
+  --md-default-bg-color:           var(--ctp-base);
+  --md-default-bg-color--light:    #1e1e2ecc; /* base @ ~80% */
+  --md-default-bg-color--lighter:  #1e1e2e66; /* base @ ~40% */
+  --md-default-bg-color--lightest: #1e1e2e1f; /* base @ ~12% */
+
+  /* --- Default foreground (text) ---------------------------------------- */
+  --md-default-fg-color:           var(--ctp-subtext1); /* softer than Text */
+  --md-default-fg-color--light:    var(--ctp-subtext0);
+  --md-default-fg-color--lighter:  var(--ctp-overlay1);
+  --md-default-fg-color--lightest: var(--ctp-overlay0);
+  --md-typeset-color:              var(--ctp-subtext1);
+
+  /* --- Primary (used by various accents) -------------------------------- */
+  --md-primary-fg-color:           var(--ctp-mantle);
+  --md-primary-fg-color--light:    var(--ctp-surface0);
+  --md-primary-fg-color--dark:     var(--ctp-crust);
+  --md-primary-bg-color:           var(--ctp-text);
+  --md-primary-bg-color--light:    var(--ctp-subtext0);
+
+  /* --- Accent (hover / active links, focus, scrollbar thumb) ------------ */
+  --md-accent-fg-color:            var(--ctp-mauve);
+  --md-accent-fg-color--transparent: #cba6f71a;
+  --md-accent-bg-color:            var(--ctp-crust);
+  --md-accent-bg-color--light:     var(--ctp-base);
+
+  /* --- Links ------------------------------------------------------------ */
+  --md-typeset-a-color:            var(--ctp-blue);
+
+  /* --- Code blocks & inline code ---------------------------------------- */
+  --md-code-fg-color:              var(--ctp-text);
+  --md-code-bg-color:              var(--ctp-mantle);
+  --md-code-bg-color--light:       #18182566;
+  --md-code-bg-color--lighter:     #1818251f;
+
+  /* --- Syntax highlighting (Catppuccin mapping) ------------------------- */
+  --md-code-hl-color:              #89b4fa40;
+  --md-code-hl-color--light:       #89b4fa1a;
+  --md-code-hl-number-color:       var(--ctp-peach);
+  --md-code-hl-special-color:      var(--ctp-pink);
+  --md-code-hl-function-color:     var(--ctp-blue);
+  --md-code-hl-constant-color:     var(--ctp-peach);
+  --md-code-hl-keyword-color:      var(--ctp-mauve);
+  --md-code-hl-string-color:       var(--ctp-green);
+  --md-code-hl-name-color:         var(--ctp-text);
+  --md-code-hl-operator-color:     var(--ctp-sky);
+  --md-code-hl-punctuation-color:  var(--ctp-overlay2);
+  --md-code-hl-comment-color:      var(--ctp-overlay2);
+  --md-code-hl-generic-color:      var(--ctp-subtext0);
+  --md-code-hl-variable-color:     var(--ctp-red);
+
+  /* --- Typeset extras: mark, keys, tables ------------------------------- */
+  --md-typeset-mark-color:         #f9e2af4d; /* yellow @ ~30% */
+  --md-typeset-kbd-color:          var(--ctp-surface0);
+  --md-typeset-kbd-accent-color:   var(--ctp-surface2);
+  --md-typeset-kbd-border-color:   var(--ctp-crust);
+  --md-typeset-table-color:        #cdd6f41f;
+  --md-typeset-table-color--light: #cdd6f40d;
+
+  /* --- Footer ----------------------------------------------------------- */
+  --md-footer-bg-color:            var(--ctp-mantle);
+  --md-footer-bg-color--dark:      var(--ctp-crust);
+  --md-footer-fg-color:            var(--ctp-text);
+  --md-footer-fg-color--light:     var(--ctp-subtext0);
+  --md-footer-fg-color--lighter:   var(--ctp-overlay1);
+
+  color-scheme: dark;
+}
+
+/* Material derives admonition title tints from --md-default-fg-color by
+   blending; the base/text values above keep them legible on Catppuccin base.
+   Header, tabs, admonitions, selection and tables are styled in extra.css using
+   the --ctp-* variables, so they adapt to both the Mocha and Latte schemes. */
