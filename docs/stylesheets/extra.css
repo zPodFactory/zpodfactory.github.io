@@ -5,6 +5,18 @@
    define, so they automatically adapt to whichever scheme is active.
    =========================================================================== */
 
+/* --- Theme header / sidebar logo (from zensical.toml theme.logo) --- */
+/* Material default is 1.2rem; keep in sync so the header bar stays compact. */
+.md-header__button.md-logo img {
+  height: 1.2rem;
+  width: auto;
+}
+
+.md-nav__button.md-logo img {
+  height: 1.6rem;
+  width: auto;
+}
+
 /* --- GLightbox -------------------------------------------------------------
    Zensical's bundled lightbox applies no size constraint to images
    (`.gslide-image img` only sets a background), so an image displays at its
@@ -15,6 +27,31 @@
   height: auto;
   max-width: 92vw;
   max-height: 88vh;
+}
+
+/* --- Asciinema embed (VCF deployer screencast) --------------------------- */
+/* Official embed: https://docs.asciinema.org/manual/server/embedding/
+   Footer is trimmed in javascripts/asciinema-embed.js (cross-origin iframe). */
+.md-typeset .asciinema-embed,
+.md-typeset .asciinema-embed .asciicast {
+  margin: 1em 0;
+  max-width: 960px;
+}
+
+.md-typeset .asciinema-embed .asciicast {
+  overflow: hidden;
+  line-height: 0;
+  border-radius: 0.2rem;
+  background-color: var(--ctp-base);
+}
+
+.md-typeset .asciinema-embed iframe,
+.md-typeset .asciinema-embed .asciicast iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0.2rem;
+  background-color: var(--ctp-crust);
 }
 
 /* --- Header & navigation tabs ----------------------------------------------

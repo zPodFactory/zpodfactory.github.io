@@ -17,11 +17,30 @@ extra_css = [
   "stylesheets/extra.css",             # scheme-neutral; consumes --ctp-* vars
 ]
 
+extra_javascript = [
+  "javascripts/asciinema-embed.js",
+]
+
 nav = [
   { "Introduction" = ["index.md"] },
-  { "Installation & Configuration Guide" = ["guide/install/index.md"] },
-  { "Admin Guide" = ["guide/admin/index.md"] },
+  { "Installation & Configuration Guide" = [
+    { "Installation and Configuration" = "guide/install/index.md" },
+    { "Manual Installation" = "guide/install/manual.md" },
+  ] },
+  { "Web UI" = ["guide/user/web-ui.md"] },
+  { "Admin Guide" = [
+    { "Admin Guide" = "guide/admin/index.md" },
+    { "zcore migration" = "guide/admin/zcore-migration.md" },
+    { "Broadcom download token" = "guide/admin/broadcom-download-token.md" },
+    { "Feature flags" = "guide/admin/feature-flags.md" },
+    { "Endpoint OVA staging" = "guide/admin/endpoint-ova-staging.md" },
+  ] },
   { "User Guide" = ["guide/user/index.md"] },
+  { "Extensibility" = [
+    "guide/extensibility/bring-your-own.md",
+    "guide/extensibility/config-scripts.md",
+    "guide/extensibility/vcf-deployer.md",
+  ] },
   { "API/SDK" = ["api/index.md"] },
   "roadmap/roadmap.md",
   "faq/faq.md",
@@ -32,10 +51,13 @@ nav = [
 # ----------------------------------------------------------------------------
 [project.theme]
 name = "material"
+logo = "img/zPodFactory-logo-tr.png"
 features = [
   "navigation.tabs",
   "navigation.tabs.sticky",
-  "navigation.indexes",
+  # navigation.indexes omitted: it hoists section index.md into the section
+  # header, so overview pages never appear as sidebar children. Explicit nav
+  # labels below list them as the first subpage instead.
   "navigation.footer",
   "content.code.annotate",
   "content.code.copy",

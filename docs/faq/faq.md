@@ -21,14 +21,14 @@ Quick representation on how it works:
 
 - The `zpodfactory_default_domain` is set to `zpod.lab` in this example, and is hosted by the zPodFactory VM.
     - the local dnsmasq service is configured to resolve `zpod.lab`
-    - the subdomain `chicago.zpod.lab` is delegated to the zPod Chicago  `zbox`
-    - the subdomain `paris.zpod.lab` is delegated to the zPod Paris `zbox`
+- The subdomain `chicago.zpod.lab` is delegated to the zPod Chicago **`zcore`** (legacy zPods may use `zbox`)
+    - the subdomain `paris.zpod.lab` is delegated to the zPod Paris **`zcore`**
 
 - The zPod Chicago is deployed with the name `chicago`
-    - The local dnsmasq service on the chicago `zbox` is configured to resolve all names ending with `chicago.zpod.lab`
+    - The local dnsmasq service on the chicago **`zcore`** is configured to resolve all names ending with `chicago.zpod.lab`
 
 - The zPod Paris is deployed with the name `paris`
-    - The local dnsmasq service on the paris  `zbox` is configured to resolve all names ending with `paris.zpod.lab`
+    - The local dnsmasq service on the paris **`zcore`** is configured to resolve all names ending with `paris.zpod.lab`
 
 ``` mermaid
 
@@ -46,7 +46,7 @@ graph TD
         zpod_chicago_domain("chicago.zpod.lab");
 
 
-        zpod_chicago_zbox("zbox = 'zbox.chicago.zpod.lab'\n\n10.196.162.2");
+        zpod_chicago_zbox("zcore = 'zcore.chicago.zpod.lab'\n\n10.196.162.2");
         zpod_chicago_vcenter("vcsa = 'vcsa.chicago.zpod.lab'\n\n10.196.162.10");
 
         zpod_chicago_domain --> zpod_chicago_zbox
@@ -58,7 +58,7 @@ graph TD
         zpod_paris_domain("paris.zpod.lab");
 
 
-        zpod_paris_zbox("zbox = 'zbox.paris.zpod.lab'\n\n10.196.131.2");
+        zpod_paris_zbox("zcore = 'zcore.paris.zpod.lab'\n\n10.196.131.2");
         zpod_paris_vcenter("vcsa = 'vcsa.paris.zpod.lab'\n\n10.196.131.10");
         zpod_paris_domain --> zpod_paris_zbox
         zpod_paris_zbox -- manages with dnsmasq --> zpod_paris_domain
@@ -70,143 +70,77 @@ graph TD
     global_domain -- "delegates subdomain\nserver=/paris.zpod.lab/10.196.131.2" --> zpod_paris_domain
 ```
 
-This also means any zPod Admin owns his subdomain and can add some DNS entries to their local zPod DNS server.
+This also means any zPod Admin owns his subdomain and can add DNS entries on that zPod's local DNS server.
 
-For example let's say I'm the admin of the Paris zPod and I want to add the `demo.paris.zpod.lab` A record to point to following IP `192.168.131.100`
-
-Login to the `zbox.paris.zpod.lab` VM using the Paris zPod Password and run edit the following file `/etc/hosts` to add your demo entry (by default the dnsmasq configuration reads this file and advertises it's content as DNS records):
-
-Check the current `reserved` static entries:
-
-``` { data-copy="cat /etc/hosts" }
-❯ cat /etc/hosts
-127.0.0.1       localhost
-10.196.131.2     zbox.paris.zpod.lab    zbox
-10.196.131.3     usagemeter
-
-10.196.131.9     nsxv
-10.196.131.10    vcsa
-
-10.196.131.11    esxi11
-10.196.131.12    esxi12
-10.196.131.13    esxi13
-10.196.131.14    esxi14
-10.196.131.15    esxi15
-10.196.131.16    esxi16
-10.196.131.17    esxi17
-10.196.131.18    esxi18
-
-10.196.131.20    nsx nsxt
-10.196.131.21    nsx21
-10.196.131.22    nsx22
-10.196.131.23    nsx23
-
-10.196.131.25    cloudbuilder vcf
-10.196.131.26    sddcmgr
-
-10.196.131.29    vrlcm
-10.196.131.30    vrops
-10.196.131.31    vrli log
-10.196.131.36    vrni
-10.196.131.37    vrni-proxy
-
-10.196.131.40    vcd cloud
-10.196.131.41    vcda
-
-10.196.131.45    hcx
-10.196.131.46    hcx-cgw
-10.196.131.47    hcx-l2c
-
-#
-# 50-60 DHCP Range
-#
-
-10.196.131.62    vyos
-
-# VLAN 192 (NSX - Edge Cluster / Edge Nodes)
-10.196.131.250   edgecluster-vip
-10.196.131.251   edgenode251
-10.196.131.252   edgenode252
-```
+Since **`zcore-13.5`**, component hostnames are **added automatically** when zPodFactory deploys or adds components. The zPod Engine calls the core appliance's **`zboxapi` `/dns` API**, which writes records into `/etc/hosts` and reloads dnsmasq — you no longer maintain a large static `/etc/hosts` template on the core VM. A fresh `zcore` image only seeds `localhost` and the core hostname itself; everything else appears as components come up.
 
 !!! warning
-    **DO NOT REMOVE** the pre-configured entries, they are used for all `components` deployments. (unless you know exactly what you are doing)
+    **Do not modify DNS records for components deployed by zPodFactory.** Those entries (`zcore`, ESXi hosts, vCenter, NSX, and so on) are maintained by the engine and relied on across the whole stack. Changing or deleting them can break deploy follow-up steps, config scripts, and day-two operations for the entire zPod. Add or edit DNS only for **your own** extra hostnames — not for platform-managed components.
 
-    Adding new entries is fine, but removing existing ones is not.
+List what is registered today:
 
-Add the new entry:
-
-```
-192.168.131.100    demo
+``` { data-copy="zcli zpod dns list paris" }
+❯ zcli zpod dns list paris
 ```
 
-Save and exit, and reload the dnsmasq service.
+See [Manage DNS records](../guide/user/index.md#manage-dns-records) for the full CLI reference and screenshots.
 
-``` { data-copy="systemctl reload dnsmasq" }
-❯ systemctl reload dnsmasq
+### Example: add a custom record
+
+Say you admin the Paris zPod and want `demo.paris.zpod.lab` → `192.168.131.100` (for example an overlay or guest subnet not tied to a component deploy):
+
+``` { data-copy="zcli zpod dns add paris --hostname demo --ip 192.168.131.100" }
+❯ zcli zpod dns add paris --hostname demo --ip 192.168.131.100
+```
+
+Use `--host-id` instead of `--ip` when the name should live on the zPod management subnet (host id maps to `.x` in the `/26`).
+
+Update or remove entries the same way:
+
+```bash
+zcli zpod dns update paris --hostname demo --ip 192.168.131.101
+zcli zpod dns remove paris --hostname demo --ip 192.168.131.100
 ```
 
 !!! info
-
-    Since zPodFactory version 0.7.2, the latest zbox-12.5 component has a zBox DNS API endpoint implemented, which will be automatically leveraged when using profiles and specific components, and you can also add your A records directly from the zPodFactory CLI, check the CLI help:
-
-    ``` { data-copy="zcli zpod dns add --help" }
-    ❯ zcli zpod dns add --help
-    ```
+    Legacy **`zbox`** appliances from older images may still show a long pre-seeded `/etc/hosts` with reserved component names. That workflow is obsolete on current **`zcore-*`** cores — prefer **`zcli zpod dns add/update/remove`** (or the API) rather than SSH and manual edits. dnsmasq on the core still reads `/etc/hosts`; the difference is that zPodFactory populates it for you.
 
 
 ## How does the embedded download engine work ?
 
-!!! warning
+The download engine fetches component binaries defined in the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary). See the dedicated [Broadcom download token](../guide/admin/broadcom-download-token.md) guide for obtaining and configuring the token, troubleshooting 401/403 errors, and testing downloads.
 
-    **Since April 2024**
+### Quick reference
 
-    The download engine is not working for VMware products anymore since Broadcom terminated the customer connect VMware website.
-    It will still work for non VMware products, such as zbox download, etc.
+VMware product URLs use the Broadcom offline depot layout:
 
-    To workaround the issue, we have built an embedded `component upload` feature that allows you to upload your own OVA files to the framework using the `zcli` command.
+```
+https://dl.broadcom.com/${BROADCOM_DOWNLOAD_TOKEN}/PROD/COMP/<TYPE>/<filename>
+```
 
-    By checking the file checksum, it will be able to cross-check automatically from all supported components and will enable the appropriate component.
+Configure your token:
 
-    Check [Manage components](../guide/admin/index.md#manage-components) section
+```bash
+zcli setting update zpodfactory_broadcom_download_token --value YOUR_TOKEN
+```
 
+Only the **`https`** download engine is supported. Use `zcli component upload` as a fallback when depot download is not available.
 
-
-The download engine has been designed to be as simple as possible for the end user. That said it does have some very specific requirements to work properly.
-
-It relies on a [VMware Customer Connect](https://customerconnect.vmware.com/home) account that needs to be entitled to the products you want to leverage for your nested labs. (If you are not entitled to a product you try to enable/download it will fail)
-
-The download engine is only aware about the products available in the `library`. The library is hosted here:
-
-- [https://github.com/zPodFactory/zPodLibrary](https://github.com/zPodFactory/zPodLibrary)
-
-The default library is a simple collection of JSON files that contains the metadata of all products/versions available for download.
-
-The download engine is then wrapping the [VMware Customer Connect CLI](https://github.com/vmware-labs/vmware-customer-connect-cli) with the `library` metadata for a given `component` to launch the correct download and verify its integrity, then extract it to the correct location on the zPodFactory VM.
-
-!!! info
-    Please refer to the following related sections for setting up the download engine correctly and use it:
-
-    Check [Manage settings](../guide/admin/index.md#manage-settings) to setup the customer connect credentials
-
-    Check [Manage library](../guide/admin/index.md#manage-library) for managing the library
-
-    Check [Manage components](../guide/admin/index.md#manage-components) for managing the components
+Check [Manage settings](../guide/admin/index.md#manage-settings) and [Manage components](../guide/admin/index.md#manage-components) for the full workflow.
 
 ## How to configure product licenses ?
 
-Right now only VMware vCenter licenses are added to a deployed zPod, we hope to add more products in the future. (NSX will be the next one to be supported)
+License keys are stored as `license_<component>-<version>` settings and applied automatically after component deploy. vCenter and NSX licenses are supported — configure one or more NSX license settings as needed.
 
-!!! info
-    Please refer to the following related sections for setting up the download engine correctly and use it:
-
-    Check [Manage settings](../guide/admin/index.md#manage-settings) and check the `license_<component>-<version>` variables in the provided screenshot.
+Check [Manage settings](../guide/admin/index.md#manage-settings) for examples.
 
 ## How to access the Prefect Flow engine UI ?
 
-For a visual view of everything executed/launched by the zPodFactory flow engine, you can access the Prefect Flow engine UI here:
+For a visual view of background tasks executed by the zPod Engine, use the **Prefect UI**:
 
-- http://zpodfactory.domain.lab:8060
+- `http://zpodfactory.domain.lab:8060`
+
+For day-to-day zPodFactory administration (zPods, components, profiles, endpoints, settings), use **[zpodweb](../guide/user/web-ui.md)** on port **8500** instead — it is the primary Web UI and is deployed automatically with the appliance.
 
 ## How to troubleshoot something ?
 
@@ -225,13 +159,15 @@ Change to zPodFactory Project directory:
 
 Check the logs:
 
-``` { data-copy="docker-compose logs -f" }
-❯ docker-compose logs -f
+``` { data-copy="docker compose logs -f" }
+❯ docker compose logs -f
 ```
 
 ### The Prefect Flow engine UI
 
-- https://manager.zpodfactory.domain:8360 (TBD)
+- `http://zpodfactory.domain.lab:8060`
+
+For zPodFactory administration, use [zpodweb](../guide/user/web-ui.md) on port **8500** instead.
 
 
 ## How to update the project ?
@@ -246,41 +182,41 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
 
 !!! info
 
-    `zbox` component and `esxi` components are mandatory, all other components are optional.
+    **`zcore-*`** component and **`esxi`** components are mandatory; all other components are optional.
 
     To find which components are available, check the `zcli component list` command, or check the zPodFactory [library](https://github.com/zPodFactory/zPodLibrary).
 
-    Usually you want at least a `zbox`, a few `esxi` hosts and a `vcsa` or `vcf` as the base profile for any work/testing.
+    Usually you want at least a `zcore`, a few `esxi` hosts and a `vcsa` or VCF profile as the base for any work/testing.
 
 ``` json
 [
     {
-      "component_uid": "zbox-12.7"
+      "component_uid": "zcore-13.5"
     },
     [
       {
-        "component_uid": "esxi-8.0u3c",
+        "component_uid": "esxi-8.0u3i",
         "host_id": 11,
         "hostname": "esxi11",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u3c",
+        "component_uid": "esxi-8.0u3i",
         "host_id": 12,
         "hostname": "esxi12",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u3c",
+        "component_uid": "esxi-8.0u3i",
         "host_id": 13,
         "hostname": "esxi13",
         "vcpu": 8,
         "vmem": 64
       },
       {
-        "component_uid": "esxi-8.0u3c",
+        "component_uid": "esxi-8.0u3i",
         "host_id": 14,
         "hostname": "esxi14",
         "vcpu": 8,
@@ -288,7 +224,7 @@ Prepare a `profile.json` file with the content of the `profile`, here is an exam
       }
     ],
     {
-        "component_uid": "vcsa-8.0u3d"
+        "component_uid": "vcsa-8.0u3i"
     },
     {
         "component_uid": "vcd-10.6.1"
@@ -320,11 +256,11 @@ The DLR feature in NSX will setup a very specific/hardcoded mac address `02:50:5
 
 It will seem as if your zPod went down (vcsa,nsx,esxi unresponsive from routed networks).
 
-That said if you try to ping/connect/access the zbox vm of that zPod, it will have no networking issues as it isn't hosted by one of the nested zPod ESXi hosts.
+That said if you try to ping/connect/access the **`zcore`** VM of that zPod (legacy: `zbox`), it will have no networking issues as it isn't hosted by one of the nested zPod ESXi hosts.
 
 You will need to change this hardcoded mac address to a different one, as it will conflict with any new nested environment when prepared by NSX.
 
-You can also fix a broken zPod with the same steps from the zbox VM as L2 connectivity will work properly:
+You can also fix a broken zPod with the same steps from the core VM as L2 connectivity will work properly:
 
 - [Change the MAC Address of NSX Virtual Distributed Router](https://techdocs.broadcom.com/us/en/vmware-cis/nsx/vmware-nsx/4-2/migration-guide/preparing-layer-2-bridging-for-lift-and-shift-migration/change-the-mac-address-of-nsx-t-virtual-distributed-router.html)
 
@@ -362,7 +298,8 @@ There can be multiple reasons for that:
 - We just haven't added it yet (time)
     - This could also be because we are missing automation bits around it
     - This could also be because our download engine tooling can't fetch the product from VMware Customer Connect (there are some caveats on some specific Product sections)
-- The product is not available on VMware Customer Connect (For example, Pivotal products).
+- The product is not available on the Broadcom depot (check your portal entitlements and token)
+- The library JSON still references a deprecated download engine (only `https` is supported)
 
 !!! info
 

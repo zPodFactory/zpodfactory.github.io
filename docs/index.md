@@ -17,7 +17,7 @@ Learning from those mistakes, zPodFactory has been redesigned to be more flexibl
 
 The focus has been targeting a few key aspects:
 
-1. **Simplicity**: Deploy simply and quickly nested environments based on premade or self-made `profiles`, without having to constantly prepare, manage, operate the complexity of the underlying infrastructure. The end goal is to have a nice UX, and a simple CLI to deploy and manage the nested environments.
+1. **Simplicity**: Deploy simply and quickly nested environments based on premade or self-made `profiles`, without having to constantly prepare, manage, operate the complexity of the underlying infrastructure. The end goal is a polished UX through the **[zpodweb](https://github.com/zPodFactory/zpodweb) Web UI** (included with the appliance) and the **zcli** command line for automation.
 2. **Flexibility**: The framework focuses **ONLY** on the initial deployment of the nested environment. It **DOES NOT** manage the lifecycle of the nested environment. It's up to the user to decide how to manage the lifecycle of the nested environment. The framework is designed to be able to adapt to different use cases, and to be able to deploy different types of nested environments, so it's slightly opinionated but only for the core components required for a functional nested environment.
 3. **Extensibility**: We have our own API to be able to extend the current capabilities easily in the future.
 4. **Maintainability**: We have been focusing on key areas to improve as much as possible the basic administration and maintainance tasks.
@@ -35,7 +35,8 @@ The project is composed of the following sub-projects:
 
 - **zPod SDK**: The zPod SDK is generated from the [FastAPI](https://fastapi.tiangolo.com/) OpenAPI JSON schema. It's a Python SDK that allows clients to interact with the API without using pure REST API calls.
 - **zPod CLI**: The zPod CLI is a wrapper around the zPod API which is used to manage, configure and operate everything required to run zPods. It is based on the [Typer](https://typer.tiangolo.com/) framework.
-- **zPod Engine**: The zPod Engine is the core component responsible for the deployment of the nested environment. It uses the [Prefect](https://orion-docs.prefect.io/latest/) workflow orchestration engine to handle scheduling and execution all flows and their child tasks.
+- **zpodweb**: The official [Web UI](https://github.com/zPodFactory/zpodweb) for zPodFactory. Deployed automatically with the appliance on port **8500**, it provides dashboards, zPod management, network topology diagrams, and visual administration of components, profiles, endpoints, and settings. See the [Web UI guide](guide/user/web-ui.md).
+- **zPod Engine**: The zPod Engine is the core component responsible for the deployment of the nested environment. It uses the [Prefect](https://docs.prefect.io/) workflow orchestration engine to handle scheduling and execution of all flows and their child tasks.
 - **zPod Library**: This is a storage location that encompasses the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary) component metadata and downloaded templates/binaries.  These files will be managed by the embedded download engine.
 
 > Everything runs in Docker containers, through a Docker Compose application stack.

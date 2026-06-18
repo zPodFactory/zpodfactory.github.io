@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """Prepare the Rich/Textual terminal SVGs (`zcli_*.svg`) for static hosting.
 
-These screenshots are Rich terminal exports. Two things make them misbehave when
+These screenshots are Rich terminal exports. The script also recolors `zcli_*.svg` screenshots to the Catppuccin Mocha palette used by the site theme.
+
+Two things make them misbehave when
 referenced as plain `<img>` (which is how the docs use them now that the
 inline-select-svg MkDocs plugin is gone, since Zensical has no plugin support):
 
@@ -35,6 +37,8 @@ import urllib.request
 from fontTools import subset
 from fontTools.ttLib import TTFont
 
+from catppuccin_mocha import apply_zcli_theme
+
 SVG_GLOB = os.path.join(os.path.dirname(__file__), "..", "docs", "img", "zcli_*.svg")
 
 FONTS = {
@@ -55,6 +59,210 @@ TAG_RE = re.compile(r"<[^>]+>")
 # Root <svg ...> opening tag and its viewBox.
 SVG_TAG_RE = re.compile(r"<svg\b[^>]*>")
 VIEWBOX_RE = re.compile(r'viewBox="\s*[\d.]+\s+[\d.]+\s+([\d.]+)\s+([\d.]+)\s*"')
+
+TERMINAL_TEXT_RE = re.compile(
+    r'<text[^>]*class="(terminal-\d+-r(\d))"[^>]*x="([\d.]+)"[^>]*y="([\d.]+)"'
+    r'(?:[^>]*textLength="([\d.]+)")?[^>]*>([^<]*)</text>'
+)
+TERMINAL_LINE_HEIGHT = 24.4
+TERMINAL_TRIM_PAD = 18
+# Rich terminal chrome layout (matches save_svg output).
+TERMINAL_CONTENT_X = 9
+TERMINAL_CONTENT_Y = 41
+TERMINAL_HORIZONTAL_PAD = 10
+TERMINAL_BOTTOM_PAD = 10
+
+WINDOW_FRAME_RE = re.compile(
+    r'(<rect fill="#(?:1e1e2e|191919)" stroke="rgba\(255,255,255,0\.35\)" '
+    r'stroke-width="1" x="1" y="1" width=")[^"]+(" height=")[^"]+(" rx="8"/>)'
+)
+CLIP_TERMINAL_RE = re.compile(
+    r'(<clipPath id="terminal-\d+-clip-terminal">\s*'
+    r'<rect x="0" y="0" width=")[^"]+(" height=")[^"]+(" />)'
+)
+
+
+def content_bounds(svg: str) -> tuple[int, int] | None:
+    """Return (width, height) for the terminal table content area."""
+    max_x = max_y = 0.0
+    min_y = float("inf")
+    found = False
+    for m in TERMINAL_TEXT_RE.finditer(svg):
+        rnum = int(m.group(2))
+        if rnum == 1:
+            continue  # title padding spans the full terminal width
+        text = html.unescape(m.group(6))
+        if not text.strip():
+            continue
+        x = float(m.group(3))
+        y = float(m.group(4))
+        text_len = float(m.group(5) or 12.2)
+        found = True
+        max_x = max(max_x, x + text_len)
+        min_y = min(min_y, y)
+        max_y = max(max_y, y + TERMINAL_LINE_HEIGHT)
+    if not found:
+        return None
+    return round(max_x + TERMINAL_TRIM_PAD), round(max_y + TERMINAL_TRIM_PAD)
+
+
+def fit_svg_to_content(svg: str) -> str:
+    """Crop SVG viewBox (and intrinsic size) to the rendered table bounds."""
+    bounds = content_bounds(svg)
+    if not bounds:
+        return svg
+    w, h = bounds
+    m = SVG_TAG_RE.search(svg)
+    if not m:
+        return svg
+    tag = m.group(0)
+    tag = VIEWBOX_RE.sub(f'viewBox="0 0 {w} {h}"', tag)
+    if re.search(r'\bwidth="', tag):
+        tag = re.sub(r'\bwidth="[^"]*"', f'width="{w}"', tag)
+        tag = re.sub(r'\bheight="[^"]*"', f'height="{h}"', tag)
+    else:
+        tag = tag[:-1] + f' width="{w}" height="{h}">'
+    svg = svg[: m.start()] + tag + svg[m.end():]
+    return resize_terminal_chrome(svg, w, h)
+
+
+def resize_terminal_chrome(svg: str, width: int, height: int) -> str:
+    """Shrink the fake terminal window frame to match a trimmed viewBox."""
+    frame_w = max(width - 2, 1)
+    frame_h = max(height - 2, 1)
+    clip_w = max(width - TERMINAL_CONTENT_X - TERMINAL_HORIZONTAL_PAD, 1)
+    clip_h = max(height - TERMINAL_CONTENT_Y - TERMINAL_BOTTOM_PAD, 1)
+
+    svg = WINDOW_FRAME_RE.sub(
+        rf"\g<1>{frame_w}\g<2>{frame_h}\g<3>",
+        svg,
+        count=1,
+    )
+    svg = CLIP_TERMINAL_RE.sub(
+        rf"\g<1>{clip_w}\g<2>{clip_h}\g<3>",
+        svg,
+        count=1,
+    )
+    return svg
+
+
+LICENSE_KEY_RE = re.compile(r"[A-Z0-9]{4,5}(?:-[A-Z0-9]{4,5}){4}")
+LICENSE_KEY_PARTIAL_RE = re.compile(
+    r"XXXXX-XXXXX-XXXXX-XXXXX-XXXXX(?:…)?(?:-[A-Z0-9]{4,5})+"
+)
+OBFUSCATED_LICENSE = "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
+OBFUSCATED_SSH = "ssh-rsa XXXXXXXX… root@zPodMaster"
+OBFUSCATED_SSH_TEXT_LENGTH = "439.2"  # ~12.2px per glyph in Rich SVG exports
+SSH_KEY_VALUE_RE = re.compile(r"ssh-rsa(?:&#160;|\s)+AAA[A-Za-z0-9+/=&#;…]+")
+
+
+OBFUSCATED_PASSWORD = "************"
+ZPOD_PASSWORD_RE = re.compile(r"(?<=>)[A-Za-z0-9!]{14,18}(?=</text>)")
+
+
+def _redact_zpod_passwords(svg: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        value = match.group(0)
+        if "!" not in value or value.startswith("*"):
+            return value
+        return OBFUSCATED_PASSWORD
+
+    return ZPOD_PASSWORD_RE.sub(repl, svg)
+
+
+
+RICH_GLYPH_WIDTH = 12.2
+TEXT_WITH_LENGTH_RE = re.compile(
+    r'(<text\b[^>]*textLength=")([\d.]+)("[^>]*>)([^<]*)(</text>)'
+)
+
+
+def fix_text_lengths(svg: str) -> str:
+    """Recompute textLength when redaction shortened visible text."""
+
+    def repl(match: re.Match[str]) -> str:
+        prefix, old_length, middle, content, suffix = match.groups()
+        visible = html.unescape(content).replace("\u00a0", " ")
+        if not visible.strip():
+            return match.group(0)
+        expected = len(visible) * RICH_GLYPH_WIDTH
+        if float(old_length) > expected * 1.05 or float(old_length) < expected * 0.95:
+            return f"{prefix}{expected:.1f}{middle}{content}{suffix}"
+        return match.group(0)
+
+    return TEXT_WITH_LENGTH_RE.sub(repl, svg)
+
+
+# Intentionally left as captured from zcli (no redaction).
+UNSANITIZED_SVGS = frozenset({
+    "zcli_endpoint_list.svg",
+    "zcli_user_list.svg",
+    "zcli_zpod_list.svg",
+})
+
+def sanitize_zcli_svg(svg: str, filename: str) -> str:
+    """Redact secrets and lab-specific identifiers from zcli SVG exports."""
+    svg = LICENSE_KEY_RE.sub(OBFUSCATED_LICENSE, svg)
+    svg = LICENSE_KEY_PARTIAL_RE.sub(OBFUSCATED_LICENSE, svg)
+    svg = SSH_KEY_VALUE_RE.sub(OBFUSCATED_SSH, svg)
+    svg = _redact_zpod_passwords(svg)
+
+    svg = re.sub(r"pcc-\d+-\d+-\d+-\d+\.ovh\.com", "pcc-example.ovh.com", svg)
+    svg = re.sub(r"pcc-\d+-\d+-\d+-\d+_datacenter\d+", "pcc-example_datacenter1", svg)
+    svg = re.sub(
+        r"zpodfactory@pcc-[^<]+\.ovh\.com",
+        "zpodfactory@pcc-example.ovh.com",
+        svg,
+    )
+
+    svg = svg.replace("tsugliani@z42.sh", "user@example.com")
+    svg = svg.replace(">tsugliani<", ">example-user<")
+    svg = svg.replace("ff_max_zpods_tsugliani", "ff_max_zpods_example")
+    svg = svg.replace("for&#160;tsugliani", "for&#160;example-user")
+    svg = svg.replace("french&#160;dude", "example&#160;user")
+    svg = svg.replace(">gcarsso<", ">example<")
+    svg = svg.replace("172.16.42.12", "10.10.10.10")
+    svg = svg.replace("10.60.151.0/24", "10.10.151.0/24")
+    svg = svg.replace("10.60.126.2", "10.10.126.2")
+    svg = svg.replace("10.60.126.0", "10.10.126.0")
+    svg = svg.replace("10.60.0.0/16", "10.10.0.0/16")
+
+    if filename.endswith("zcli_setting_list.svg"):
+        svg = re.sub(
+            r'(class="[^"]*-r4"[^>]*>license_[^<]+</text>(?:<text[^>]+>[^<]*</text>)*?'
+            r'class="[^"]*-r5"[^>]*>)[^<]+(</text>)',
+            rf"\1{OBFUSCATED_LICENSE}\2",
+            svg,
+        )
+        svg = re.sub(
+            r'(class="[^"]*-r4"[^>]*>zpodfactory_ssh_key</text>(?:<text[^>]+>[^<]*</text>)*?'
+            r'class="[^"]*-r5"[^>]*x="[\d.]+"[^>]*y="[\d.]+" )textLength="[\d.]+"'
+            rf'([^>]*>)ssh-rsa[^<]*(</text>)',
+            rf'\1textLength="{OBFUSCATED_SSH_TEXT_LENGTH}"\2{OBFUSCATED_SSH}\3',
+            svg,
+            count=1,
+        )
+
+    svg = fix_text_lengths(svg)
+    return svg
+
+
+def sanitize_zcli_svgs(svg_paths: list[str]) -> int:
+    changed = 0
+    for path in svg_paths:
+        basename = os.path.basename(path)
+        if not basename.startswith("zcli_"):
+            continue
+        if basename in UNSANITIZED_SVGS:
+            continue
+        data = open(path, encoding="utf-8").read()
+        new = sanitize_zcli_svg(data, basename)
+        if path.endswith("zcli_setting_list.svg"):
+            new = fit_svg_to_content(new)
+        if new != data:
+            open(path, "w", encoding="utf-8").write(new)
+            changed += 1
+    return changed
 
 
 def used_codepoints(svg_paths: list[str]) -> set[int]:
@@ -91,25 +299,8 @@ def subset_font_b64(url: str, codepoints: set[int]) -> str:
 
 
 def add_dimensions(svg: str) -> str:
-    """Add intrinsic width/height (from viewBox) to the root <svg> if missing.
-
-    A `<img>`-referenced SVG with only a viewBox has no natural size, which makes
-    GLightbox render it tiny. Setting width/height gives it an intrinsic size;
-    on the page Material's `max-width: 100%` still scales it to the column.
-    """
-    m = SVG_TAG_RE.search(svg)
-    if not m:
-        return svg
-    tag = m.group(0)
-    if re.search(r'\bwidth="', tag):  # already sized
-        return svg
-    vb = VIEWBOX_RE.search(tag)
-    if not vb:
-        return svg
-    w = round(float(vb.group(1)))
-    h = round(float(vb.group(2)))
-    new_tag = tag[:-1] + f' width="{w}" height="{h}">'
-    return svg[: m.start()] + new_tag + svg[m.end():]
+    """Crop to table content and set intrinsic width/height for <img> embedding."""
+    return fit_svg_to_content(svg)
 
 
 def main() -> int:
@@ -130,7 +321,7 @@ def main() -> int:
         )
         print(f"  {name}: {len(b64) * 3 // 4} bytes woff2 (subset)")
 
-    fonts_changed = dims_changed = 0
+    fonts_changed = trimmed = dims_changed = 0
     for path in svg_paths:
         data = open(path, encoding="utf-8").read()
         new = data
@@ -140,11 +331,14 @@ def main() -> int:
             fonts_changed += 1
         sized = add_dimensions(new)
         if sized != new:
-            dims_changed += 1
-        new = sized
+            trimmed += 1
+        new = apply_zcli_theme(sized)
         if new != data:
             open(path, "w", encoding="utf-8").write(new)
-    print(f"Embedded font into {fonts_changed} SVG(s); added dimensions to {dims_changed} SVG(s)")
+    sanitized = sanitize_zcli_svgs(svg_paths)
+    print(f"Embedded font into {fonts_changed} SVG(s); trimmed to content in {trimmed} SVG(s)")
+    if sanitized:
+        print(f"Sanitized secrets in {sanitized} zcli SVG(s)")
     return 0
 
 

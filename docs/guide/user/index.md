@@ -1,6 +1,14 @@
 # User Guide
 
-Once the zPodFactory framework is deployed and running, and has been configured by an Administrator you can start using the CLI to deploy nested environments.
+Once zPodFactory is deployed and configured by an administrator, you can manage nested environments through the **[zpodweb Web UI](web-ui.md)** (recommended — included with the appliance at `http://<appliance-ip>:8500`) or the **zcli** command line (automation and scripting).
+
+## Web UI (recommended)
+
+For most day-to-day tasks — creating zPods, browsing components, viewing network topology — use [zpodweb](web-ui.md), the official web interface deployed automatically with the zPodFactory appliance.
+
+## CLI
+
+The sections below document **zcli** workflows for users who prefer the terminal or need JSON output for automation.
 
 ## Introduction
 
@@ -74,9 +82,19 @@ zPods are the nested environments name in the zPodFactory framework.
 
 To create a zPod you will need to provide a few parameters:
 
-- `name`: The name of the zPod
-- `profile`: The profile to use to deploy the zPod (use `zcli profile list` to list available profiles)
-- `endpoint`: The endpoint to use to deploy the zPod (use `zcli endpoint list` to list available endpoints)
+- `name`: The name of the zPod (must start with a letter; emoji characters are rejected). Non-superadmin users may be required to prefix names with their username when `ff_restrict_zpod_with_username_prefix` is enabled.
+- `profile`: The profile to use (use `zcli profile list`). If `ff_zpod_default_profile` is set, `--profile` can be omitted.
+- `endpoint`: The endpoint to deploy onto (use `zcli endpoint list`). If only one endpoint exists, it is selected automatically.
+
+Additional options:
+
+```bash
+zcli zpod create <name> -p <profile> -e <endpoint> \
+  --description "My lab" \
+  --domain custom.domain.lab \   # optional domain override
+  --enet <enet_name> \           # optional ENET override
+  --wait                         # wait until deploy completes
+```
 
 ``` {data-copy="zcli zpod create name -p profile -e endpoint"}
 ❯ zcli zpod create name -p profile -e endpoint
@@ -90,21 +108,18 @@ For example:
 
 This will create a zPod with the following attributes:
 
-- `name`: `test` This will be the name of the zPod, that also means it will concatenate this name with the `zpodfactory.domain` to create the FQDN of the zPod. In this case it will be `test.zpodfactory.domain`, and any component, such as `zbox` component will be `zbox.test.zpodfactory.domain`.
+- `name`: `test` — concatenated with `zpodfactory_default_domain` for the zPod FQDN (`test.zpodfactory.domain`). The core appliance is at `zcore.test.zpodfactory.domain`.
 
 !!! info
-    The `zpodfactory.domain` is a setting that can ONLY be configured by an Administrator.
-
-    It is configured by the `zpodfactory_default_domain` setting. This setting should be configured at initial setup of this framework and **SHOULD NEVER BE MODIFIED**.
-
+    The base domain is configured by the `zpodfactory_default_domain` setting and **should not be changed** after initial setup.
     Check [Manage settings](../admin/index.md#manage-settings) for more information.
 
-- `profile`: `base` This is the profile that will be used to deploy the zPod. It will be used to deploy the `zbox` component, and any other component that is required by the profile. The `base` profile actually entitles to the following components in our current configuration :
+- `profile`: `base` — deploys the components defined in that profile. A typical `base` profile includes:
 
-    - `zbox-12.7` (mandatory `component` to manage DNS/DHCP, 3 additional zPod /26 subnets on tagged VLAN 64/128/192, and also the NFS datastore for the nested hosts)
-    - `esxi-8.0u3c` (Host Id: 11, CPU: 4, Mem: 48GB)
-    - `esxi-8.0u3c` (Host Id: 12, CPU: 4, Mem: 48GB)
-    - `vcsa-8.0u3d`
+    - `zcore-13.5` (mandatory core: DNS/DHCP, NFS, guest VLAN routing)
+    - `esxi-8.0u3i` (Host Id: 11, CPU: 4, Mem: 48GB)
+    - `esxi-8.0u3i` (Host Id: 12, CPU: 4, Mem: 48GB)
+    - `vcsa-8.0u3i`
 
 !!! info
     The `base` profile is a profile that can ONLY be configured by an Administrator.
@@ -119,14 +134,20 @@ This will create a zPod with the following attributes:
 
 ### Accessing the zPod
 
-Once the zPod is deployed, you can access it using the following credentials
+Once deployed, inspect connection details with:
 
-for vcsa (VMware vCenter Server):
+``` {data-copy="zcli zpod info test"}
+❯ zcli zpod info test
+```
+
+This shows networking, component URLs, credentials, and Proxmox UI links where applicable. Use `-j` for JSON or `-f bnc` to filter panels (Basic, Networking, Components).
+
+For vCenter:
 
 - `username`: `administrator@name.zpodfactory.domain`
-- `password`: Each zPod has its password generated.  Password can be fetched by using the `zcli zpod list` command)
+- `password`: Each zPod has a generated password — fetch it from `zcli zpod list` or `zcli zpod info`.
 
-For every other component, the username is the default for that component.  For example, on many VMware products the default administrator account is either `root` or `admin`, such as `nsx-v`, `nsx-t`, `nsx`, `vcda`, `vrops`, `vrli`.  However, for `vcd`, the default administrator account is `administrator`.  The password is **always** the zPod Password.
+For other components, use the default administrator account for that product (`root`, `admin`, etc.; `administrator` for VCD). The password is **always** the zPod password.
 
 
 ### Destroy zPods
@@ -165,30 +186,61 @@ You will need to provide the zpod name parameter so that the CLI knows which zPo
 
 ### Add components to a zPod
 
-If you want to add a new component to a zpod, you will need to provide the `component_uid`.  Component UID is a combination of a product name and a version, as many versions can exist for a given product. (use `zcli component list` to list available components)
+Provide the `component_uid` (use `zcli component list`). Optional overrides match [profile](../admin/index.md#manage-profiles) fields — useful for ESXi hosts that need custom sizing:
 
-``` {data-copy="zcli zpod component add zpod_name -c component_uid"}
-❯ zcli zpod component add zpod_name -c component_uid
+| Flag | Type | Example |
+| --- | --- | --- |
+| `--host-id` | integer | `13` |
+| `--hostname` | string | `esxi13` |
+| `--vcpu`, `--vmem` | integer | `16`, `128` |
+| `--vnics` | integer | `4` (vNIC **count**, not a JSON object) |
+| `--vdisks` | integer (repeatable) | `--vdisks 40 --vdisks 800` → disks of 40 GB and 800 GB |
+
+Example aligned with a VCF-style profile entry (see `zcli profile info vcf-902-3hosts`):
+
+```bash
+zcli zpod component add <zpod_name> -c esxi-9.0.2.0 \
+  --host-id 13 --hostname esxi13 \
+  --vcpu 16 --vmem 128 \
+  --vnics 4 \
+  --vdisks 40 --vdisks 800
 ```
 
-For example in our case:
+In profile JSON the same host would look like:
+
+```json
+{
+  "component_uid": "esxi-9.0.2.0",
+  "host_id": 13,
+  "hostname": "esxi13",
+  "vcpu": 16,
+  "vmem": 128,
+  "vnics": 4,
+  "vdisks": [40, 800]
+}
+```
+
+Example:
 
 ``` {data-copy="zcli zpod component add team.beta -c vcd-10.6.1"}
 ❯ zcli zpod component add team.beta -c vcd-10.6.1
 ```
 
-This will add the `vcd-10.6.1` component to the `team.beta` zPod.
+Supported component families include VMware products (vSphere, NSX, VCF, HCX, etc.) and **Proxmox** (`proxmox`, `proxmox-dm`, `proxmox-bs`).
 
 
 ## Manage DNS records
 
-Since version 0.7.2, it is now possible to manage  DNS records dynamically through the CLI to a zPod.  This is useful when you want to add/update/remove a DNS record to a zPod that is not managed by the default `zbox` component.
+Since version 0.7.2, DNS records can be managed dynamically through the CLI. This requires a `zcore-*` (or legacy `zbox-*`) core component in the deployment profile.
 
-This will require the new `zbox-12.7` component to be part of the deployment profile.
+!!! warning
+    **Do not change DNS records for zPodFactory-managed components.** Hostnames such as `zcore`, `esxi11`, `vcsa`, `nsx`, and others created by deploy or `zpod component add` are owned by the platform. Deployments, config scripts, certificate flows, and component lifecycle all assume those names and IPs stay in sync. Updating, re-pointing, or removing them — via `zcli zpod dns`, the API, or manual edits on the core VM — can break connectivity for the entire zPod and is difficult to recover from cleanly.
+
+    Use DNS management only for **extra** names you add yourself (overlays, guest subnets, demos, external endpoints). Leave platform records alone.
 
 ### List DNS records to a zPod
 
-List DNS records to a zPod that is not managed by the default `zbox` component.
+List DNS records for a zPod (managed via the core appliance's DNS API):
 
 ``` {data-copy="zcli zpod dns list zpod_name"}
 ❯ zcli zpod dns list zpod_name
@@ -200,7 +252,7 @@ List DNS records to a zPod that is not managed by the default `zbox` component.
 ### Add DNS record to a zPod
 
 
-Adding a DNS record to a zPod is useful when you want to add a DNS record to a zPod that is not managed by the default `zbox` component.
+Adding a DNS record is useful for hostnames on overlay networks or other subnets not auto-managed by component deploy:
 
 You can use 2 different ways to achieve this:
 
@@ -215,23 +267,23 @@ in this case if your zpod management network was for example 192.168.10.0/26, th
 `host-id` is the host id on the management network of a zPod. This is explicitely used for `profiles` so we can easily set specific `components` configuration that will be deployed on the zpod management subnet and just have to make sure the `host-id` is set correctly/unique per `profile`.
 
 
-Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):
+Example base profile:
 
 ```json
 [
   {
-    "component_uid": "zbox-12.7"
+    "component_uid": "zcore-13.5"
   },
   [
     {
-      "component_uid": "esxi-8.0u3c",
+      "component_uid": "esxi-8.0u3i",
       "host_id": 11,
       "hostname": "esxi11",
       "vcpu": 6,
       "vmem": 48
     },
     {
-      "component_uid": "esxi-8.0u3c",
+      "component_uid": "esxi-8.0u3i",
       "host_id": 12,
       "hostname": "esxi12",
       "vcpu": 6,
@@ -239,23 +291,15 @@ Example base profile (esxi11 and esxi12 have host_id 11 and 12 respectively):
     }
   ],
   {
-    "component_uid": "vcsa-8.0u3d"
+    "component_uid": "vcsa-8.0u3i"
   }
 ]
 ```
 
-
-This will result into the zpod deploying with `podname` as it's name and `zpodfactory.domain` set as the **zpodfactory_default_domain** with the following components in it:
-
-- 1 x `zbox-12.7` component
-- 2 x `esxi-8.0u3c` components with `host_id` 11 and 12 respectively
-- 1 x `vcsa-8.0u3d` component
-
-
-From a DNS perspective you will have the following DNS records:
+Resulting DNS records for zPod `podname`:
 
 ```
-zbox.podname.zpodfactory.domain -> 10.10.11.2
+zcore.podname.zpodfactory.domain -> 10.10.11.2
 esxi11.podname.zpodfactory.domain -> 10.10.11.11
 esxi12.podname.zpodfactory.domain -> 10.10.11.12
 vcsa.podname.zpodfactory.domain -> 10.10.11.10
@@ -268,6 +312,12 @@ Using `--ip` which allows you to set any IP.
 ```
 
 As you can imagine setting any ip, allows you to setup hostnames for any IP address, which can be useful for any use cases leveraging other network subnets (like any overlay network managed by NSX that might be routed within the zPod, etc)
+
+### Update DNS record on a zPod
+
+``` {data-copy="zcli zpod dns update zpod_name --hostname samplename --ip 10.10.10.12"}
+❯ zcli zpod dns update zpod_name --hostname samplename --ip 10.10.10.12
+```
 
 ### Remove DNS record from a zPod
 

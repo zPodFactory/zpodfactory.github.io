@@ -2,34 +2,38 @@
 
 ## API
 
-zPodFactory exposes it's own API through [FastAPI](https://fastapi.tiangolo.com/) which leverages the open standards for APIs:
+zPodFactory exposes its own API through [FastAPI](https://fastapi.tiangolo.com/) which leverages open standards:
 
-- [OpenAPI](https://github.com/OAI/OpenAPI-Specification) (previously known as Swagger)
+- [OpenAPI](https://github.com/OAI/OpenAPI-Specification)
 - [JSON Schema](https://json-schema.org/)
 
-It can be accessed on your zPodFactory instance at the following address:
+On your zPodFactory instance:
 
-- `http://zpodfactory.domain.lab:8000/openjson.json`
+- OpenAPI JSON: `http://zpodfactory.domain.lab:8000/openapi.json`
+- Swagger UI: `http://zpodfactory.domain.lab:8000/docs`
 
-If you want to access the Swagger/docs UI, you can access it at the following address:
+The API is usually consumed through the SDK or CLI rather than directly.
 
-- `http://zpodfactory.domain.lab:8000/docs`
+### Notable endpoints
 
-That said, the API is not usually meant to be used directly, but rather through the SDK that is generated from the OpenAPI JSON schema.
+| Endpoint | Purpose |
+| --- | --- |
+| `GET /zpods/{id}/permissions/mine` | Returns the caller's effective permission level (`ADMIN`, `OWNER`, or `USER`) on a zPod — useful for UIs |
+| zPod create with `features` | Pass `config-scripts` and other feature flags when creating a zPod (not yet exposed on `zcli zpod create`) |
 
-SDK and CLI updates will be pushed to PyPi, but if you wanted to set up a developer environment and generate the SDK, you can always generate it yourself using the following `just` command.
+SDK and CLI updates are published to PyPI. Regenerating the SDK from a running instance means fetching the current OpenAPI spec and rebuilding `zpodsdk` — a multi-step workflow that also has to run in the right container context.
 
-[just](https://just.systems/man/en/) is basically a next-gen `Makefile` like command line tool, that allows to define tasks in a `justfile` and run them from the command line (as shown in the sample below screenshot)
+The zpodcore repo is a **monorepo** (`zpodapi`, `zpodengine`, `zpodcli`, `zpodsdk`). Day-to-day development involves a lot of repetitive commands: start/stop Docker Compose, exec into a service, run tests with the right `PYTHONPATH`, regenerate OpenAPI, invoke `zcli` through `uv`, and so on. Rather than documenting long shell one-liners in README fragments, those workflows live as named **recipes** in the root [`justfile`](https://github.com/zPodFactory/zpodcore/blob/main/justfile).
 
-![img](https://raw.githubusercontent.com/casey/just/master/screenshot.png)
+[just](https://just.systems/man/en/) is the command runner behind that — a small `Makefile` alternative with readable recipes, parameters, and `just --list` for discovery. If you contribute to zpodcore or need to refresh the SDK after API changes, you will use `just` more than raw `docker`/`uv` commands:
 
-Generate updated Python SDK bindings from the running zPodFactory Project.
+![just command runner — justfile recipes and `just -l` output](https://raw.githubusercontent.com/casey/just/master/etc/screenshot.png)
 
 ```bash
-just zcli zpodsdk-update
+just zpodsdk-update
 ```
 
-We currently support a few just commands for this project and simplify some actions/tasks:
+### just commands
 
 ```bash
 ❯ just
@@ -39,14 +43,16 @@ Commands:
     alembic-revision message='update' # Generate alembic revision
     alembic-upgrade rev="head"  # Upgrade database schema to head
     zcli *args                  # Run zcli command
+    zcore-transition            # Migrate profiles from zbox-* to zcore-*
     zpod-release version        # Create a release version
     zpod-update version         # Update to a release version
+    zpod-runtests               # Run all subproject unit tests locally
     zpodapi-coverage            # Generate coverage docs
     zpodapi-exec *args="bash"   # Connect to zpodapi container and run command
     zpodapi-generate-openapi    # Generate openapi json
     zpodapi-pytest *args        # Run pytest in zpodapi
-    zpodcore-start $COLUMNS=rich_cols # Start Docker Environment
-    zpodcore-start-background $COLUMNS=rich_cols # Start Docker Environment in background
+    zpodcore-start              # Start Docker Environment
+    zpodcore-start-background   # Start Docker Environment in background
     zpodcore-stop               # Stop Docker Environment
     zpodengine-cmd *args        # Manually Run Command
     zpodengine-deploy-all       # Deploy all Flows
@@ -57,7 +63,7 @@ Commands:
 
 ## SDK
 
-SDK is available on pypi:
+SDK is available on PyPI:
 
 - [https://pypi.org/project/zpodsdk/](https://pypi.org/project/zpodsdk/)
 
@@ -67,10 +73,16 @@ SDK is available on pypi:
 
 ## CLI
 
-CLI is available on pypi:
+CLI is available on PyPI:
 
 - [https://pypi.org/project/zpodcli/](https://pypi.org/project/zpodcli/)
 
 ``` { data-copy="pip install zpodcli"}
 ❯ pip install zpodcli
 ```
+
+Many list/info commands support `--json` / `-j` and `--no-color` for scripting. See the [Admin](../guide/admin/index.md) and [User](../guide/user/index.md) guides for command examples.
+
+## Development setup
+
+The zpodcore monorepo uses [uv](https://docs.astral.sh/uv/) (not Poetry) for dependency management. Each subproject (`zpodapi`, `zpodengine`, `zpodcli`, `zpodsdk`) has its own `pyproject.toml` and `uv.lock`. See the [zpodcore README](https://github.com/zPodFactory/zpodcore/blob/main/README.md) for setup instructions.
