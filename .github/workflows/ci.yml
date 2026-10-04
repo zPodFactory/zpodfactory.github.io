@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: 3.x
       # Zensical is at 0.0.x (alpha); pin the version to avoid surprise breakage.
-      - run: pip install zensical==0.0.45
+      - run: pip install zensical==0.0.67
       - run: zensical build --clean
       - uses: actions/upload-pages-artifact@v3
         with:

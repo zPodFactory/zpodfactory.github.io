@@ -2,3 +2,5 @@ site/**
 .DS_Store
 .venv*/
 .cache/
+__pycache__/
+*.pyc
