@@ -14,6 +14,12 @@ The subdomain is composed of the zPod name and the `zpodfactory_default_domain`
 
 For example, if the `zpodfactory_default_domain` is set to `zpodfactory.local` and the zPod name is `zpod-a`, then the subdomain will be `zpod-a.zpodfactory.local`.
 
+Every component deployed in that zPod then gets its FQDN as `<hostname>.<zPod name>.<default domain>`, for example `esxi11.zpod-a.zpodfactory.local`:
+
+![zPod component FQDN](../img/zpod_component_fqdn.svg)
+
+The total length of that FQDN is validated at creation time against the 64-character Linux hostname limit — see [`zpodfactory_fqdn_reserved_chars`](../guide/admin/feature-flags.md#zpodfactory_fqdn_reserved_chars).
+
 !!! warning
     This means every zPod has a unique name, as it's used to generate the subdomain. If you try to deploy a zPod with the same name as an existing one, the deployment will fail
 
@@ -72,7 +78,7 @@ graph TD
 
 This also means any zPod Admin owns his subdomain and can add DNS entries on that zPod's local DNS server.
 
-Since **`zcore-13.5`**, component hostnames are **added automatically** when zPodFactory deploys or adds components. The zPod Engine calls the core appliance's **`zboxapi` `/dns` API**, which writes records into `/etc/hosts` and reloads dnsmasq — you no longer maintain a large static `/etc/hosts` template on the core VM. A fresh `zcore` image only seeds `localhost` and the core hostname itself; everything else appears as components come up.
+Since **`zcore-13.5`**, component hostnames (the `<hostname>` part of the FQDN shown above) are **added automatically** when zPodFactory deploys or adds components. The zPod Engine calls the core appliance's **`zboxapi` `/dns` API**, which writes records into `/etc/hosts` and reloads dnsmasq — you no longer maintain a large static `/etc/hosts` template on the core VM. A fresh `zcore` image only seeds `localhost` and the core hostname itself; everything else appears as components come up.
 
 !!! warning
     **Do not modify DNS records for components deployed by zPodFactory.** Those entries (`zcore`, ESXi hosts, vCenter, NSX, and so on) are maintained by the engine and relied on across the whole stack. Changing or deleting them can break deploy follow-up steps, config scripts, and day-two operations for the entire zPod. Add or edit DNS only for **your own** extra hostnames — not for platform-managed components.

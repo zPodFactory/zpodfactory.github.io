@@ -32,7 +32,7 @@ nav = [
     { "Admin Guide" = "guide/admin/index.md" },
     { "zcore migration" = "guide/admin/zcore-migration.md" },
     { "Broadcom download token" = "guide/admin/broadcom-download-token.md" },
-    { "Feature flags" = "guide/admin/feature-flags.md" },
+    { "Settings & feature flags" = "guide/admin/feature-flags.md" },
     { "Endpoint OVA staging" = "guide/admin/endpoint-ova-staging.md" },
   ] },
   { "User Guide" = ["guide/user/index.md"] },

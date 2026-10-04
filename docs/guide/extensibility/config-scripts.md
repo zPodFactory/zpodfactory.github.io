@@ -35,7 +35,7 @@ zcli setting create -n ff_default_config_scripts -v "vdsnsx" \
 
 Multiple scripts are comma-separated with no spaces: `script-a,script-b`.
 
-See [Feature flags](../admin/feature-flags.md) for the full flag reference.
+See [Settings & feature flags](../admin/feature-flags.md) for the full flag reference.
 
 ## Installing a config script
 
@@ -60,7 +60,7 @@ zpodcore ships a no-op sample at `config_scripts/sample/` showing the expected m
 | Setting | Purpose |
 | --- | --- |
 | `ff_default_config_scripts` | Auto-apply scripts to new zPods |
-| `ff_component_wait_for_status` | Wait for component health before running component-add scripts |
+| `ff_component_wait_for_status` | For NSX Manager components, also require the detailed cluster `overall_status` to be `STABLE` before post-scripts and component-add scripts run |
 
 ## Platform automation on top of zPodFactory
 

@@ -66,6 +66,8 @@ Verify that the connection was successfull and that you are connected to the API
 
 ![img](../../img/zcli_user_list.svg)
 
+The **API Token** column shows your own token (other users' rows are masked unless you're a superadmin) — handy if you need it again without running `zcli user reset_api_token`.
+
 ## Manage zPods
 
 zPods are the nested environments name in the zPodFactory framework.
@@ -113,6 +115,10 @@ This will create a zPod with the following attributes:
 !!! info
     The base domain is configured by the `zpodfactory_default_domain` setting and **should not be changed** after initial setup.
     Check [Manage settings](../admin/index.md#manage-settings) for more information.
+
+    Every component FQDN is built the same way, `<hostname>.<zPod name>.<default domain>`:
+
+    ![zPod component FQDN](../../img/zpod_component_fqdn.svg)
 
 - `profile`: `base` — deploys the components defined in that profile. A typical `base` profile includes:
 
@@ -232,6 +238,10 @@ Supported component families include VMware products (vSphere, NSX, VCF, HCX, et
 ## Manage DNS records
 
 Since version 0.7.2, DNS records can be managed dynamically through the CLI. This requires a `zcore-*` (or legacy `zbox-*`) core component in the deployment profile.
+
+The core appliance serves the zPod's DNS zone, `<zPod name>.<default domain>`. Every platform-managed record in it follows the component FQDN shape:
+
+![zPod component FQDN](../../img/zpod_component_fqdn.svg)
 
 !!! warning
     **Do not change DNS records for zPodFactory-managed components.** Hostnames such as `zcore`, `esxi11`, `vcsa`, `nsx`, and others created by deploy or `zpod component add` are owned by the platform. Deployments, config scripts, certificate flows, and component lifecycle all assume those names and IPs stay in sync. Updating, re-pointing, or removing them — via `zcli zpod dns`, the API, or manual edits on the core VM — can break connectivity for the entire zPod and is difficult to recover from cleanly.

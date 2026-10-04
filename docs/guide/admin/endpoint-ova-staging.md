@@ -1,6 +1,6 @@
 # Endpoint OVA staging
 
-**Feature flag:** `ff_endpoint_ova_staging` (off by default)
+**Feature flag:** `ff_endpoint_ova_staging` (seeded automatically, default `false`)
 
 ## Problem
 
@@ -32,16 +32,17 @@ Template names match the component UID. Cloned VMs land in the zPod vApp with th
 
 ## Enable / disable
 
+The flag is created automatically with value `false` on every API start, so toggle it with `update`:
+
 ```bash
 # Enable
-zcli setting create --name ff_endpoint_ova_staging --value true \
-  --description "Stage L1 OVAs as templates and clone per deployment"
+zcli setting update ff_endpoint_ova_staging -v true
 
 # Disable (reverts immediately to direct import)
-zcli setting update --name ff_endpoint_ova_staging --value false
-# or
-zcli setting delete --name ff_endpoint_ova_staging
+zcli setting update ff_endpoint_ova_staging -v false
 ```
+
+Deleting the row also disables staging, but the default `false` row is re-created at the next API restart. See [Feature flags](feature-flags.md#seeded-at-startup).
 
 Existing staged templates are harmless and are reused if the flag is re-enabled.
 

@@ -134,6 +134,7 @@ In the [manual installation](../install/manual.md) guide, we provided an example
 - `zpodfactory_ssh_key`: SSH public key pushed to zPod components (`zcore`, `esxi`, etc.) for SSH access.
 - `zpodfactory_broadcom_download_token`: Per-customer download token from the [Broadcom Support Portal](https://support.broadcom.com/) used by the download engine for VMware product binaries. See [Broadcom download token](broadcom-download-token.md) for how to obtain and configure it.
 - `zpodfactory_debug_level`: Runtime log verbosity (`INFO` or `DEBUG`). Changes take effect without restart.
+- `zpodfactory_fqdn_reserved_chars`: Safety margin (default `8`) under the 64-character Linux hostname limit used to reject zPod component FQDNs that are too long at creation time.
 
 !!! warning "Download engine"
 
@@ -143,7 +144,7 @@ In the [manual installation](../install/manual.md) guide, we provided an example
 
 - `license_<component>-<version>`: Auto-apply licenses after component deploy. Supports vCenter and NSX license keys (multiple NSX keys can be configured).
 
-See [Feature flags](feature-flags.md) for optional `ff_*` settings that control zPod creation, networking, and deployment behavior.
+See [Settings & feature flags](feature-flags.md) for the full reference: every core `zpodfactory_*` setting with its seeded default, plus the optional `ff_*` flags that control zPod creation, networking, deployment, and destroy behavior.
 
 
 ``` {data-copy="zcli setting list"}
@@ -161,6 +162,8 @@ List users:
 ```
 
 ![img](../../img/zcli_user_list.svg)
+
+`user list` includes an **API Token** column: superadmins see every user's token, a user sees their own, and every other row is masked (`—`). Add `-j`/`--json` for machine-readable output (combine with `--no-color` to strip Rich styling), e.g. `zcli user list --json --no-color`.
 
 Create, update, enable/disable, or reset API tokens:
 
@@ -374,6 +377,7 @@ datacenter: Datacenter-Paris
 resource_pool: Cluster-SDDC
 storage_datastore: vsanDatastore
 vmfolder: zPods-Paris
+vds: vds-Paris
 
 Network Endpoint
 driver [nsxt/nsxt_projects] (nsxt_projects):
@@ -389,6 +393,9 @@ Endpoint testendpoint has been created.
 ```
 
 This will allow for interactive creation of an endpoint and prompt for all the required information.
+
+!!! info "Compute `vds` field"
+    `vds` names the vSphere Distributed Switch backing the endpoint's portgroups. Set it when clusters on the same vCenter share an NSX-T overlay transport zone across **different** VDS's — otherwise `govc import.ova` can't tell apart the identically-named zPod segment portgroup created on each VDS. Leave it blank (default) for single-VDS environments; existing endpoints keep working unchanged until you set it. There is no dedicated `zcli endpoint update --vds` flag yet — set or change it via `PATCH /endpoints/{id}` with `{"endpoints": {"compute": {"vds": "<name>"}}}`, or by re-running `endpoint create --endpoints-file` with an updated sample.
 
 Inspect or export an endpoint:
 
