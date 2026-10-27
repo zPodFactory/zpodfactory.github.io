@@ -1,43 +1,61 @@
-# Welcome to zPodFactory
+---
+hide:
+  - navigation
+  - toc
+---
 
-Build your own VMware nested Clouds with zPodFactory !
+# zPodFactory
 
-![img](img/zPodFactory-logo-tr.png)
+![zPodFactory](img/zPodFactory-logo-tr.png){ width="160" align=right }
 
+**Build your own nested VMware labs, on demand.** zPodFactory deploys complete nested environments (zPods) from reusable profiles, onto the vCenter and NSX you already have, and gives each one its own network, DNS and storage. Use it from the Web UI, from `zcli`, or through its API.
 
+!!! tip "Latest releases"
+    **zpodcore 0.9.0** and **zpodweb 0.2.0** (2026-10-26) add self-service [networks](guide/user/networks.md) (VLANs, masquerade, NSX fabric routing) and [storage and NFS](guide/user/storage.md) (disks, storages, folders, exports) to every zPod. See [What's new](releases.md).
 
+<div class="grid cards" markdown>
 
+-   :material-rocket-launch-outline:{ .lg .middle } **Getting started**
 
-## What is zPodFactory ?
+    ---
 
-zPodFactory is a framework/engine to deploy and manage VMware nested environments.
+    Learn the concepts, install the appliance, and set up `zcli`.
 
-It's basically a rebuild from scratch of a previous project, that was focused on only one specific use case and had various parts that were hardcoded to one very peculiar environment.
-Learning from those mistakes, zPodFactory has been redesigned to be more flexible and extensible, and to be able to adapt to different use cases, and mitigate all the administration hurdles that come with nested environments.
+    [:octicons-arrow-right-24:Concepts & architecture](guide/concepts.md)
 
-The focus has been targeting a few key aspects:
+-   :material-account-outline:{ .lg .middle } **User Guide**
 
-1. **Simplicity**: Deploy simply and quickly nested environments based on premade or self-made `profiles`, without having to constantly prepare, manage, operate the complexity of the underlying infrastructure. The end goal is a polished UX through the **[zpodweb](https://github.com/zPodFactory/zpodweb) Web UI** (included with the appliance) and the **zcli** command line for automation.
-2. **Flexibility**: The framework focuses **ONLY** on the initial deployment of the nested environment. It **DOES NOT** manage the lifecycle of the nested environment. It's up to the user to decide how to manage the lifecycle of the nested environment. The framework is designed to be able to adapt to different use cases, and to be able to deploy different types of nested environments, so it's slightly opinionated but only for the core components required for a functional nested environment.
-3. **Extensibility**: We have our own API to be able to extend the current capabilities easily in the future.
-4. **Maintainability**: We have been focusing on key areas to improve as much as possible the basic administration and maintainance tasks.
+    ---
 
+    Create zPods, add components, and manage their networks, storage and DNS, from the Web UI or `zcli`.
 
-## Project Architecture
+    [:octicons-arrow-right-24:User Guide](guide/user/index.md)
 
-zPodFactory is built upon the following various opensource projects:
+-   :material-shield-account-outline:{ .lg .middle } **Administration**
 
-![img](img/zPodFactory-architecture.svg)
+    ---
 
-The project is composed of the following sub-projects:
+    Settings, users and permissions, components, endpoints, profiles and upgrades.
 
-- **zPod API**: The zPod API is the core component of the project. It's the main entry point to interact with the project. It's a REST API that exposes the main functionalities of the project. It's the only component that is publicly exposed. It is the central component that controls and orchestrates everything in this framework. It will take care of any requests, manage and store information, and orchestrate/schedule flows onto the **zPod Engine** for execution.
+    [:octicons-arrow-right-24:Administration](guide/admin/index.md)
 
-- **zPod SDK**: The zPod SDK is generated from the [FastAPI](https://fastapi.tiangolo.com/) OpenAPI JSON schema. It's a Python SDK that allows clients to interact with the API without using pure REST API calls.
-- **zPod CLI**: The zPod CLI is a wrapper around the zPod API which is used to manage, configure and operate everything required to run zPods. It is based on the [Typer](https://typer.tiangolo.com/) framework.
-- **zpodweb**: The official [Web UI](https://github.com/zPodFactory/zpodweb) for zPodFactory. Deployed automatically with the appliance on port **8500**, it provides dashboards, zPod management, network topology diagrams, and visual administration of components, profiles, endpoints, and settings. See the [Web UI guide](guide/user/web-ui.md).
-- **zPod Engine**: The zPod Engine is the core component responsible for the deployment of the nested environment. It uses the [Prefect](https://docs.prefect.io/) workflow orchestration engine to handle scheduling and execution of all flows and their child tasks.
-- **zPod Library**: This is a storage location that encompasses the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary) component metadata and downloaded templates/binaries.  These files will be managed by the embedded download engine.
+-   :material-puzzle-outline:{ .lg .middle } **Extensibility**
 
-> Everything runs in Docker containers, through a Docker Compose application stack.
+    ---
 
+    Config scripts, Terraform and Ansible on top of zPods, and the VCF deployer.
+
+    [:octicons-arrow-right-24:Extensibility](guide/extensibility/bring-your-own.md)
+
+</div>
+
+## Why zPodFactory
+
+zPodFactory is a rebuild from scratch of an earlier project that was tied to one environment. It is designed around a few principles:
+
+1. **Simplicity**: deploy a nested environment in minutes from a premade or custom profile, without preparing or operating the underlying infrastructure by hand.
+2. **Flexibility**: zPodFactory handles the initial deployment only. What you do inside a zPod, and its lifecycle, is up to you.
+3. **Extensibility**: everything goes through the zPod API, so new clients and integrations are easy to build.
+4. **Maintainability**: day-to-day administration of the factory is kept as simple as possible.
+
+See [Concepts & architecture](guide/concepts.md) for how it is built.

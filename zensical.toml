@@ -7,8 +7,9 @@ repo_name = "GitHub"
 repo_url = "https://github.com/zpodfactory"
 # site_url = "https://zpodfactory.github.io/"   # set for canonical URLs / sitemap
 
-# Navigation (ported from mkdocs-nav.yml; the Blog section is dropped until
-# Zensical ships its blog module).
+# Navigation: one top tab per audience, each page a single topic. Section
+# overview pages are listed explicitly as the first child (see the
+# navigation.indexes note under Theme).
 # Custom dark-mode color scheme (Catppuccin Mocha) + layout tweaks.
 # Paths are relative to docs_dir.
 extra_css = [
@@ -22,28 +23,45 @@ extra_javascript = [
 ]
 
 nav = [
-  { "Introduction" = ["index.md"] },
-  { "Installation & Configuration Guide" = [
-    { "Installation and Configuration" = "guide/install/index.md" },
-    { "Manual Installation" = "guide/install/manual.md" },
+  { "Home" = ["index.md"] },
+  { "Getting started" = [
+    { "Concepts & architecture" = "guide/concepts.md" },
+    { "Install zPodFactory" = "guide/install/index.md" },
+    { "Set up the zPod CLI (zcli)" = "guide/zcli.md" },
   ] },
-  { "Web UI" = ["guide/user/web-ui.md"] },
-  { "Admin Guide" = [
-    { "Admin Guide" = "guide/admin/index.md" },
-    { "zcore migration" = "guide/admin/zcore-migration.md" },
-    { "Broadcom download token" = "guide/admin/broadcom-download-token.md" },
+  { "User Guide" = [
+    { "Overview" = "guide/user/index.md" },
+    { "Web UI" = "guide/user/web-ui.md" },
+    { "zPods" = "guide/user/zpods.md" },
+    { "Components" = "guide/user/components.md" },
+    { "Networks" = "guide/user/networks.md" },
+    { "Storage and NFS" = "guide/user/storage.md" },
+    { "DNS records" = "guide/user/dns.md" },
+  ] },
+  { "Administration" = [
+    { "Overview" = "guide/admin/index.md" },
     { "Settings & feature flags" = "guide/admin/feature-flags.md" },
+    { "Users, groups & permissions" = "guide/admin/users.md" },
+    { "Libraries & components" = "guide/admin/components.md" },
+    { "Broadcom download token" = "guide/admin/broadcom-download-token.md" },
+    { "Endpoints" = "guide/admin/endpoints.md" },
+    { "Profiles" = "guide/admin/profiles.md" },
     { "Endpoint OVA staging" = "guide/admin/endpoint-ova-staging.md" },
+    { "Upgrading" = "guide/admin/upgrade.md" },
+    { "zcore migration" = "guide/admin/zcore-migration.md" },
+    { "Troubleshooting" = "guide/admin/troubleshooting.md" },
   ] },
-  { "User Guide" = ["guide/user/index.md"] },
   { "Extensibility" = [
     "guide/extensibility/bring-your-own.md",
     "guide/extensibility/config-scripts.md",
     "guide/extensibility/vcf-deployer.md",
   ] },
-  { "API/SDK" = ["api/index.md"] },
-  "roadmap/roadmap.md",
-  "faq/faq.md",
+  { "Reference" = [
+    { "API & SDK" = "api/index.md" },
+    { "FAQ" = "faq/faq.md" },
+    { "What's new" = "releases.md" },
+    { "Roadmap" = "roadmap/roadmap.md" },
+  ] },
 ]
 
 # ----------------------------------------------------------------------------
@@ -59,6 +77,13 @@ features = [
   # header, so overview pages never appear as sidebar children. Explicit nav
   # labels below list them as the first subpage instead.
   "navigation.footer",
+  "navigation.instant",
+  "navigation.instant.progress",
+  "navigation.path",
+  "navigation.top",
+  "toc.follow",
+  "search.suggest",
+  "search.highlight",
   "content.code.annotate",
   "content.code.copy",
 ]
@@ -85,6 +110,10 @@ toggle.name = "Switch to light mode"
 # ----------------------------------------------------------------------------
 [project.markdown_extensions.admonition]
 [project.markdown_extensions.attr_list]
+[project.markdown_extensions.md_in_html]
+
+[project.markdown_extensions.toc]
+permalink = true
 
 [project.markdown_extensions.pymdownx.highlight]
 anchor_linenums = true

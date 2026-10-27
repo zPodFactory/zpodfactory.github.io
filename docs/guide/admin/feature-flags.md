@@ -14,6 +14,8 @@ zcli setting create  -n <name> -v <value> [-d "<text>"]   # add one that is not 
 zcli setting delete  <name>
 ```
 
+![zcli setting list](../../img/zcli_setting_list.svg)
+
 Settings are read at the point of use — changes take effect on the next operation, with no restart required.
 
 ## Seeded at startup
@@ -33,6 +35,8 @@ Neither pass ever overwrites a row that already exists, so a value you changed i
 | `zpodfactory_broadcom_download_token` | empty | [Core settings](#zpodfactory_broadcom_download_token) |
 | `zpodfactory_ssh_key` | empty | [Core settings](#zpodfactory_ssh_key) |
 | `zpodfactory_fqdn_reserved_chars` | `8` | [Core settings](#zpodfactory_fqdn_reserved_chars) |
+| `zpodfactory_zpod_disk_max_gb` | `2048` | [zcore storage](#zpodfactory_zpod_disk_max_gb) |
+| `zpodfactory_datastore_min_free_pct` | `15` | [zcore storage](#zpodfactory_datastore_min_free_pct) |
 | `ff_esxi_hostname_is_fqdn` | `true` | [Component deployment](#ff_esxi_hostname_is_fqdn) |
 | `ff_endpoint_ova_staging` | `false` | [Component deployment](#ff_endpoint_ova_staging) |
 | `ff_reuse_zpod_password` | `false` | [zPod creation](#ff_reuse_zpod_password) |
@@ -101,6 +105,34 @@ License key applied automatically after the matching component is deployed. Supp
 - **Seeded:** no (per-component, on-demand)
 - **Value:** license key string
 - **Example:** `zcli setting create -n license_vcsa-8.0u3 -v "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"`
+
+## zcore storage
+
+Since zpodcore 0.9.0, zPod owners can add, grow and remove virtual disks on their zPod's zcore (see [Storage and NFS](../user/storage.md)). Two seeded settings bound what they can consume.
+
+### `zpodfactory_zpod_disk_max_gb`
+
+The largest disk, in GiB, that a zPod owner can add to zcore, or grow a zcore disk to. A larger request is refused with `422`. Superadmins can exceed it.
+
+- **Seeded:** yes, default `2048`
+- **Value:** whole number of GiB
+- **Example:** `zcli setting update zpodfactory_zpod_disk_max_gb -v 1024`
+
+### `zpodfactory_datastore_min_free_pct`
+
+The free space, as a percentage of the datastore, that must remain on the datastore. It applies to everyone, superadmins included:
+
+- **zcore disk add and grow:** the run fails before any change if the zcore VM's datastore would keep less than this. The full disk size counts, even though the disk is thin.
+- **zPod deploy and every L1 component add:** the endpoint's storage datastore is checked first. If it is already under the floor, the run fails before anything is created. The size of an OVA import is not known reliably in advance, so this check does not add it.
+
+Each check writes one line to the run's log.
+
+- **Seeded:** yes, default `15`
+- **Value:** whole-number percentage
+- **Example:** `zcli setting update zpodfactory_datastore_min_free_pct -v 10`
+
+!!! warning "Behavior change in 0.9.0"
+    Before 0.9.0, a deploy did not check free space on the datastore. A deploy that worked on 0.8 can now fail on a nearly full datastore. To get the 0.8 behavior back, set this setting to `0`.
 
 ## Feature flags: zPod creation
 

@@ -1,0 +1,574 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1080" width="1600" height="1080" font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" role="img" aria-label="A zPod drawn as a physical rack: a top-of-rack switch for the zPod segment, zcore as the rack router and NFS filer, four nested ESXi servers, uplinked through the NSX T1 and T0">
+  <rect width="1600" height="1080" fill="#fff"/>
+  <!-- rack cabinet -->
+  <rect x="600" y="96" width="360" height="700" rx="10" fill="#2B2F36"/>
+  <rect x="610" y="126" width="340" height="656" fill="#1E2227"/>
+  <text x="780.0" y="117" text-anchor="middle" font-size="14" font-weight="700" fill="#E6E8EB">zPod “test” rack</text>
+  <rect x="614" y="128" width="16" height="652" fill="#3A3F47"/>
+  <rect x="620" y="134" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="147" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="160" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="173" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="186" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="199" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="212" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="225" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="238" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="251" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="264" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="277" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="290" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="303" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="316" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="329" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="342" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="355" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="368" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="381" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="394" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="407" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="420" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="433" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="446" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="459" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="472" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="485" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="498" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="511" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="524" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="537" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="550" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="563" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="576" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="589" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="602" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="615" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="628" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="641" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="654" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="667" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="680" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="693" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="706" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="719" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="732" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="745" width="4" height="4" fill="#1E2227"/>
+  <rect x="620" y="758" width="4" height="4" fill="#1E2227"/>
+  <rect x="930" y="128" width="16" height="652" fill="#3A3F47"/>
+  <rect x="936" y="134" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="147" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="160" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="173" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="186" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="199" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="212" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="225" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="238" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="251" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="264" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="277" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="290" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="303" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="316" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="329" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="342" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="355" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="368" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="381" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="394" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="407" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="420" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="433" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="446" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="459" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="472" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="485" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="498" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="511" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="524" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="537" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="550" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="563" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="576" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="589" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="602" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="615" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="628" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="641" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="654" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="667" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="680" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="693" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="706" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="719" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="732" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="745" width="4" height="4" fill="#1E2227"/>
+  <rect x="936" y="758" width="4" height="4" fill="#1E2227"/>
+  <rect x="618" y="782" width="40" height="14" fill="#2B2F36"/><rect x="902" y="782" width="40" height="14" fill="#2B2F36"/>
+  <rect x="634" y="136" width="292" height="22" rx="2" fill="#30363F" stroke="#0F1114"/>
+  <rect x="754.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="755.0" y="151" width="5" height="2" fill="#F2B705"/>
+  <rect x="763.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="764.5" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="773.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="774.0" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="782.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="783.5" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="792.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="793.0" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="801.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="802.5" y="151" width="5" height="2" fill="#F2B705"/>
+  <rect x="811.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="812.0" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="820.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="821.5" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="830.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="831.0" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="839.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="840.5" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="849.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="850.0" y="151" width="5" height="2" fill="#F2B705"/>
+  <rect x="858.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="859.5" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="868.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="869.0" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="877.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="878.5" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="887.0" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="888.0" y="151" width="5" height="2" fill="#7CD992"/>
+  <rect x="896.5" y="142" width="7" height="6" fill="#0F1114"/>
+  <rect x="897.5" y="151" width="5" height="2" fill="#F2B705"/>
+  <text x="646" y="152" font-size="11.5" font-weight="700" fill="#E6E8EB">TOR switch</text>
+  <rect x="868" y="141" width="50" height="13" rx="2" fill="#12455F"/>
+  <text x="893" y="151" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff">GENEVE</text>
+  <rect x="634" y="162" width="292" height="74" rx="2" fill="#3B2A1E" stroke="#0F1114"/>
+  <rect x="634" y="162" width="6" height="74" fill="#E8730C"/>
+  <line x1="640" y1="186" x2="926" y2="186" stroke="#1E1610" stroke-width="2"/>
+  <text x="648" y="178" font-size="11.5" font-weight="700" fill="#FFD3AD">zcore · router</text>
+  <text x="916" y="178" text-anchor="end" font-size="10" fill="#FFD3AD">10.96.42.2</text>
+  <rect x="754.0" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="755.0" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="763.5" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="764.5" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="773.0" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="774.0" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="782.5" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="783.5" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="792.0" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="793.0" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="801.5" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="802.5" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="811.0" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="812.0" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="820.5" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="821.5" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="830.0" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="831.0" y="177" width="5" height="2" fill="#7CD992"/>
+  <rect x="839.5" y="168" width="7" height="6" fill="#0F1114"/>
+  <rect x="840.5" y="177" width="5" height="2" fill="#7CD992"/>
+  <text x="648" y="207" font-size="11.5" font-weight="700" fill="#FFD3AD">zcore · NFS filer</text>
+  <text x="648" y="224" font-size="10.5" fill="#E8C4A4">STORAGE01 + yours · DNS · DHCP</text>
+  <rect x="844" y="196" width="14" height="32" rx="1.5" fill="#22262B" stroke="#55493F"/>
+  <circle cx="851" cy="223" r="1.6" fill="#7CD992"/>
+  <rect x="862" y="196" width="14" height="32" rx="1.5" fill="#22262B" stroke="#55493F"/>
+  <circle cx="869" cy="223" r="1.6" fill="#7CD992"/>
+  <rect x="880" y="196" width="14" height="32" rx="1.5" fill="#22262B" stroke="#55493F"/>
+  <circle cx="887" cy="223" r="1.6" fill="#7CD992"/>
+  <rect x="898" y="196" width="14" height="32" rx="1.5" fill="#22262B" stroke="#55493F"/>
+  <circle cx="905" cy="223" r="1.6" fill="#7CD992"/>
+  <path d="M767.0 148 C762.0 158 762.0 160 767.0 168" stroke="#12455F" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M786.0 148 C781.0 158 781.0 160 786.0 168" stroke="#6A1B9A" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M805.0 148 C800.0 158 800.0 160 805.0 168" stroke="#D97706" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M824.0 148 C819.0 158 819.0 160 824.0 168" stroke="#00796B" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <path d="M843.0 148 C838.0 158 838.0 160 843.0 168" stroke="#AB47BC" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <rect x="634" y="240" width="292" height="22" rx="2" fill="#262A30" stroke="#0F1114"/>
+  <rect x="634" y="270" width="292" height="278" rx="3" fill="none" stroke="#5A6170" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="780.0" y="395.0" text-anchor="middle" font-size="30" fill="#5A6170">+</text>
+  <text x="780.0" y="419.0" text-anchor="middle" font-size="13" font-weight="700" fill="#9AA4AF">room to grow</text>
+  <text x="780.0" y="437.0" text-anchor="middle" font-size="11.5" fill="#8A949F">more ESXi hosts, NSX edges, appliances</text>
+  <text x="780.0" y="453.0" text-anchor="middle" font-size="11.5" fill="#8A949F">or extra storage, added to the zPod</text>
+  <rect x="634" y="552" width="292" height="48" rx="2" fill="#C9D0D8" stroke="#0F1114"/>
+  <text x="646" y="571" font-size="12" font-weight="700" fill="#1F2933">ESXi · esxi11</text>
+  <text x="646" y="588" font-size="11" fill="#3E4A56">10.96.42.11</text>
+  <rect x="776" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="779" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="793" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="796" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="810" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="813" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="827" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="830" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="844" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="847" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="861" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="864" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="878" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="881" y="584" width="7" height="2" fill="#62A420"/>
+  <rect x="895" y="559" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="898" y="584" width="7" height="2" fill="#62A420"/>
+  <circle cx="914" cy="576" r="3" fill="#62A420"/>
+  <rect x="634" y="604" width="292" height="48" rx="2" fill="#C9D0D8" stroke="#0F1114"/>
+  <text x="646" y="623" font-size="12" font-weight="700" fill="#1F2933">ESXi · esxi12</text>
+  <text x="646" y="640" font-size="11" fill="#3E4A56">10.96.42.12</text>
+  <rect x="776" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="779" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="793" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="796" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="810" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="813" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="827" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="830" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="844" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="847" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="861" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="864" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="878" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="881" y="636" width="7" height="2" fill="#62A420"/>
+  <rect x="895" y="611" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="898" y="636" width="7" height="2" fill="#62A420"/>
+  <circle cx="914" cy="628" r="3" fill="#62A420"/>
+  <rect x="634" y="656" width="292" height="48" rx="2" fill="#C9D0D8" stroke="#0F1114"/>
+  <text x="646" y="675" font-size="12" font-weight="700" fill="#1F2933">ESXi · esxi13</text>
+  <text x="646" y="692" font-size="11" fill="#3E4A56">10.96.42.13</text>
+  <rect x="776" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="779" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="793" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="796" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="810" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="813" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="827" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="830" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="844" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="847" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="861" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="864" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="878" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="881" y="688" width="7" height="2" fill="#62A420"/>
+  <rect x="895" y="663" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="898" y="688" width="7" height="2" fill="#62A420"/>
+  <circle cx="914" cy="680" r="3" fill="#62A420"/>
+  <rect x="634" y="708" width="292" height="48" rx="2" fill="#C9D0D8" stroke="#0F1114"/>
+  <text x="646" y="727" font-size="12" font-weight="700" fill="#1F2933">ESXi · esxi14</text>
+  <text x="646" y="744" font-size="11" fill="#3E4A56">10.96.42.14</text>
+  <rect x="776" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="779" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="793" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="796" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="810" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="813" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="827" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="830" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="844" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="847" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="861" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="864" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="878" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="881" y="740" width="7" height="2" fill="#62A420"/>
+  <rect x="895" y="715" width="13" height="34" rx="1.5" fill="#E9EDF1" stroke="#8A96A3"/>
+  <rect x="898" y="740" width="7" height="2" fill="#62A420"/>
+  <circle cx="914" cy="732" r="3" fill="#62A420"/>
+  <!-- 802.1Q trunk patch cables -->
+  <path d="M926 147.0 H978 V766" stroke="#12455F" stroke-width="6" stroke-linejoin="round" fill="none"/>
+  <line x1="978" y1="173.0" x2="926" y2="173.0" stroke="#12455F" stroke-width="2"/>
+  <circle cx="978" cy="173.0" r="3" fill="#12455F"/>
+  <line x1="978" y1="576.0" x2="926" y2="576.0" stroke="#12455F" stroke-width="2"/>
+  <circle cx="978" cy="576.0" r="3" fill="#12455F"/>
+  <line x1="978" y1="628.0" x2="926" y2="628.0" stroke="#12455F" stroke-width="2"/>
+  <circle cx="978" cy="628.0" r="3" fill="#12455F"/>
+  <line x1="978" y1="680.0" x2="926" y2="680.0" stroke="#12455F" stroke-width="2"/>
+  <circle cx="978" cy="680.0" r="3" fill="#12455F"/>
+  <line x1="978" y1="732.0" x2="926" y2="732.0" stroke="#12455F" stroke-width="2"/>
+  <circle cx="978" cy="732.0" r="3" fill="#12455F"/>
+  <text x="986" y="379.5" font-size="12" fill="#12455F" transform="rotate(90 986 379.5)" text-anchor="middle">802.1Q trunk · native + VLANs 1–4094</text>
+  <!-- upstream -->
+  <rect x="180" y="20" width="130" height="36" rx="18" fill="#fff" stroke="#C62828" stroke-width="3"/>
+  <text x="245" y="44" text-anchor="middle" font-size="15" font-weight="700" fill="#C62828">INTERNET</text>
+  <rect x="350" y="20" width="150" height="36" rx="18" fill="#fff" stroke="#777" stroke-width="3"/>
+  <text x="425" y="36" text-anchor="middle" font-size="12" font-weight="700" fill="#444">Corp network</text>
+  <text x="425" y="50" text-anchor="middle" font-size="11" fill="#666">VPN / BGP</text>
+  <path d="M245 56 V72 H330 M425 56 V72 H330 M330 72 V84" stroke="#777" stroke-width="3" fill="none"/>
+  <rect x="278" y="84" width="104" height="66" rx="8" fill="#F4F4F4" stroke="#444" stroke-width="2"/>
+  <path d="M308 101 L296 130 M308 101 L330 130 M308 101 L364 130 M352 101 L296 130 M352 101 L330 130 M352 101 L364 130" stroke="#777" stroke-width="1.5" fill="none"/>
+  <rect x="296" y="91" width="24" height="10" rx="2" fill="#444"/>
+  <rect x="340" y="91" width="24" height="10" rx="2" fill="#444"/>
+  <rect x="284" y="130" width="24" height="10" rx="2" fill="#444"/>
+  <rect x="318" y="130" width="24" height="10" rx="2" fill="#444"/>
+  <rect x="352" y="130" width="24" height="10" rx="2" fill="#444"/>
+  <text x="392" y="122" font-size="12" font-weight="700" fill="#444">Physical network</text>
+  <line x1="330" y1="150" x2="330" y2="174" stroke="#777" stroke-width="3"/>
+  <rect x="24" y="166" width="190" height="66" rx="4" fill="#FFFBEA" stroke="#F2B705" stroke-width="1.5"/>
+  <text x="36" y="185" font-size="11.5" font-weight="700" fill="#8A6A00">zPod pool (all zPods)</text>
+  <text x="36" y="204" font-size="14" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">10.96.0.0/16</text>
+  <text x="36" y="222" font-size="11" fill="#555">one /24 each · this one <tspan font-family="Consolas, 'JetBrains Mono', monospace">.42.0/24</tspan></text>
+  <line x1="214" y1="200" x2="302" y2="200" stroke="#F2B705" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g>
+    <circle cx="330" cy="200" r="26" fill="#F2B705"/>
+    <g stroke="#fff" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M312.7 200 h10.6 M318.4 195.2 l4.8 4.8 -4.8 4.8"/>
+      <path d="M347.3 200 h-10.6 M341.6 195.2 l-4.8 4.8 4.8 4.8"/>
+      <path d="M330 194.2 v-11.6 M325.2 187.5 l4.8 -4.8 4.8 4.8"/>
+      <path d="M330 205.8 v11.6 M325.2 212.5 l4.8 4.8 4.8 -4.8"/>
+    </g>
+  </g>
+  <rect x="234.6" y="232" width="190.8" height="21" fill="#F2B705"/>
+  <text x="330" y="247" text-anchor="middle" font-size="12" fill="#fff" font-weight="700">NSX T0 · datacenter core</text>
+  <line x1="330" y1="253" x2="330" y2="276" stroke="#12455F" stroke-width="3"/>
+  <g>
+    <circle cx="330" cy="302" r="26" fill="#12455F"/>
+    <g stroke="#fff" stroke-width="2.9" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M312.7 302 h10.6 M318.4 297.2 l4.8 4.8 -4.8 4.8"/>
+      <path d="M347.3 302 h-10.6 M341.6 297.2 l-4.8 4.8 4.8 4.8"/>
+      <path d="M330 296.2 v-11.6 M325.2 289.5 l4.8 -4.8 4.8 4.8"/>
+      <path d="M330 307.8 v11.6 M325.2 314.5 l4.8 4.8 4.8 -4.8"/>
+    </g>
+  </g>
+  <rect x="234.6" y="334" width="190.8" height="21" fill="#12455F"/>
+  <text x="330" y="349" text-anchor="middle" font-size="12" fill="#fff">NSX T1 · zPod-test-tier1</text>
+  <path d="M356 302 H570 Q586 302 586 155.0 V147.0 H634" stroke="#12455F" stroke-width="6" stroke-linejoin="round" fill="none"/>
+  <text x="370" y="276" font-size="12" font-weight="700" fill="#12455F">zPod-test-segment</text>
+  <text x="370" y="292" font-size="11.5" fill="#12455F">T1 .1 on the native VLAN</text>
+  <rect x="24" y="254" width="206" height="124" rx="4" fill="#F5F7F9" stroke="#C5CAD0"/>
+  <line x1="230" y1="302" x2="302" y2="302" stroke="#12455F" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="36" y="273" font-size="12" font-weight="700" fill="#12455F">T1 routes</text>
+  <text x="218" y="273" text-anchor="end" font-size="9.5" fill="#888">next hop</text>
+  <text x="36" y="292" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#4A148C">10.96.42.0/26</text>
+  <text x="218" y="292" text-anchor="end" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#4A148C">gw .1</text>
+  <text x="36" y="307" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#6A1B9A">10.96.42.64/26</text>
+  <text x="218" y="307" text-anchor="end" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#6A1B9A">10.96.42.2</text>
+  <text x="36" y="322" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#8E24AA">10.96.42.128/26</text>
+  <text x="218" y="322" text-anchor="end" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#8E24AA">10.96.42.2</text>
+  <text x="36" y="337" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#AB47BC">10.96.42.192/26</text>
+  <text x="218" y="337" text-anchor="end" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#AB47BC">10.96.42.2</text>
+  <text x="36" y="352" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#26A69A">10.42.200.0/24</text>
+  <text x="218" y="352" text-anchor="end" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#26A69A">10.96.42.2</text>
+  <text x="36" y="370" font-size="8.5" fill="#26A69A">↳ VLAN 200 made global by a superadmin</text>
+  <!-- zcore networks, connected to the rack trunk -->
+  <rect x="1006" y="95.0" width="584" height="422.0" rx="6" fill="#FAFAFB" stroke="#DDE1E6"/>
+  <text x="1020" y="115.0" font-size="13" font-weight="700" fill="#C2510F">zcore networks</text>
+  <text x="1148" y="115.0" font-size="11" fill="#888">as in the zpodweb Topology tab, All networks</text>
+  <line x1="978" y1="147.0" x2="1566" y2="147.0" stroke="#12455F" stroke-width="6" stroke-linecap="round"/>
+  <text x="1566" y="137.0" text-anchor="end" font-size="11.5" font-weight="700" fill="#12455F">zPod-test-segment · 802.1Q trunk</text>
+  <rect x="1020" y="239.0" width="556" height="238.0" rx="4" fill="#FFF7EE" stroke="#E8730C" stroke-width="1.5"/>
+  <text x="1564" y="259.0" text-anchor="end" font-size="14" font-weight="700" fill="#C2510F">zcore.test.zpod.io</text>
+  <text x="1564" y="274.0" text-anchor="end" font-size="10" fill="#8A6A4A">zboxapi · network, storage &amp; core services</text>
+  <line x1="1046" y1="147.0" x2="1046" y2="239.0" stroke="#4A148C" stroke-width="2"/>
+  <circle cx="1046" cy="239.0" r="6" fill="#fff" stroke="#4A148C" stroke-width="2"/>
+  <text x="1056" y="175.0" font-size="10.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">eth0 · native</text>
+  <text x="1056" y="189.0" font-size="10" font-family="Consolas, 'JetBrains Mono', monospace" fill="#666">10.96.42.2/26</text>
+  <line x1="1182" y1="147.0" x2="1182" y2="297.0" stroke="#12455F" stroke-width="6"/>
+  <text x="1194" y="175.0" font-size="10.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F">eth1 · 802.1Q trunk</text>
+  <text x="1194" y="189.0" font-size="10" font-family="Consolas, 'JetBrains Mono', monospace" fill="#666">8 tagged VLANs</text>
+  <line x1="1074" y1="297.0" x2="1546" y2="297.0" stroke="#12455F" stroke-width="6" stroke-linecap="round"/>
+  <path d="M1046 245.0 V361.0 H1534" stroke="#9AA3AD" stroke-width="1.5" stroke-dasharray="3 3" fill="none"/>
+  <text x="1040" y="306.0" transform="rotate(-90 1040 306.0)" text-anchor="middle" font-size="10" fill="#777">routing</text>
+  <line x1="1086" y1="297.0" x2="1086" y2="355.0" stroke="#B45309" stroke-width="2"/>
+  <circle cx="1086" cy="361.0" r="6" fill="#fff" stroke="#B45309" stroke-width="2"/>
+  <text x="1086" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.10</text>
+  <text x="1086" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">172.16.10.1</text>
+  <text x="1086" y="411.0" text-anchor="middle" font-size="9" fill="#B45309">local</text>
+  <line x1="1150" y1="297.0" x2="1150" y2="355.0" stroke="#D97706" stroke-width="2"/>
+  <circle cx="1150" cy="361.0" r="6" fill="#fff" stroke="#D97706" stroke-width="2"/>
+  <text x="1150" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.20</text>
+  <text x="1150" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">172.16.20.1</text>
+  <text x="1150" y="411.0" text-anchor="middle" font-size="9" fill="#D97706">local</text>
+  <line x1="1214" y1="297.0" x2="1214" y2="355.0" stroke="#F59E0B" stroke-width="2"/>
+  <circle cx="1214" cy="361.0" r="6" fill="#fff" stroke="#F59E0B" stroke-width="2"/>
+  <text x="1214" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.30</text>
+  <text x="1214" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">172.16.30.1</text>
+  <text x="1214" y="411.0" text-anchor="middle" font-size="9" fill="#F59E0B">local</text>
+  <line x1="1278" y1="297.0" x2="1278" y2="355.0" stroke="#6A1B9A" stroke-width="2"/>
+  <circle cx="1278" cy="361.0" r="6" fill="#fff" stroke="#6A1B9A" stroke-width="2"/>
+  <text x="1278" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.64</text>
+  <text x="1278" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">10.96.42.65</text>
+  <text x="1278" y="411.0" text-anchor="middle" font-size="9" fill="#6A1B9A">global</text>
+  <line x1="1342" y1="297.0" x2="1342" y2="355.0" stroke="#8E24AA" stroke-width="2"/>
+  <circle cx="1342" cy="361.0" r="6" fill="#fff" stroke="#8E24AA" stroke-width="2"/>
+  <text x="1342" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.128</text>
+  <text x="1342" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">10.96.42.129</text>
+  <text x="1342" y="411.0" text-anchor="middle" font-size="9" fill="#8E24AA">global</text>
+  <line x1="1406" y1="297.0" x2="1406" y2="355.0" stroke="#AB47BC" stroke-width="2"/>
+  <circle cx="1406" cy="361.0" r="6" fill="#fff" stroke="#AB47BC" stroke-width="2"/>
+  <text x="1406" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.192</text>
+  <text x="1406" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">10.96.42.193</text>
+  <text x="1406" y="411.0" text-anchor="middle" font-size="9" fill="#AB47BC">global</text>
+  <line x1="1470" y1="297.0" x2="1470" y2="355.0" stroke="#00796B" stroke-width="2"/>
+  <circle cx="1470" cy="361.0" r="6" fill="#fff" stroke="#00796B" stroke-width="2"/>
+  <text x="1470" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.111</text>
+  <text x="1470" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">10.42.111.1</text>
+  <text x="1470" y="411.0" text-anchor="middle" font-size="9" fill="#00796B">masquerade</text>
+  <line x1="1534" y1="297.0" x2="1534" y2="355.0" stroke="#26A69A" stroke-width="2"/>
+  <circle cx="1534" cy="361.0" r="6" fill="#fff" stroke="#26A69A" stroke-width="2"/>
+  <text x="1534" y="383.0" text-anchor="middle" font-size="9.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#222">eth1.200</text>
+  <text x="1534" y="397.0" text-anchor="middle" font-size="8.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#555">10.42.200.1</text>
+  <text x="1534" y="411.0" text-anchor="middle" font-size="9" fill="#26A69A">global</text>
+  <path d="M1058 419.0 V425.0 H1242 V419.0" stroke="#D97706" stroke-width="1.5" fill="none"/>
+  <text x="1150.0" y="441.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#D97706">zcore VLANs (local) · /24</text>
+  <path d="M1250 419.0 V425.0 H1434 V419.0" stroke="#8E24AA" stroke-width="1.5" fill="none"/>
+  <text x="1342.0" y="441.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#8E24AA">zPod networks (global) · /26</text>
+  <path d="M1442 419.0 V425.0 H1562 V419.0" stroke="#00796B" stroke-width="1.5" fill="none"/>
+  <text x="1502.0" y="441.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#00796B">your VLANs · /24</text>
+  <line x1="1030" y1="499.0" x2="1066" y2="499.0" stroke="#12455F" stroke-width="6" stroke-linecap="round"/>
+  <text x="1074" y="503.0" font-size="11" fill="#555">802.1Q trunk</text>
+  <line x1="1170" y1="499.0" x2="1206" y2="499.0" stroke="#4A148C" stroke-width="2"/>
+  <text x="1214" y="503.0" font-size="11" fill="#555">native (untagged)</text>
+  <line x1="1332" y1="499.0" x2="1342" y2="499.0" stroke="#D97706" stroke-width="3"/>
+  <line x1="1346" y1="499.0" x2="1356" y2="499.0" stroke="#8E24AA" stroke-width="3"/>
+  <line x1="1360" y1="499.0" x2="1370" y2="499.0" stroke="#00796B" stroke-width="3"/>
+  <text x="1378" y="503.0" font-size="11" fill="#555">tagged VLAN, coloured by group</text>
+  <rect x="1036" y="449.0" width="196" height="20" fill="#E8F5EC" stroke="#7DBF95"/>
+  <text x="1134" y="463.0" text-anchor="middle" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#2E7D4F">masquerade: 10.42.111.0/24 → eth0</text>
+  <path d="M588 552 q-10 0 -10 10 V646.0 q0 8 -8 8 q8 0 8 8 V746 q0 10 10 10" stroke="#555" stroke-width="2" fill="none"/>
+  <text x="564" y="654.0" text-anchor="middle" font-size="13" font-weight="700" fill="#333" transform="rotate(-90 564 654.0)">vSphere cluster</text>
+  <!-- zcore storage: the default STORAGE01 and its folders, linked to the filer -->
+  <rect x="24" y="396" width="516" height="268" rx="6" fill="#FAFAFB" stroke="#DDE1E6"/>
+  <text x="38" y="416" font-size="13" font-weight="700" fill="#C2510F">zcore storage</text>
+  <rect x="38" y="428" width="488" height="22" rx="3" fill="#fff" stroke="#E3E6EA"/>
+  <circle cx="49" cy="439" r="3.5" fill="#43A047"/>
+  <text x="58" y="443" font-size="10.5" fill="#333">nfs-server active <tspan fill="#888">· NFS 3 · 4 · 4.1 · 4.2</tspan></text>
+  <text x="518" y="443" text-anchor="end" font-size="10" fill="#888">server <tspan font-family="Consolas, 'JetBrains Mono', monospace" fill="#C2510F">zcore.test.zpod.io</tspan></text>
+  <text x="38" y="472" font-size="10" fill="#999">Storage · Folder</text>
+  <text x="166" y="472" font-size="10" fill="#999">Mount · Path</text>
+  <text x="342" y="472" font-size="10" fill="#999">NFS clients · Access</text>
+  <text x="522" y="472" text-anchor="end" font-size="10" fill="#999">Kind</text>
+  <line x1="38" y1="479" x2="526" y2="479" stroke="#E3E6EA"/>
+  <rect x="38" y="489" width="12" height="9" rx="1.5" fill="none" stroke="#666" stroke-width="1.5"/>
+  <text x="54" y="498" font-size="11" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">STORAGE01</text>
+  <text x="166" y="498" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#1565C0">/FILER/STORAGE01 <tspan fill="#888">· ext4 · sdb</tspan></text>
+  <rect x="342" y="491" width="80" height="6" rx="3" fill="#E3E6EA"/>
+  <rect x="342" y="491" width="49" height="6" rx="3" fill="#F59E0B"/>
+  <text x="428" y="498" font-size="10" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#F59E0B">61%</text>
+  <rect x="482.0" y="487" width="40.0" height="16" rx="8" fill="#FFF4E5" stroke="#B45309" stroke-width="1"/>
+  <text x="502.0" y="499" text-anchor="middle" font-size="9.5" font-weight="700" fill="#B45309">zcore</text>
+  <line x1="44" y1="504" x2="44" y2="596" stroke="#C5CAD0" stroke-width="1.5"/>
+  <line x1="44" y1="522" x2="50" y2="522" stroke="#C5CAD0" stroke-width="1.5"/>
+  <text x="54" y="526" font-size="10.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">NFS-01</text>
+  <circle cx="103.4" cy="522" r="3.5" fill="#43A047"/>
+  <text x="110.4" y="526" font-size="10" font-weight="700" fill="#43A047">4</text>
+  <text x="166" y="526" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#1565C0">/FILER/STORAGE01/NFS-01</text>
+  <rect x="339" y="515" width="88" height="15" rx="2" fill="#E8F0FB"/>
+  <text x="343" y="526" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#1565C0">10.96.42.0/26</text>
+  <text x="434" y="526" font-size="9.5" fill="#C2510F">rw</text>
+  <rect x="459.6" y="515" width="62.4" height="16" rx="8" fill="#FFF1E6" stroke="#C2510F" stroke-width="1"/>
+  <text x="490.8" y="527" text-anchor="middle" font-size="9.5" font-weight="700" fill="#C2510F">protected</text>
+  <line x1="44" y1="552" x2="50" y2="552" stroke="#C5CAD0" stroke-width="1.5"/>
+  <text x="54" y="556" font-size="10.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">NFS-VCD</text>
+  <circle cx="109.80000000000001" cy="552" r="3.5" fill="#43A047"/>
+  <text x="116.80000000000001" y="556" font-size="10" font-weight="700" fill="#43A047">1</text>
+  <text x="166" y="556" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#1565C0">/FILER/STORAGE01/NFS-VCD</text>
+  <rect x="339" y="545" width="88" height="15" rx="2" fill="#E8F0FB"/>
+  <text x="343" y="556" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#1565C0">10.96.42.0/26</text>
+  <text x="343" y="570" font-size="9.5" fill="#C2510F">rw · no_root_squash</text>
+  <rect x="476.4" y="545" width="45.599999999999994" height="16" rx="8" fill="#F0F1F3" stroke="#666" stroke-width="1"/>
+  <text x="499.2" y="557" text-anchor="middle" font-size="9.5" font-weight="700" fill="#666">system</text>
+  <line x1="44" y1="596" x2="50" y2="596" stroke="#C5CAD0" stroke-width="1.5"/>
+  <text x="54" y="600" font-size="10.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#888">VCF-BACKUPS</text>
+  <text x="166" y="600" font-size="9.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#1565C0">/FILER/STORAGE01/VCF-BACKUPS</text>
+  <text x="342" y="600" font-size="10" font-style="italic" fill="#999">not exported</text>
+  <line x1="38" y1="616" x2="526" y2="616" stroke="#E3E6EA"/>
+  <rect x="38" y="626" width="488" height="26" rx="4" fill="#F1F8F6" stroke="#26A69A" stroke-dasharray="4 3"/>
+  <text x="50" y="643" font-size="10.5" fill="#00796B"><tspan font-weight="700">+ STORAGE02…</tspan> your disks, storages, folders and NFS exports</text>
+  <rect x="1006" y="542" width="584" height="346" rx="6" fill="none" stroke="#888" stroke-width="1.5" stroke-dasharray="4 4"/>
+  <rect x="1016" y="532" width="168" height="18" fill="#fff"/>
+  <text x="1020" y="546" font-size="13" font-weight="700" fill="#333">zPod nested workloads</text>
+  <text x="1576" y="561" text-anchor="end" font-size="10.5" fill="#4A148C"><tspan font-weight="700">native VLAN</tspan> · <tspan font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.0/26</tspan></text>
+  <line x1="978" y1="566" x2="1576" y2="566" stroke="#4A148C" stroke-width="2"/>
+  <circle cx="978" cy="566" r="3.5" fill="#4A148C"/>
+  <line x1="1188.0" y1="566" x2="1188.0" y2="576" stroke="#4A148C" stroke-width="2"/>
+  <line x1="1250.0" y1="566" x2="1250.0" y2="576" stroke="#4A148C" stroke-width="2"/>
+  <line x1="1312.0" y1="566" x2="1312.0" y2="576" stroke="#4A148C" stroke-width="2"/>
+  <line x1="1374.0" y1="566" x2="1374.0" y2="576" stroke="#4A148C" stroke-width="2"/>
+  <line x1="1436.0" y1="566" x2="1436.0" y2="576" stroke="#4A148C" stroke-width="2"/>
+  <line x1="1498.0" y1="566" x2="1498.0" y2="576" stroke="#4A148C" stroke-width="2"/>
+  <rect x="1160" y="576" width="56" height="34" rx="3" fill="#4A148C"/>
+  <text x="1188.0" y="591" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">vcsa</text>
+  <text x="1188.0" y="604" text-anchor="middle" font-size="10" fill="#E1BEE7">.10</text>
+  <rect x="1222" y="576" width="56" height="34" rx="3" fill="#4A148C"/>
+  <text x="1250.0" y="591" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">nsx</text>
+  <text x="1250.0" y="604" text-anchor="middle" font-size="10" fill="#E1BEE7">.20</text>
+  <rect x="1284" y="576" width="56" height="34" rx="3" fill="#4A148C"/>
+  <text x="1312.0" y="591" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">vrops</text>
+  <text x="1312.0" y="604" text-anchor="middle" font-size="10" fill="#E1BEE7">.30</text>
+  <rect x="1346" y="576" width="56" height="34" rx="3" fill="#4A148C"/>
+  <text x="1374.0" y="591" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">vrli</text>
+  <text x="1374.0" y="604" text-anchor="middle" font-size="10" fill="#E1BEE7">.31</text>
+  <rect x="1408" y="576" width="56" height="34" rx="3" fill="#4A148C"/>
+  <text x="1436.0" y="591" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">vcd</text>
+  <text x="1436.0" y="604" text-anchor="middle" font-size="10" fill="#E1BEE7">.40</text>
+  <rect x="1470" y="576" width="56" height="34" rx="3" fill="#4A148C"/>
+  <text x="1498.0" y="591" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">VM</text>
+  <text x="1498.0" y="604" text-anchor="middle" font-size="10" fill="#E1BEE7">.100</text>
+  <text x="1576" y="635" text-anchor="end" font-size="10.5" fill="#00796B"><tspan font-weight="700">VLAN 111</tspan> · <tspan font-family="Consolas, 'JetBrains Mono', monospace">10.42.111.0/24</tspan></text>
+  <line x1="978" y1="642" x2="1576" y2="642" stroke="#00796B" stroke-width="2"/>
+  <circle cx="978" cy="642" r="3" fill="#00796B"/>
+  <line x1="1250.0" y1="642" x2="1250.0" y2="648" stroke="#00796B" stroke-width="2"/>
+  <rect x="1222" y="648" width="56" height="18" rx="3" fill="#00796B"/>
+  <text x="1250.0" y="661" text-anchor="middle" font-size="10" fill="#fff">VM <tspan font-weight="700">.21</tspan></text>
+  <line x1="1374.0" y1="642" x2="1374.0" y2="648" stroke="#00796B" stroke-width="2"/>
+  <rect x="1346" y="648" width="56" height="18" rx="3" fill="#00796B"/>
+  <text x="1374.0" y="661" text-anchor="middle" font-size="10" fill="#fff">VM <tspan font-weight="700">.57</tspan></text>
+  <text x="1576" y="695" text-anchor="end" font-size="10.5" fill="#26A69A"><tspan font-weight="700">VLAN 200</tspan> · <tspan font-family="Consolas, 'JetBrains Mono', monospace">10.42.200.0/24</tspan></text>
+  <line x1="978" y1="702" x2="1576" y2="702" stroke="#26A69A" stroke-width="2"/>
+  <circle cx="978" cy="702" r="3" fill="#26A69A"/>
+  <line x1="1188.0" y1="702" x2="1188.0" y2="708" stroke="#26A69A" stroke-width="2"/>
+  <rect x="1160" y="708" width="56" height="18" rx="3" fill="#26A69A"/>
+  <text x="1188.0" y="721" text-anchor="middle" font-size="10" fill="#fff">VM <tspan font-weight="700">.14</tspan></text>
+  <line x1="1312.0" y1="702" x2="1312.0" y2="708" stroke="#26A69A" stroke-width="2"/>
+  <rect x="1284" y="708" width="56" height="18" rx="3" fill="#26A69A"/>
+  <text x="1312.0" y="721" text-anchor="middle" font-size="10" fill="#fff">VM <tspan font-weight="700">.88</tspan></text>
+  <line x1="1498.0" y1="702" x2="1498.0" y2="708" stroke="#26A69A" stroke-width="2"/>
+  <rect x="1470" y="708" width="56" height="18" rx="3" fill="#26A69A"/>
+  <text x="1498.0" y="721" text-anchor="middle" font-size="10" fill="#fff">VM <tspan font-weight="700">.120</tspan></text>
+  <!-- NSX edges: uplinks on VLAN 192, VIP .250, default route to zcore .193 -->
+  <line x1="978" y1="766" x2="1576" y2="766" stroke="#AB47BC" stroke-width="2"/>
+  <circle cx="978" cy="766" r="3" fill="#AB47BC"/>
+  <text x="1576" y="758" text-anchor="end" font-size="11" font-weight="700" fill="#AB47BC">VLAN 192 · <tspan font-family="Consolas, 'JetBrains Mono', monospace" font-weight="400">10.96.42.192/26</tspan></text>
+  <text x="1348.0" y="800" font-size="10.5" font-weight="700" fill="#AB47BC">edge uplinks</text>
+  <line x1="1188.0" y1="766" x2="1188.0" y2="810" stroke="#AB47BC" stroke-width="2"/>
+  <text x="1193.0" y="800" font-size="10.5" fill="#AB47BC">.251</text>
+  <rect x="1158.0" y="810" width="60" height="30" rx="3" fill="#2E7D32"/>
+  <text x="1188.0" y="829" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">edge-01</text>
+  <text x="1188.0" y="854" text-anchor="middle" font-size="10.5" fill="#2E7D32">active</text>
+  <line x1="1312.0" y1="766" x2="1312.0" y2="810" stroke="#AB47BC" stroke-width="2"/>
+  <text x="1317.0" y="800" font-size="10.5" fill="#AB47BC">.252</text>
+  <rect x="1282.0" y="810" width="60" height="30" rx="3" fill="#2E7D32"/>
+  <text x="1312.0" y="829" text-anchor="middle" font-size="11" font-weight="700" fill="#fff">edge-02</text>
+  <text x="1312.0" y="854" text-anchor="middle" font-size="10.5" fill="#777">standby</text>
+  <rect x="1142.0" y="805" width="216.0" height="72" fill="none" stroke="#1B5E20" stroke-width="1.5" stroke-dasharray="3 4"/>
+  <text x="1250.0" y="871" text-anchor="middle" font-size="11" fill="#1B5E20">NSX Edge Cluster</text>
+  <line x1="1188.0" y1="780" x2="1220.0" y2="780" stroke="#AB47BC" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <line x1="1280.0" y1="780" x2="1312.0" y2="780" stroke="#AB47BC" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <rect x="1220.0" y="770" width="60" height="20" rx="10" fill="#F3E5F5" stroke="#AB47BC" stroke-width="1.5"/>
+  <text x="1250.0" y="784" text-anchor="middle" font-size="10.5" font-weight="700" fill="#AB47BC">VIP .250</text>
+  <text x="1366.0" y="818" font-size="11.5" fill="#333">default route</text>
+  <text x="1366.0" y="834" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700" fill="#333">0.0.0.0/0 → <tspan fill="#AB47BC">10.96.42.193</tspan></text>
+  <text x="1366.0" y="850" font-size="11" fill="#555">zcore on VLAN 192</text>
+  <text x="150" y="918" font-size="16" font-weight="700" fill="#12455F">How the rack maps to a zPod</text>
+  <rect x="150.0" y="934" width="274.8" height="76" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="150.0" y="934" width="6" height="76" rx="2" fill="#F2B705"/>
+  <text x="168.0" y="960" font-size="13" fill="#666">Datacenter core</text>
+  <text x="168.0" y="982" font-size="12" fill="#999">↓</text>
+  <text x="168.0" y="1000" font-size="13.5" font-weight="700" fill="#222">NSX T0</text>
+  <rect x="438.8" y="934" width="274.8" height="76" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="438.8" y="934" width="6" height="76" rx="2" fill="#12455F"/>
+  <text x="456.8" y="960" font-size="13" fill="#666">Rack uplink router</text>
+  <text x="456.8" y="982" font-size="12" fill="#999">↓</text>
+  <text x="456.8" y="1000" font-size="13.5" font-weight="700" fill="#222">NSX T1 (.1, static routes)</text>
+  <rect x="727.6" y="934" width="274.8" height="76" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="727.6" y="934" width="6" height="76" rx="2" fill="#12455F"/>
+  <text x="745.6" y="960" font-size="13" fill="#666">Top-of-rack switch</text>
+  <text x="745.6" y="982" font-size="12" fill="#999">↓</text>
+  <text x="745.6" y="1000" font-size="13.5" font-weight="700" fill="#222">Geneve segment (802.1Q trunk)</text>
+  <rect x="1016.4" y="934" width="274.8" height="76" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="1016.4" y="934" width="6" height="76" rx="2" fill="#E8730C"/>
+  <text x="1034.4" y="960" font-size="13" fill="#666">Rack router + filer</text>
+  <text x="1034.4" y="982" font-size="12" fill="#999">↓</text>
+  <text x="1034.4" y="1000" font-size="13.5" font-weight="700" fill="#222">zcore: VLANs, DNS, DHCP, NFS</text>
+  <rect x="1305.2" y="934" width="274.8" height="76" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="1305.2" y="934" width="6" height="76" rx="2" fill="#5A6875"/>
+  <text x="1323.2" y="960" font-size="13" fill="#666">Rack servers</text>
+  <text x="1323.2" y="982" font-size="12" fill="#999">↓</text>
+  <text x="1323.2" y="1000" font-size="13.5" font-weight="700" fill="#222">nested ESXi hosts</text>
+  <text x="150" y="1046" font-size="14" fill="#444">A zPod behaves like a physical rack you own: design its networks, its storage and what runs on its hosts, without touching the rest of the lab.</text>
+  <path d="M540 412 C650 412 780.0 366 780.0 236" stroke="#F08A3C" stroke-width="2" stroke-dasharray="2 4" stroke-linecap="round" fill="none"/>
+  <circle cx="780.0" cy="236" r="4" fill="#F08A3C" stroke="#fff" stroke-width="1.5"/>
+</svg>

@@ -24,7 +24,7 @@ Under the endpoint's configured `vmfolder`:
 /<datacenter>/vm/<vmfolder>/
 └── components-staging/
     ├── esxi-8.0u3g        (VM Template)
-    ├── zcore-13.5         (VM Template)
+    ├── zcore-13.7         (VM Template)
     └── vcfinstaller-...   (VM Template)
 ```
 

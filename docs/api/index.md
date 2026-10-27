@@ -20,6 +20,10 @@ The API is usually consumed through the SDK or CLI rather than directly.
 | --- | --- |
 | `GET /zpods/{id}/permissions/mine` | Returns the caller's effective permission level (`ADMIN`, `OWNER`, or `USER`) on a zPod — useful for UIs |
 | zPod create with `features` | Pass `config-scripts` and other feature flags when creating a zPod (not yet exposed on `zcli zpod create`) |
+| `/zpods/{id}/networks` | User VLAN networks on zcore: add, remove, enable/disable, masquerade, and NSX fabric routing (`PUT /zpods/{id}/networks/{name}/routing`, superadmin). See [Networks](../guide/user/networks.md#api) |
+| `/zpods/{id}/disks` | Virtual disks of the zcore VM: add, grow, remove. Changes run as zPod Engine flows; follow them at `GET /zpods/{id}/disks/runs/{flow_run_id}` |
+| `/zpods/{id}/storages` | zcore filesystems under `/FILER`: create, adopt, grow, delete, folders |
+| `/zpods/{id}/nfs` | NFS exports and their clients, and the server status. See [Storage and NFS](../guide/user/storage.md#api) |
 
 SDK and CLI updates are published to PyPI. Regenerating the SDK from a running instance means fetching the current OpenAPI spec and rebuilding `zpodsdk` — a multi-step workflow that also has to run in the right container context.
 
@@ -73,15 +77,7 @@ SDK is available on PyPI:
 
 ## CLI
 
-CLI is available on PyPI:
-
-- [https://pypi.org/project/zpodcli/](https://pypi.org/project/zpodcli/)
-
-``` { data-copy="pip install zpodcli"}
-❯ pip install zpodcli
-```
-
-Many list/info commands support `--json` / `-j` and `--no-color` for scripting. See the [Admin](../guide/admin/index.md) and [User](../guide/user/index.md) guides for command examples.
+`zcli` is on PyPI as [zpodcli](https://pypi.org/project/zpodcli/); see [Set up the zPod CLI (zcli)](../guide/zcli.md) to install and connect it. Like `zpodsdk`, it requires **Python 3.14**, and `zcli X.Y.*` works only with an API `X.Y.*` (another `major.minor` gets HTTP `417`). To talk to factories on different minors, install one zcli per minor, under separate tool names or in one virtualenv each.
 
 ## Development setup
 

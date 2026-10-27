@@ -11,13 +11,15 @@ The mandatory core component of every zPod has been renamed from **`zbox`** to *
 | DNS API | `https://zcore.{domain}/zboxapi` | Same mount path (`/zboxapi`) |
 | NFS filer | `zbox.{domain}` | `zcore.{domain}` |
 
-The core appliance image is built from [`packer-zcore`](https://github.com/zPodFactory/packer-zcore). The library component is **`zcore-13.5`** (or newer).
+The core appliance image is built from [`packer-zcore`](https://github.com/zPodFactory/packer-zcore). The library component is **`zcore-13.7`**. It ships zboxapi 0.2.1, which the zPod [network](../user/networks.md) masquerade/enable/disable and [storage](../user/storage.md) features need. `zcore-13.5` still deploys and works without those features.
 
 !!! info "Legacy zPods"
     zPods deployed before the transition keep their `zbox` core component. DNS, NFS, and API calls resolve against whichever core is actually deployed — no data migration is required.
 
-!!! info "Future `zbox` component"
-    The `zbox` name will eventually return as an **ordinary**, multi-deployable Linux VM (foundation for Docker/Kubernetes), separate from the mandatory core. Do not confuse it with the legacy core role.
+!!! info "`zbox` is back, as an ordinary component"
+    The `zbox` name now belongs to an **ordinary** component: a Debian Linux appliance you can add to any zPod, as many times as you need, for example as a base for Docker or Kubernetes. **`zbox-13.5`** is available now, and **`zbox-13.7`** will follow soon.
+
+    It has nothing to do with the legacy core role: it is never the first component of a profile, and it provides no DNS, DHCP, NFS or routing for the zPod. That is `zcore`'s job. In this guide, "legacy `zbox`" always means the old core component (`zbox-12.x` and earlier).
 
 ## Prerequisites
 
@@ -25,7 +27,7 @@ Before migrating profiles or deploying new zPods with `zcore`:
 
 1. **Appliance** — `zcore` OVA published (from `packer-zcore`).
 2. **Library** — `zcore-*` component in the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary).
-3. **zpodcore** — running a version that understands `zcore` (current main branch).
+3. **zpodcore** — 0.8.0 or later (0.9.0 for `zcore-13.7` as the default).
 4. **`jq`** — required by the migration script.
 
 ## Migration steps
@@ -38,11 +40,30 @@ just zcore-transition
 
 This script:
 
-1. Resyncs the default library (fetches `zcore-*`).
-2. Enables `zcore-13.5` (downloads if configured).
-3. Rewrites every profile whose **first component** is `zbox-*` to `zcore-13.5` (hostname `zcore`).
+1. Stops the stack, rebuilds the images with `--no-cache`, starts it again, and waits for zpodapi and the Prefect server to answer.
+2. Re-registers every flow (`just zpodengine-deploy-all`).
+3. Resyncs the default library, enables `zcore-13.7`, and waits for it to be `ACTIVE`.
+4. Rewrites every profile whose **first component** is `zbox-*` to `zcore-13.7` (hostname `zcore`).
 
-The script is idempotent — safe to run multiple times.
+Steps 3 and 4 used to break when they ran against a stack that had not been rebuilt yet, so the rebuild now comes first. If the stack is already rebuilt, skip steps 1 and 2:
+
+```bash
+SKIP_REBUILD=1 just zcore-transition
+```
+
+The script is idempotent, so it is safe to run several times. `ZCORE_UID=zcore-13.5 just zcore-transition` pins another core version.
+
+### Profiles already on `zcore-13.5`
+
+The script only rewrites `zbox-*` profiles, so a profile that already starts with `zcore-13.5` stays on it. To give new zPods the storage and network features, move such a profile to `zcore-13.7` yourself:
+
+```bash
+zcli profile info <name> -j > profile.json
+# change "zcore-13.5" to "zcore-13.7" in profile.json
+zcli profile update <name> -pf profile.json
+```
+
+Existing zPods keep the zcore they were deployed with.
 
 ### Manual verification
 
@@ -59,7 +80,7 @@ Example profile snippet:
 ```json
 [
   {
-    "component_uid": "zcore-13.5"
+    "component_uid": "zcore-13.7"
   },
   [
     {

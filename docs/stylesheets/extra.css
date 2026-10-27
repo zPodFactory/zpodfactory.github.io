@@ -93,6 +93,13 @@
   background-color: var(--ctp-surface0);
 }
 
+/* Keep API paths, commands and values whole: no breaks inside inline code.
+   Wide tables scroll sideways instead. */
+.md-typeset table:not([class]) td code {
+  white-space: nowrap;
+  word-break: normal;
+}
+
 /* --- Mermaid diagrams ------------------------------------------------------
    Zensical themes mermaid through --md-mermaid-* variables. We set them on the
    scheme element (where --ctp-* are defined) so they resolve to the active
@@ -245,4 +252,29 @@
 .md-typeset .quote > .admonition-title::before, .md-typeset .quote > summary::before,
 .md-typeset .cite > .admonition-title::before, .md-typeset .cite > summary::before {
   background-color: var(--ctp-overlay2);
+}
+
+/* --- Home page cards ---------------------------------------------------------
+   Four cards: a 2 x 2 grid reads better than Material's default 3 + 1 wrap.
+   Narrow viewports still fall back to one column. */
+.md-typeset .grid.cards {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+}
+@media screen and (min-width: 60em) {
+  .md-typeset .grid.cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* Card links: the colour already says "link", so no underline until hovered. */
+.md-typeset .grid.cards a {
+  text-decoration: none;
+}
+.md-typeset .grid.cards a:hover,
+.md-typeset .grid.cards a:focus {
+  text-decoration: underline;
+}
+/* The arrow sits outside the underline; its gap is a margin, not a linked space. */
+.md-typeset .grid.cards a > .twemoji {
+  display: inline-block;
+  margin-right: 0.3em;
 }

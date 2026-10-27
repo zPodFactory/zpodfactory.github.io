@@ -14,7 +14,7 @@ That foundation is what makes arbitrary nested labs workable — but some produc
 
 **zpod-vcf-deployer** sits on top of both layers (see also [Bring your own …](bring-your-own.md) for the general pattern):
 
-1. **zPodFactory** — creates the zPod (core appliance, nested ESXi hosts, VCF Installer VM) from a matching [profile](../admin/index.md#manage-profiles).
+1. **zPodFactory** — creates the zPod (core appliance, nested ESXi hosts, VCF Installer VM) from a matching [profile](../admin/profiles.md).
 2. **Official VCF automation** — runs the Broadcom provisioning process against that zPod (depot, bundles, SDDC spec validation, SDDC deploy).
 
 You get repeatable VCF labs without hand-building DNS records, depot wiring, or installer steps for every run.
@@ -112,5 +112,5 @@ Dependencies are declared inline (PEP 723); `uv run` installs them automatically
 
 - **Repository (full usage, env vars, CLI reference):** [github.com/zPodFactory/zpod-vcf-deployer](https://github.com/zPodFactory/zpod-vcf-deployer)
 - [Config scripts](config-scripts.md) — in-engine hooks for zPod/component lifecycle (complementary, not a substitute for VCF Installer automation)
-- [Manage profiles](../admin/index.md#manage-profiles) — how zPodFactory profiles define the L1 stack
+- [Profiles](../admin/profiles.md) — how zPodFactory profiles define the L1 stack
 - [Broadcom download token](../admin/broadcom-download-token.md) — online depot token for VCF 9.0.x

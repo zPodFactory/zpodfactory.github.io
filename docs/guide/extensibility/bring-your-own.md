@@ -1,6 +1,6 @@
 # Bring your own …
 
-zPodFactory is primarily an **API** for provisioning nested environments. It deploys the Layer 1 stack defined by a [profile](../admin/index.md#manage-profiles) — core appliance, nested hosts, and any baseline components in that profile — and then gets out of the way.
+zPodFactory is primarily an **API** for provisioning nested environments. It deploys the Layer 1 stack defined by a [profile](../admin/profiles.md) — core appliance, nested hosts, and any baseline components in that profile — and then gets out of the way.
 
 What happens **after** the zPod is `ACTIVE` is up to you. Many teams already treat zPodFactory as infrastructure glue: deploy a known zPod shape, then drive the rest of their lab design with whatever tooling they already use.
 
@@ -18,7 +18,7 @@ zPodFactory handles DNS plumbing, passwords, networking, and OVF/OVA deployment.
 A very common workflow today:
 
 1. **Choose a profile** that matches the lab skeleton you need (`base`, a VCF-oriented profile, a custom profile with the right ESXi count, etc.).
-2. **Create the zPod** through the [API](../../api/index.md), the [SDK](../../api/index.md#sdk), or [`zcli`](../user/index.md#create-zpods).
+2. **Create the zPod** through the [API](../../api/index.md), the [SDK](../../api/index.md#sdk), or [`zcli`](../user/zpods.md#create-zpods).
 3. **Wait until deploy completes** (poll the API, use `--wait` on the CLI, or rely on your orchestrator’s job status).
 4. **Run your configuration** — Terraform modules against vCenter/NSX endpoints, Ansible playbooks over SSH/API, or a combination.
 
@@ -75,7 +75,7 @@ Not everything belongs in external Terraform/Ansible. zPodFactory also supports 
 
 ## Related reading
 
-- [User Guide — Create zPods](../user/index.md#create-zpods) — `--wait`, profiles, endpoints
-- [User Guide — Accessing the zPod](../user/index.md#accessing-the-zpod) — `zcli zpod info` for URLs and credentials
-- [Manage profiles](../admin/index.md#manage-profiles) — define reusable zPod skeletons
+- [User Guide — Create zPods](../user/zpods.md#create-zpods) — `--wait`, profiles, endpoints
+- [User Guide — Accessing the zPod](../user/zpods.md#accessing-the-zpod) — `zcli zpod info` for URLs and credentials
+- [Profiles](../admin/profiles.md) — define reusable zPod skeletons
 - [API & SDK](../../api/index.md) — OpenAPI, SDK, JSON output for scripting
