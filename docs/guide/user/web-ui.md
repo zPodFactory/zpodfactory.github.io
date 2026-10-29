@@ -49,6 +49,7 @@ Target configurations are stored in the browser's `localStorage`. With a single 
 | --- | --- |
 | **Dashboard** | zPod counts, status distribution, activity charts |
 | **zPods** | List, create, inspect, and destroy zPods with full detail views; action buttons stay blocked while a workflow runs |
+| **zPod components** | Add and remove components, with a **Placement & network** section (nested or on the endpoint, VLAN ID, portgroup, IP, gateway, DNS) and a live preview of the address the host ID gives ([details](components.md#placement-and-network)) |
 | **zPod networks** | Add, enable/disable, masquerade and remove VLAN networks; superadmins advertise them to the NSX fabric ([details](#zpod-networks)) |
 | **Network topology** | Visio-style interactive diagram: NSX T0/T1, trunk segments, zcore interfaces grouped by kind with live status, T1 static routes, deployed components |
 | **zPod storage** | Disks, storages, folders and NFS exports of the zPod's zcore ([details](#zpod-storage)) |
@@ -56,7 +57,7 @@ Target configurations are stored in the browser's `localStorage`. With a single 
 | **Endpoints** | Create and edit endpoints, view compute (vSphere) and network (NSX) side by side, pick an optional vSphere Distributed Switch, manage endpoint access |
 | **Components** | Searchable, filterable component catalog; enable/disable with download progress; chunked, resumable OVA/ISO upload; depot downloads via [Broadcom download token](../admin/broadcom-download-token.md) |
 | **Libraries** | Manage libraries with enable/disable and resync |
-| **Profiles** | View, edit, import and export deployment profiles |
+| **Profiles** | View, edit, import and export deployment profiles, including each item's placement and network |
 | **Users** | Superadmins create, edit, enable/disable, delete users and reset their API token; everyone else edits their own profile |
 | **Groups** | Superadmins create, rename and delete permission groups and manage their members |
 | **Settings** | View and manage global factory settings |

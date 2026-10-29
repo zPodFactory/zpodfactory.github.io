@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1060" width="1600" height="1060" font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" role="img" aria-label="A user network on VLAN 42 added on zcore and advertised by the T1, a NETWORK42 portgroup on VLAN 42 in the zPod vCenter, a nested zbox deployed on it at 192.168.42.10, and the SSH path to it">
+  <rect width="1600" height="1060" fill="#fff"/>
+  <rect x="20" y="20" width="1070" height="130" fill="#F7F9FB" stroke="#E3E7EB"/>
+  <text x="32" y="42" text-anchor="start" font-size="11" fill="#8A949E" font-weight="700">LAB NETWORK</text>
+  <rect x="20" y="150" width="1070" height="202" fill="#FFFFFF" stroke="#E3E7EB"/>
+  <text x="32" y="172" text-anchor="start" font-size="11" fill="#8A949E" font-weight="700">NSX · ENDPOINT</text>
+  <rect x="20" y="352" width="1070" height="208" fill="#F7F9FB" stroke="#E3E7EB"/>
+  <text x="32" y="374" text-anchor="start" font-size="11" fill="#8A949E" font-weight="700">ENDPOINT VMS · LAYER 1</text>
+  <rect x="20" y="560" width="1070" height="400" fill="#FFFFFF" stroke="#E3E7EB"/>
+  <text x="32" y="582" text-anchor="start" font-size="11" fill="#8A949E" font-weight="700">NESTED · LAYER 2</text>
+  <rect x="160" y="52" width="250" height="74" rx="4" fill="#EEF4FB" stroke="#1565C0" stroke-width="2"/>
+  <text x="285" y="78" text-anchor="middle" font-size="15" fill="#1565C0" font-weight="700">Your workstation</text>
+  <text x="285" y="102" text-anchor="middle" font-size="13" fill="#333" font-family="Consolas, 'JetBrains Mono', monospace">ssh root@192.168.42.10</text>
+  <circle cx="160" cy="52" r="13" fill="#1565C0"/>
+  <text x="160" y="57" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text>
+  <line x1="410" y1="89" x2="670" y2="89" stroke="#8A949E" stroke-width="3"/>
+  <text x="540" y="81" text-anchor="middle" font-size="11.5" fill="#666">lab routers learn the T0 routes</text>
+  <g>
+    <circle cx="700" cy="89" r="27" fill="#F2B705"/>
+    <g stroke="#fff" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M682.0 89 h11.0 M688.0 84.0 l5.0 5.0 -5.0 5.0"/>
+      <path d="M718.0 89 h-11.0 M712.0 84.0 l-5.0 5.0 5.0 5.0"/>
+      <path d="M700 83.0 v-12.0 M695.0 76.0 l5.0 -5.0 5.0 5.0"/>
+      <path d="M700 95.0 v12.0 M695.0 102.0 l5.0 5.0 5.0 -5.0"/>
+    </g>
+  </g>
+  <rect x="745.0" y="78" width="78.0" height="22" fill="#F2B705"/>
+  <text x="784" y="94" text-anchor="middle" font-size="13" fill="#fff" font-weight="700">NSX T0</text>
+  <line x1="700" y1="116" x2="700" y2="203" stroke="#12455F" stroke-width="3"/>
+  <g>
+    <circle cx="700" cy="230" r="27" fill="#12455F"/>
+    <g stroke="#fff" stroke-width="3.0" stroke-linecap="round" stroke-linejoin="round" fill="none">
+      <path d="M682.0 230 h11.0 M688.0 225.0 l5.0 5.0 -5.0 5.0"/>
+      <path d="M718.0 230 h-11.0 M712.0 225.0 l-5.0 5.0 5.0 5.0"/>
+      <path d="M700 224.0 v-12.0 M695.0 217.0 l5.0 -5.0 5.0 5.0"/>
+      <path d="M700 236.0 v12.0 M695.0 243.0 l5.0 5.0 5.0 -5.0"/>
+    </g>
+  </g>
+  <rect x="602.0" y="264" width="196.0" height="21" fill="#12455F"/>
+  <text x="700" y="279" text-anchor="middle" font-size="12" fill="#fff">NSX T1 · zPod-demo-tier1</text>
+  <line x1="700" y1="285" x2="700" y2="330" stroke="#12455F" stroke-width="3"/>
+  <text x="707" y="304" text-anchor="start" font-size="13" fill="#333" font-weight="700">.1</text>
+  <rect x="812" y="174" width="258" height="104" rx="4" fill="#F5F7F9" stroke="#C5CAD0"/>
+  <text x="826" y="196" text-anchor="start" font-size="13" fill="#12455F" font-weight="700">zPod-demo-tier1 static routes</text>
+  <text x="826" y="220" text-anchor="start" font-size="12.5" fill="#8E24AA" font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.64/26 · 128 · 192</text>
+  <text x="1058" y="220" text-anchor="end" font-size="12.5" fill="#8E24AA">→ .2</text>
+  <text x="826" y="246" text-anchor="start" font-size="13" fill="#00796B" font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">192.168.42.0/24</text>
+  <text x="1058" y="246" text-anchor="end" font-size="13" fill="#00796B" font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">→ 10.96.42.2</text>
+  <text x="826" y="266" text-anchor="start" font-size="11.5" fill="#00796B">written by routing global</text>
+  <circle cx="812" cy="174" r="13" fill="#1565C0"/>
+  <text x="812" y="179" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+  <line x1="728" y1="230" x2="812" y2="230" stroke="#888" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="200" y1="330" x2="1070" y2="330" stroke="#12455F" stroke-width="6"/>
+  <text x="200" y="318" text-anchor="start" font-size="12.5" fill="#333"><tspan font-weight="700" fill="#12455F">zPod-demo-segment</tspan> · 802.1Q trunk</text>
+  <text x="1070" y="318" text-anchor="end" font-size="12.5" fill="#333">VLANs 1–4094: VLAN 42 reaches zcore and every host</text>
+  <line x1="330" y1="330" x2="330" y2="392" stroke="#12455F" stroke-width="6"/>
+  <text x="340" y="376" text-anchor="start" font-size="11.5" fill="#666">eth0 · eth1 trunk</text>
+  <rect x="180" y="392" width="300" height="140" rx="4" fill="#FFF3E6" stroke="#E8730C" stroke-width="2"/>
+  <text x="330" y="416" text-anchor="middle" font-size="16" fill="#C2510F" font-weight="700">zcore</text>
+  <text x="330" y="434" text-anchor="middle" font-size="12" fill="#333">DNS · DHCP · NFS · VLAN routing</text>
+  <text x="194" y="462" text-anchor="start" font-size="12.5" fill="#4A148C" font-family="Consolas, 'JetBrains Mono', monospace">eth0  mgmt</text>
+  <text x="466" y="462" text-anchor="end" font-size="12.5" fill="#4A148C" font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.2/26</text>
+  <text x="194" y="486" text-anchor="start" font-size="12.5" fill="#6A1B9A" font-family="Consolas, 'JetBrains Mono', monospace">eth1.64  vlan64</text>
+  <text x="466" y="486" text-anchor="end" font-size="12.5" fill="#6A1B9A" font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.65/26</text>
+  <text x="194" y="510" text-anchor="start" font-size="12.5" fill="#00796B" font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">eth1.42  net42</text>
+  <text x="466" y="510" text-anchor="end" font-size="12.5" fill="#00796B" font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">192.168.42.1/24</text>
+  <circle cx="180" cy="392" r="13" fill="#1565C0"/>
+  <text x="180" y="397" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+  <line x1="640" y1="330" x2="640" y2="410" stroke="#12455F" stroke-width="4"/>
+  <text x="648" y="376" text-anchor="start" font-size="11.5" fill="#666">vmnic0 · 1</text>
+  <rect x="580" y="410" width="120" height="58" rx="3" fill="#fff" stroke="#444" stroke-width="1.5"/>
+  <text x="640" y="434" text-anchor="middle" font-size="14" fill="#333" font-weight="700">esxi11</text>
+  <text x="640" y="454" text-anchor="middle" font-size="12" fill="#4A148C" font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.11</text>
+  <line x1="820" y1="330" x2="820" y2="410" stroke="#12455F" stroke-width="4"/>
+  <text x="828" y="376" text-anchor="start" font-size="11.5" fill="#666">vmnic0 · 1</text>
+  <rect x="760" y="410" width="120" height="58" rx="3" fill="#fff" stroke="#444" stroke-width="1.5"/>
+  <text x="820" y="434" text-anchor="middle" font-size="14" fill="#333" font-weight="700">esxi12</text>
+  <text x="820" y="454" text-anchor="middle" font-size="12" fill="#4A148C" font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.12</text>
+  <line x1="1000" y1="330" x2="1000" y2="410" stroke="#12455F" stroke-width="4"/>
+  <text x="1008" y="376" text-anchor="start" font-size="11.5" fill="#666">vmnic0 · 1</text>
+  <rect x="940" y="410" width="120" height="58" rx="3" fill="#fff" stroke="#444" stroke-width="1.5"/>
+  <text x="1000" y="434" text-anchor="middle" font-size="14" fill="#333" font-weight="700">esxi13</text>
+  <text x="1000" y="454" text-anchor="middle" font-size="12" fill="#4A148C" font-family="Consolas, 'JetBrains Mono', monospace">10.96.42.13</text>
+  <rect x="470" y="590" width="600" height="350" rx="4" fill="none" stroke="#444" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <line x1="640" y1="468" x2="640" y2="606" stroke="#444" stroke-width="2" stroke-dasharray="2 4"/>
+  <line x1="820" y1="468" x2="820" y2="606" stroke="#444" stroke-width="2" stroke-dasharray="2 4"/>
+  <line x1="1000" y1="468" x2="1000" y2="606" stroke="#444" stroke-width="2" stroke-dasharray="2 4"/>
+  <rect x="490" y="606" width="560" height="20" fill="#E9ECEF" stroke="#C5CAD0"/>
+  <text x="770.0" y="621" text-anchor="middle" font-size="12" fill="#444" font-weight="700">a VDS, uplinks vmnic0 · vmnic1 (recommended), or the existing vSwitch0</text>
+  <text x="514" y="654" text-anchor="start" font-size="14" fill="#333" font-weight="700">zPod vCenter · vcsa.demo.zpod.lab · cluster “Cluster”</text>
+  <line x1="510" y1="712" x2="1040" y2="712" stroke="#4A148C" stroke-width="3"/>
+  <text x="540" y="702" text-anchor="start" font-size="13.5" fill="#4A148C" font-weight="700">VM Network · untagged</text>
+  <text x="1040" y="702" text-anchor="end" font-size="12" fill="#4A148C">default → mgmt 10.96.42.0/26</text>
+  <line x1="500" y1="626" x2="500" y2="712" stroke="#888" stroke-width="2"/>
+  <line x1="500" y1="712" x2="510" y2="712" stroke="#888" stroke-width="2"/>
+  <line x1="510" y1="782" x2="1040" y2="782" stroke="#00796B" stroke-width="3"/>
+  <text x="540" y="772" text-anchor="start" font-size="13.5" fill="#00796B" font-weight="700">NETWORK42 · VLAN 42</text>
+  <text x="1040" y="772" text-anchor="end" font-size="12" fill="#00796B">you create it → net42 192.168.42.0/24</text>
+  <line x1="500" y1="626" x2="500" y2="782" stroke="#888" stroke-width="2"/>
+  <line x1="500" y1="782" x2="510" y2="782" stroke="#888" stroke-width="2"/>
+  <circle cx="524" cy="767" r="13" fill="#1565C0"/>
+  <text x="524" y="772" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+  <line x1="780" y1="782" x2="780" y2="838" stroke="#00796B" stroke-width="3"/>
+  <rect x="660" y="838" width="240" height="78" rx="4" fill="#00796B"/>
+  <text x="780" y="862" text-anchor="middle" font-size="14" fill="#fff" font-weight="700">zbox42 · zbox-13.7.1</text>
+  <text x="780" y="884" text-anchor="middle" font-size="14" fill="#fff" font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">192.168.42.10/24</text>
+  <text x="780" y="904" text-anchor="middle" font-size="12" fill="#E0F2F1">gateway 192.168.42.1 · DNS zcore</text>
+  <circle cx="660" cy="838" r="13" fill="#1565C0"/>
+  <text x="660" y="843" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+  <text x="916" y="862" text-anchor="start" font-size="12" fill="#555">host id 10 on the</text>
+  <text x="916" y="878" text-anchor="start" font-size="12" fill="#555">network that the</text>
+  <text x="916" y="894" text-anchor="start" font-size="12" fill="#555">portgroup’s VLAN</text>
+  <text x="916" y="910" text-anchor="start" font-size="12" fill="#555">picks: net42</text>
+  <g font-size="12.5" fill="#555">
+    <text x="44" y="610" font-size="13.5" font-weight="700" fill="#12455F">Who does what</text>
+    <text x="44" y="640" font-weight="700" fill="#333">zPodFactory</text>
+    <text x="44" y="658">adds net42 on zcore, writes</text>
+    <text x="44" y="675">the T1 route, deploys zbox42</text>
+    <text x="44" y="712" font-weight="700" fill="#333">You</text>
+    <text x="44" y="730">create NETWORK42 in the zPod</text>
+    <text x="44" y="747">vCenter: zPodFactory never does</text>
+    <text x="44" y="784" font-weight="700" fill="#333">The VLAN tag</text>
+    <text x="44" y="802">is added by the portgroup,</text>
+    <text x="44" y="819">so zbox42 sends plain frames</text>
+  </g>
+  <text x="44" y="996" font-size="13.5" font-weight="700" fill="#1565C0">SSH path</text>
+  <rect x="120.0" y="980" width="105.6" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="172.8" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">workstation</text>
+  <path d="M229.6 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="245.6" y="980" width="67.6" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="279.4" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">NSX T0</text>
+  <path d="M317.2 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="333.2" y="980" width="98.0" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="382.2" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">T1 route ①</text>
+  <path d="M435.2 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="451.2" y="980" width="120.8" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="511.59999999999997" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">zcore eth1.42</text>
+  <path d="M576.0 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="592.0" y="980" width="136.0" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="660.0" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">trunk · VLAN 42</text>
+  <path d="M732.0 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="748.0" y="980" width="105.6" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="800.8" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">esxi uplink</text>
+  <path d="M857.6 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="873.6" y="980" width="105.6" height="24" rx="12" fill="#EEF4FB" stroke="#1565C0"/>
+  <text x="926.4" y="997" text-anchor="middle" font-size="12.5" fill="#1565C0">NETWORK42 ②</text>
+  <path d="M983.2 992 h12 m-5 -5 l5 5 -5 5" stroke="#1565C0" stroke-width="2" fill="none"/>
+  <rect x="999.2" y="980" width="82.8" height="24" rx="12" fill="#00796B" stroke="#00796B"/>
+  <text x="1040.6000000000001" y="997" text-anchor="middle" font-size="12.5" fill="#fff" font-weight="700">zbox42 ③</text>
+  <text x="44" y="1036" text-anchor="start" font-size="12.5" fill="#555">Every hop is routed: no NAT. With routing local instead of global, only the zPod reaches 192.168.42.0/24.</text>
+  <rect x="1110" y="20" width="470" height="940" rx="4" fill="#FAFBFC" stroke="#C5CAD0"/>
+  <text x="1128" y="50" text-anchor="start" font-size="16" fill="#12455F" font-weight="700">What each step needs</text>
+  <circle cx="1140" cy="83" r="13" fill="#1565C0"/>
+  <text x="1140" y="88" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">1</text>
+  <text x="1162" y="88" text-anchor="start" font-size="14" fill="#222" font-weight="700">Add the network on zcore, then advertise it</text>
+  <rect x="1128" y="99" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="114" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">zcli zpod network add demo --name net42</text>
+  <rect x="1128" y="120" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="135" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">  --vlan 42 --gateway 192.168.42.1/24</text>
+  <rect x="1128" y="141" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="156" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">zcli zpod network routing demo net42 global</text>
+  <path d="M1134 172 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="177" text-anchor="start" font-size="13" fill="#333">VLAN 42 free, not 10, 20, 30, 64, 128, 192</text>
+  <path d="M1134 192 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="197" text-anchor="start" font-size="13" fill="#333">no overlap with the zPod or its endpoint pool</text>
+  <path d="M1134 212 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="217" text-anchor="start" font-size="13" fill="#333">global: superadmin only; the flow checks</text>
+  <text x="1154" y="237" text-anchor="start" font-size="13" fill="#333">the whole fabric for overlaps first</text>
+  <circle cx="1140" cy="278" r="13" fill="#1565C0"/>
+  <text x="1140" y="283" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">2</text>
+  <text x="1162" y="283" text-anchor="start" font-size="14" fill="#222" font-weight="700">Create the portgroup in the zPod vCenter</text>
+  <text x="1154" y="309" text-anchor="start" font-size="13" fill="#333">Build a VDS, uplinks vmnic0 · vmnic1 (recommended),</text>
+  <text x="1154" y="329" text-anchor="start" font-size="13" fill="#333">or use the existing vSwitch0 of every host;</text>
+  <text x="1154" y="349" text-anchor="start" font-size="13" fill="#333">then add NETWORK42, VLAN 42, on either one</text>
+  <path d="M1134 364 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="369" text-anchor="start" font-size="13" fill="#333">it exists: zPodFactory never creates one</text>
+  <path d="M1134 384 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="389" text-anchor="start" font-size="13" fill="#333">one match for its name</text>
+  <path d="M1134 404 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="409" text-anchor="start" font-size="13" fill="#333">a standard one is on every host of Cluster</text>
+  <circle cx="1140" cy="450" r="13" fill="#1565C0"/>
+  <text x="1140" y="455" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">3</text>
+  <text x="1162" y="455" text-anchor="start" font-size="14" fill="#222" font-weight="700">Add zbox nested, on that portgroup</text>
+  <rect x="1128" y="466" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="481" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">zcli zpod component add demo -c zbox-13.7.1</text>
+  <rect x="1128" y="487" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="502" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">  --nested=true --portgroup NETWORK42</text>
+  <rect x="1128" y="508" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="523" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">  --hostname zbox42 --host-id 10</text>
+  <path d="M1134 539 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="544" text-anchor="start" font-size="13" fill="#333">the zPod vCenter exists</text>
+  <path d="M1134 559 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="564" text-anchor="start" font-size="13" fill="#333">VLAN 42 has a zPod network: net42</text>
+  <path d="M1134 579 l4 4 8 -9" stroke="#00796B" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="584" text-anchor="start" font-size="13" fill="#333">host id 2–254 on it (.1 is zcore)</text>
+  <path d="M1135 592 l9 9 m0 -9 l-9 9" stroke="#B3261E" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="604" text-anchor="start" font-size="13" fill="#333">no --vlan-id: the portgroup tags VLAN 42;</text>
+  <text x="1154" y="624" text-anchor="start" font-size="13" fill="#333">--vlan-id is for trunks and ESXi images</text>
+  <path d="M1135 632 l9 9 m0 -9 l-9 9" stroke="#B3261E" stroke-width="2.2" fill="none"/>
+  <text x="1154" y="644" text-anchor="start" font-size="13" fill="#333">no --vnics: one portgroup for every NIC</text>
+  <circle cx="1140" cy="685" r="13" fill="#1565C0"/>
+  <text x="1140" y="690" text-anchor="middle" font-size="15" font-weight="700" fill="#fff">4</text>
+  <text x="1162" y="690" text-anchor="start" font-size="14" fill="#222" font-weight="700">SSH in from your workstation</text>
+  <rect x="1128" y="701" width="434" height="21" fill="#EEF1F4"/>
+  <text x="1136" y="716" text-anchor="start" font-size="12.5" fill="#222" font-family="Consolas, 'JetBrains Mono', monospace">ssh root@192.168.42.10</text>
+  <text x="1154" y="737" text-anchor="start" font-size="13" fill="#333">root or zadmin, with the zPod password</text>
+  <text x="1154" y="757" text-anchor="start" font-size="13" fill="#333">or the factory SSH key</text>
+  <rect x="1128" y="789" width="434" height="128" rx="4" fill="#FFF8E1" stroke="#F2B705"/>
+  <text x="1142" y="813" text-anchor="start" font-size="14" fill="#7A5B00" font-weight="700">Why not --vlan-id 42?</text>
+  <text x="1142" y="837" text-anchor="start" font-size="12.5" fill="#5C4600">--vlan-id makes the guest tag its own frames. It needs</text>
+  <text x="1142" y="855" text-anchor="start" font-size="12.5" fill="#5C4600">a trunk portgroup, and an image that reads {{zpod_vlan}},</text>
+  <text x="1142" y="873" text-anchor="start" font-size="12.5" fill="#5C4600">like ESXi. zbox doesn’t: the API refuses it (422).</text>
+  <text x="1142" y="891" text-anchor="start" font-size="12.5" fill="#5C4600">NETWORK42 already tags VLAN 42, so zbox42 needs</text>
+  <text x="1142" y="909" text-anchor="start" font-size="12.5" fill="#5C4600">only --portgroup and --host-id.</text>
+</svg>

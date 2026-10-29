@@ -17,7 +17,7 @@ The core appliance image is built from [`packer-zcore`](https://github.com/zPodF
     zPods deployed before the transition keep their `zbox` core component. DNS, NFS, and API calls resolve against whichever core is actually deployed — no data migration is required.
 
 !!! info "`zbox` is back, as an ordinary component"
-    The `zbox` name now belongs to an **ordinary** component: a Debian Linux appliance you can add to any zPod, as many times as you need, for example as a base for Docker or Kubernetes. **`zbox-13.5`** is available now, and **`zbox-13.7`** will follow soon.
+    The `zbox` name now belongs to an **ordinary** component: a Debian Linux appliance you can add to any zPod, as many times as you need, for example as a base for Docker or Kubernetes. **`zbox-13.5`** and **`zbox-13.7.1`** are available.
 
     It has nothing to do with the legacy core role: it is never the first component of a profile, and it provides no DNS, DHCP, NFS or routing for the zPod. That is `zcore`'s job. In this guide, "legacy `zbox`" always means the old core component (`zbox-12.x` and earlier).
 

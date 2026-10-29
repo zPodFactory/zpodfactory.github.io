@@ -100,6 +100,59 @@ You can follow progress in **zpodweb** (Components list shows download percentag
 
 JSON output is available on list/get commands with `-j` / `--json` for automation.
 
+## Stock cloud images
+
+The zPodLibrary also has stock Linux cloud images. They deploy on the endpoint by default, and can be [deployed nested](../user/components.md#placement-and-network) instead. Each comes up with its zPod IP, FQDN, gateway and zcore as DNS, and with the zPod password and the factory's SSH key where it has SSH:
+
+| Component | Image | Configured through | Login |
+| --- | --- | --- | --- |
+| `ubuntu-24.04` | Ubuntu 24.04 LTS cloud image | cloud-init | `ubuntu`, `root` |
+| `photon-5.0` | VMware Photon OS 5.0 | cloud-init | `root` |
+| `rhcos-4.22.8` | Red Hat Enterprise Linux CoreOS 4.22 | Ignition and Afterburn | `core` (SSH key) |
+| `talos-1.14.4` | Talos Linux, stock Image Factory OVA | Talos machine metadata | no SSH: `talosctl` |
+| `zbox-13.7.1` | zBox Debian Linux appliance | OVF properties | `zadmin`, `root` |
+
+`zcli zpod info` and the Web UI show each image's own login user. For Talos, they show the `talosctl` command to reach its API.
+
+### First-boot configuration (`guestinfo`)
+
+!!! info
+    zpodcore **0.9.2** or later. An older zpodengine ignores the key and the guest boots unconfigured.
+
+Stock cloud images configure themselves at first boot from the VM's `guestinfo.*` keys, not from OVF properties. A library entry lists those keys in `component_deploy_extra_config`, and zpodengine sets them on the VM after the import and **before its first power-on**:
+
+```json
+"component_deploy_extra_config": {
+  "guestinfo.metadata": {
+    "format": "yaml",
+    "content": {
+      "local-hostname": "{{zpod_hostname}}",
+      "network": {
+        "version": 2,
+        "ethernets": {
+          "eth0": {
+            "addresses": ["{{zpod_ipaddress}}/{{zpod_netprefix}}"],
+            "routes": [{ "to": "0.0.0.0/0", "via": "{{zpod_gateway}}" }],
+            "nameservers": { "addresses": ["{{zpod_dns}}"] }
+          }
+        }
+      }
+    }
+  },
+  "guestinfo.userdata": {
+    "format": "cloud-config",
+    "content": { "ssh_authorized_keys": ["{{zpod_sshkey}}"] }
+  }
+}
+```
+
+- **A value** is a Jinja string, or a document with `format` (`yaml`, `json` or `cloud-config`), an optional `encoding` (`base64`, the default, `gzip+base64` or `none`) and its `content` written as nested JSON. zpodengine renders each string, serialises and encodes the document, and adds the matching `<key>.encoding`. Inside `content`, `{"lines": [...]}` becomes an Ignition `data:` URL source.
+- **Variables** are the same `zpod_*` deploy variables as the OVF properties, so the [placement and network](../user/components.md#placement-and-network) options reach these images too.
+- **Guardrails**: only `guestinfo.*` keys are accepted, and an unknown variable or a bad value fails the deploy before a VM exists. Only key names and sizes are logged, never values.
+- It works with [endpoint OVA staging](endpoint-ova-staging.md): each clone gets its own keys, the staged template none.
+
+The `ubuntu-24.04`, `photon-5.0`, `rhcos-4.22.8` and `talos-1.14.4` entries of the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary) are complete examples. Deploy spec templates also have a `b64encode` filter (`{% filter b64encode %}…{% endfilter %}`).
+
 ## Download engine
 
 The download engine fetches component binaries defined in the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary). See the dedicated [Broadcom download token](broadcom-download-token.md) guide for obtaining and configuring the token, troubleshooting 401/403 errors, and testing downloads.

@@ -12,7 +12,7 @@ This page explains the moving parts of zPodFactory and how a zPod is laid out, s
 | **Library** | A git repository of component definitions, by default [zPodLibrary](https://github.com/zPodFactory/zPodLibrary). |
 | **Profile** | A list of components deployed together to create a zPod, always starting with `zcore`. See [Profiles](admin/profiles.md). |
 | **zcore** | The mandatory core appliance of every zPod: DNS and DHCP, the NFS filer, routing of the VLAN networks, and `zboxapi`, the API zPodFactory drives it through. Older zPods may still run the legacy `zbox` core. |
-| **zbox** | An ordinary Debian Linux appliance component (`zbox-13.5`, `zbox-13.7` soon) that you can add to a zPod, several times if needed, for example as a Docker or Kubernetes host. Not to be confused with the legacy `zbox` core. See [zcore migration](admin/zcore-migration.md). |
+| **zbox** | An ordinary Debian Linux appliance component (`zbox-13.5`, `zbox-13.7.1`) that you can add to a zPod, several times if needed, for example as a Docker or Kubernetes host. Not to be confused with the legacy `zbox` core. See [zcore migration](admin/zcore-migration.md). |
 | **zPod API / zPod Engine** | The REST API every client talks to, and the Prefect flows that do the deployment work behind it. |
 | **zcli / zpodweb** | The command line and the Web UI. Both use the zPod API. |
 

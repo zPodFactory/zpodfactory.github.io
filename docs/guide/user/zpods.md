@@ -83,7 +83,7 @@ For vCenter:
 - `username`: `administrator@name.zpodfactory.domain`
 - `password`: Each zPod has a generated password — fetch it from `zcli zpod list` or `zcli zpod info`.
 
-For other components, use the default administrator account for that product (`root`, `admin`, etc.; `administrator` for VCD). The password is **always** the zPod password.
+For other components, `zcli zpod info` and `zcli zpod component list` show the login user: the product's administrator account (`root`, `admin`, etc.; `administrator` for VCD), or the image's own user for cloud images (`ubuntu` for Ubuntu, `zadmin` for zbox, `core` for Red Hat CoreOS, with the factory's SSH key). Talos has no SSH: `zcli zpod info` shows the `talosctl` command to reach its API. The password is **always** the zPod password.
 
 
 ## Destroy zPods
