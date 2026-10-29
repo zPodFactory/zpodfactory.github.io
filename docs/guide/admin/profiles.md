@@ -15,6 +15,28 @@ Profile entries support optional per-component overrides:
 | `vcpu`, `vmem` | esxi, proxmox, etc. | Sizing overrides |
 | `vnics` | esxi, etc. | vNIC count (integer, e.g. `4`) |
 | `vdisks` | esxi | Extra virtual disk sizes in GB (array of integers, e.g. `[40, 800]`) |
+| `nested` | most components | `true`: nested in the zPod's vCenter, `false`: on the endpoint. Left out, the library entry decides. |
+| `vlan_id` | esxi | Puts the host on the zPod network with that VLAN, its management interface tagged (e.g. `64`) |
+| `network` | nested components | `portgroup`, `ip`, `gateway`, `dns`, all optional (e.g. `{"portgroup": "wld01"}`) |
+
+`nested`, `vlan_id` and `network` need zpodcore 0.9.2 or later and follow the same rules as on a component add: see [Placement and network](../user/components.md#placement-and-network). A nested component deploys into the zPod's vCenter, so put it after the `vcsa` item. When a profile is saved, `host_id` is checked against the deploy network it lands on (mgmt, or VLAN 64, 128 or 192), and a profile that breaks a rule is refused with the reason.
+
+For example, a fifth ESXi host on VLAN 64, and an Ubuntu VM nested in the zPod:
+
+```json
+{
+  "component_uid": "esxi-8.0u3i",
+  "host_id": 71,
+  "hostname": "esxi71",
+  "vlan_id": 64
+},
+{
+  "component_uid": "ubuntu-24.04",
+  "host_id": 20,
+  "hostname": "web01",
+  "nested": true
+}
+```
 
 ``` {data-copy="zcli profile list"}
 ❯ zcli profile list

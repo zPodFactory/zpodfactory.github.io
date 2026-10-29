@@ -8,6 +8,7 @@ Each script writes one SVG diagram of the documentation site. They use plain Pyt
 | `instdiagram.py` | `docs/img/zPodFactory-instance-networking.svg`: one zPod's `/24`, its VLANs, the T1 routes and the zcore interfaces | Concepts |
 | `nsxdiagram.py` | `docs/img/zPodFactory-networking-nsx-overview.svg`: NSX T0/T1 layout for the `nsxt` and `nsxt_projects` drivers | Concepts |
 | `endpointdiagram.py` | `docs/img/zPodFactory-topology-overview-network-endpoints.svg`: the appliance, the lab L3 network and three endpoints | Install, Endpoints |
+| `componentdiagram.py` | `docs/img/zPodFactory-component-placement-network42.svg`: a nested zbox on a user VLAN (42), the four layers it crosses, what each step needs, and the SSH path to it | User guide: Components |
 
 `docs/img/zPodFactory-overview-layers.svg` and `docs/img/zPodFactory-architecture.svg` have no generator: edit those SVGs directly.
 
@@ -20,6 +21,7 @@ python3 tools/diagrams/rackdiagram.py docs/img/zPodFactory-zpod-rack.svg
 python3 tools/diagrams/instdiagram.py docs/img/zPodFactory-instance-networking.svg
 python3 tools/diagrams/nsxdiagram.py docs/img/zPodFactory-networking-nsx-overview.svg
 python3 tools/diagrams/endpointdiagram.py docs/img/zPodFactory-topology-overview-network-endpoints.svg
+python3 tools/diagrams/componentdiagram.py docs/img/zPodFactory-component-placement-network42.svg
 ```
 
 Then check the result: open the SVG in a browser, or run `uvx zensical==0.0.67 serve` and look at the page that uses it.

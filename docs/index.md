@@ -11,7 +11,7 @@ hide:
 **Build your own nested VMware labs, on demand.** zPodFactory deploys complete nested environments (zPods) from reusable profiles, onto the vCenter and NSX you already have, and gives each one its own network, DNS and storage. Use it from the Web UI, from `zcli`, or through its API.
 
 !!! tip "Latest releases"
-    **zpodcore 0.9.0** and **zpodweb 0.2.0** (2026-10-26) add self-service [networks](guide/user/networks.md) (VLANs, masquerade, NSX fabric routing) and [storage and NFS](guide/user/storage.md) (disks, storages, folders, exports) to every zPod. See [What's new](releases.md).
+    **zpodcore 0.9.2** and **zpodweb 0.3.0** (2026-10-29) let each component choose [where it is deployed and on which network](guide/user/components.md#placement-and-network), and bring stock cloud images (Ubuntu, Photon OS, Red Hat CoreOS, Talos) up with their zPod address on first boot. They build on 0.9.0's self-service [networks](guide/user/networks.md) and [storage and NFS](guide/user/storage.md). See [What's new](releases.md).
 
 <div class="grid cards" markdown>
 

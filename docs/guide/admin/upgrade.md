@@ -16,7 +16,7 @@ v0.9.0-2-g3f85190
 ❯ just zpod-update
 ```
 
-`zpod-update` follows `main` by default. To run a release instead, give its version: `just zpod-update 0.9.1`.
+`zpod-update` follows `main` by default. To run a release instead, give its version: `just zpod-update 0.9.2`.
 
 - zpodcore needs uv 0.9.17 or later: older versions fail on `exclude-newer = "30 days"` (the 30-day supply-chain delay) with a TOML parse error. `uv self update` works when uv came from its standalone installer; otherwise update it the way it was installed (`pip`, `brew`, …). Coming from 0.7.x, see [below](#from-07x-to-08-or-later) first.
 - The checkout must be clean: `git status` should list no modified files. Stash or commit local changes (`git stash`), and move away untracked files a pull would overwrite. Ignored files (`.env`, database dumps) are fine. `zpod-update` refuses to run otherwise.
@@ -28,8 +28,8 @@ v0.9.0-2-g3f85190
 
 Then update `zcli` on every workstation to the API's `major.minor`, since the API refuses any other (see [Set up the zPod CLI (zcli)](../zcli.md#install)):
 
-``` { data-copy="uv tool install zpodcli==0.9.1" }
-❯ uv tool install zpodcli==0.9.1
+``` { data-copy="uv tool install zpodcli==0.9.2" }
+❯ uv tool install zpodcli==0.9.2
 ```
 
 ## Roll back
