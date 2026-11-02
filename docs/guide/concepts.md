@@ -24,7 +24,7 @@ zPodFactory is built upon the following various opensource projects:
 
 The project is composed of the following sub-projects:
 
-- **zPod API**: The zPod API is the core component of the project. It's the main entry point to interact with the project. It's a REST API that exposes the main functionalities of the project. It's the only component that is publicly exposed. It is the central component that controls and orchestrates everything in this framework. It will take care of any requests, manage and store information, and orchestrate/schedule flows onto the **zPod Engine** for execution.
+- **zPod API**: The zPod API is the core component of the project. It's the main entry point to interact with the project. It's a REST API that exposes the main functionalities of the project. zcli and zpodweb both go through it, on port **8000**. It is the central component that controls and orchestrates everything in this framework. It will take care of any requests, manage and store information, and orchestrate/schedule flows onto the **zPod Engine** for execution.
 
 - **zPod SDK**: The zPod SDK is generated from the [FastAPI](https://fastapi.tiangolo.com/) OpenAPI JSON schema. It's a Python SDK that allows clients to interact with the API without using pure REST API calls.
 - **zPod CLI**: The zPod CLI is a wrapper around the zPod API which is used to manage, configure and operate everything required to run zPods. It is based on the [Typer](https://typer.tiangolo.com/) framework.
