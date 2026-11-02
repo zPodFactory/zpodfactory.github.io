@@ -20,7 +20,7 @@ This page explains the moving parts of zPodFactory and how a zPod is laid out, s
 
 zPodFactory is built upon the following various opensource projects:
 
-![img](../img/zPodFactory-architecture.svg)
+![zPodFactory architecture](../img/zPodFactory-architecture.svg)
 
 The project is composed of the following sub-projects:
 
@@ -32,7 +32,7 @@ The project is composed of the following sub-projects:
 - **zPod Engine**: The zPod Engine is the core component responsible for the deployment of the nested environment. It uses the [Prefect](https://docs.prefect.io/) workflow orchestration engine to handle scheduling and execution of all flows and their child tasks.
 - **zPod Library**: This is a storage location that encompasses the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary) component metadata and downloaded templates/binaries.  These files will be managed by the embedded download engine.
 
-> Everything runs in Docker containers, through a Docker Compose application stack.
+> Everything runs in Docker containers on the appliance, in two Docker Compose projects: zpodcore (the zPod API, PostgreSQL and the zPod Engine) and zpodweb.
 
 ## Layers
 

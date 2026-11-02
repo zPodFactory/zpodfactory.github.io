@@ -9,8 +9,9 @@ Each script writes one SVG diagram of the documentation site. They use plain Pyt
 | `nsxdiagram.py` | `docs/img/zPodFactory-networking-nsx-overview.svg`: NSX T0/T1 layout for the `nsxt` and `nsxt_projects` drivers | Concepts |
 | `endpointdiagram.py` | `docs/img/zPodFactory-topology-overview-network-endpoints.svg`: the appliance, the lab L3 network and three endpoints | Install, Endpoints |
 | `componentdiagram.py` | `docs/img/zPodFactory-component-placement-network42.svg`: a nested zbox on a user VLAN (42), the four layers it crosses, what each step needs, and the SSH path to it | User guide: Components |
+| `archdiagram.py` | `docs/img/zPodFactory-architecture.svg`: the clients, the appliance's two Docker Compose projects (zpodweb; zPod API, PostgreSQL, zPod Engine), the library volumes and the endpoints. With `traefik` as a second argument it draws `docs/img/zPodFactory-architecture-traefik.svg` instead: the same services behind Traefik on `:443`, with the path and host name routing options. That one is a proposal, not shown on the site yet | Concepts |
 
-`docs/img/zPodFactory-overview-layers.svg` and `docs/img/zPodFactory-architecture.svg` have no generator: edit those SVGs directly.
+`docs/img/zPodFactory-overview-layers.svg` has no generator: edit that SVG directly.
 
 ## Regenerate a diagram
 
@@ -22,6 +23,8 @@ python3 tools/diagrams/instdiagram.py docs/img/zPodFactory-instance-networking.s
 python3 tools/diagrams/nsxdiagram.py docs/img/zPodFactory-networking-nsx-overview.svg
 python3 tools/diagrams/endpointdiagram.py docs/img/zPodFactory-topology-overview-network-endpoints.svg
 python3 tools/diagrams/componentdiagram.py docs/img/zPodFactory-component-placement-network42.svg
+python3 tools/diagrams/archdiagram.py docs/img/zPodFactory-architecture.svg
+python3 tools/diagrams/archdiagram.py docs/img/zPodFactory-architecture-traefik.svg traefik
 ```
 
 Then check the result: open the SVG in a browser, or run `uvx zensical==0.0.67 serve` and look at the page that uses it.
