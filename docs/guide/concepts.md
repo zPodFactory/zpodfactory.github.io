@@ -20,11 +20,11 @@ This page explains the moving parts of zPodFactory and how a zPod is laid out, s
 
 zPodFactory is built upon the following various opensource projects:
 
-![img](../img/zPodFactory-architecture.svg)
+![zPodFactory architecture](../img/zPodFactory-architecture.svg)
 
 The project is composed of the following sub-projects:
 
-- **zPod API**: The zPod API is the core component of the project. It's the main entry point to interact with the project. It's a REST API that exposes the main functionalities of the project. It's the only component that is publicly exposed. It is the central component that controls and orchestrates everything in this framework. It will take care of any requests, manage and store information, and orchestrate/schedule flows onto the **zPod Engine** for execution.
+- **zPod API**: The zPod API is the core component of the project. It's the main entry point to interact with the project. It's a REST API that exposes the main functionalities of the project. zcli and zpodweb both go through it, on port **8000**. It is the central component that controls and orchestrates everything in this framework. It will take care of any requests, manage and store information, and orchestrate/schedule flows onto the **zPod Engine** for execution.
 
 - **zPod SDK**: The zPod SDK is generated from the [FastAPI](https://fastapi.tiangolo.com/) OpenAPI JSON schema. It's a Python SDK that allows clients to interact with the API without using pure REST API calls.
 - **zPod CLI**: The zPod CLI is a wrapper around the zPod API which is used to manage, configure and operate everything required to run zPods. It is based on the [Typer](https://typer.tiangolo.com/) framework.
@@ -32,7 +32,7 @@ The project is composed of the following sub-projects:
 - **zPod Engine**: The zPod Engine is the core component responsible for the deployment of the nested environment. It uses the [Prefect](https://docs.prefect.io/) workflow orchestration engine to handle scheduling and execution of all flows and their child tasks.
 - **zPod Library**: This is a storage location that encompasses the [zPodLibrary](https://github.com/zPodFactory/zPodLibrary) component metadata and downloaded templates/binaries.  These files will be managed by the embedded download engine.
 
-> Everything runs in Docker containers, through a Docker Compose application stack.
+> Everything runs in Docker containers on the appliance, in two Docker Compose projects: zpodcore (the zPod API, PostgreSQL and the zPod Engine) and zpodweb.
 
 ## Layers
 

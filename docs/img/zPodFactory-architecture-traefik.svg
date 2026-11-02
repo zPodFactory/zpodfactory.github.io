@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1100" width="1600" height="1100" font-family="'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" role="img" aria-label="zPodFactory architecture with Traefik as the single entry point: the browser and zcli reach zpodweb, the zPod API and the Prefect UI through Traefik on port 443, by path or by host name">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#777"/></marker></defs>
+  <rect width="1600" height="1100" fill="#fff"/>
+  <rect x="30" y="20" width="270" height="800" rx="6" fill="#F7F8FA" stroke="#E3E6EA"/>
+  <text x="46" y="44" font-size="11" font-weight="700" letter-spacing="0.5" fill="#888">YOUR WORKSTATION</text>
+  <rect x="340" y="20" width="940" height="800" rx="6" fill="#F7F8FA" stroke="#E3E6EA"/>
+  <text x="356" y="44" font-size="11" font-weight="700" letter-spacing="0.5" fill="#888">ZPODFACTORY APPLIANCE</text>
+  <g transform="translate(0 100)">
+  <rect x="46" y="90" width="238" height="76" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="46" y="90" width="6" height="76" rx="2" fill="#12455F"/>
+  <text x="68" y="120" font-size="16" font-weight="700" fill="#12455F">Web browser</text>
+  <text x="68" y="139" font-size="12" fill="#666">https://zpodfactory.fqdn.com</text>
+  <rect x="46" y="300" width="238" height="200" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="46" y="300" width="6" height="200" rx="2" fill="#12455F"/>
+  <text x="68" y="330" font-size="16" font-weight="700" fill="#12455F">zcli</text>
+  <text x="68" y="349" font-size="12" fill="#666">command line · Typer · Rich</text>
+  <rect x="68" y="362" width="194" height="28" rx="4" fill="#F0F2F4"/>
+  <text x="78" y="381" font-size="12.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">$ zcli zpod list</text>
+  <rect x="68" y="408" width="194" height="72" rx="4" fill="#fff" stroke="#12455F" stroke-width="1.5"/>
+  <text x="82" y="430" font-size="12.5" font-weight="700" fill="#12455F">zPod SDK</text>
+  <text x="82" y="448" font-size="11" fill="#666">Python client generated</text>
+  <text x="82" y="464" font-size="11" fill="#666">from the API's <tspan font-family="Consolas, 'JetBrains Mono', monospace">openapi.json</tspan></text>
+  <rect x="362" y="90" width="240" height="118" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="362" y="90" width="6" height="118" rx="2" fill="#12455F"/>
+  <text x="384" y="120" font-size="16" font-weight="700" fill="#12455F">zpodweb</text>
+  <text x="384" y="139" font-size="12" fill="#666">Web UI · React · Node server</text>
+  <rect x="545.5" y="104" width="42.5" height="20" rx="10" fill="#fff" stroke="#9AA4AE" stroke-dasharray="3 2"/>
+  <text x="566.75" y="118" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#888">:80</text>
+  <text x="384" y="170" font-size="11.5" fill="#555">keeps its <tspan font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">/api/</tspan> proxy, to reach</text>
+  <text x="384" y="187" font-size="11.5" fill="#555">any zPodFactory API it targets</text>
+  <rect x="666" y="90" width="290" height="250" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="666" y="90" width="6" height="250" rx="2" fill="#12455F"/>
+  <text x="688" y="120" font-size="16" font-weight="700" fill="#12455F">zPod API</text>
+  <text x="688" y="139" font-size="12" fill="#666">core service · zpodapi</text>
+  <rect x="884.5" y="104" width="57.5" height="20" rx="10" fill="#fff" stroke="#9AA4AE" stroke-dasharray="3 2"/>
+  <text x="913.25" y="118" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#888">:8000</text>
+  <rect x="688" y="160" width="117" height="64" rx="4" fill="#12455F"/>
+  <text x="746.5" y="189.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">REST API</text>
+  <text x="746.5" y="206.0" text-anchor="middle" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#BFD3E0">FastAPI</text>
+  <rect x="817" y="160" width="117" height="64" rx="4" fill="#12455F"/>
+  <text x="875.5" y="189.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">ORM</text>
+  <text x="875.5" y="206.0" text-anchor="middle" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#BFD3E0">SQLModel</text>
+  <text x="688" y="252" font-size="11.5" fill="#555">users, zPods, components, profiles,</text>
+  <text x="688" y="269" font-size="11.5" fill="#555">endpoints, settings; schedules flows</text>
+  <rect x="688" y="286" width="246" height="34" rx="4" fill="#F0F2F4"/>
+  <text x="700" y="307" font-size="11.5" fill="#555">publishes <tspan font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700" fill="#333">openapi.json</tspan> · Rich logs</text>
+  <rect x="716" y="410" width="220" height="112" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="716" y="410" width="6" height="112" rx="2" fill="#12455F"/>
+  <path d="M740 434 V480 A18 6 0 0 0 776 480 V434 Z" fill="#12455F"/>
+  <path d="M740 449.3 A18 6 0 0 0 776 449.3" stroke="#fff" stroke-width="1.5" fill="none"/>
+  <path d="M740 464.7 A18 6 0 0 0 776 464.7" stroke="#fff" stroke-width="1.5" fill="none"/>
+  <ellipse cx="758" cy="434" rx="18" ry="6" fill="#2E6E8C" stroke="#12455F" stroke-width="1.5"/>
+  <text x="792" y="442" font-size="16" font-weight="700" fill="#12455F">PostgreSQL</text>
+  <text x="792" y="460" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#666">zpodpostgres</text>
+  <rect x="792" y="474" width="50.0" height="20" rx="10" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="817.0" y="488" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F">zpod</text>
+  <text x="817.0" y="510" text-anchor="middle" font-size="10.5" fill="#777">zPodFactory</text>
+  <rect x="852.0" y="474" width="72.5" height="20" rx="10" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="888.25" y="488" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F">prefect</text>
+  <text x="888.25" y="510" text-anchor="middle" font-size="10.5" fill="#777">Prefect</text>
+  <rect x="1020" y="90" width="240" height="466" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="1020" y="90" width="6" height="466" rx="2" fill="#12455F"/>
+  <text x="1042" y="120" font-size="16" font-weight="700" fill="#12455F">zPod Engine</text>
+  <text x="1042" y="139" font-size="12" fill="#666">Prefect workflows · Prefect UI</text>
+  <rect x="1040" y="156" width="200" height="56" rx="4" fill="#12455F"/>
+  <text x="1140.0" y="181.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">Prefect server</text>
+  <text x="1140.0" y="198.0" text-anchor="middle" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#BFD3E0">API and UI</text>
+  <rect x="1188.5" y="104" width="57.5" height="20" rx="10" fill="#fff" stroke="#9AA4AE" stroke-dasharray="3 2"/>
+  <text x="1217.25" y="118" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#888">:4200</text>
+  <rect x="1040" y="246" width="200" height="56" rx="4" fill="#12455F"/>
+  <text x="1140.0" y="271.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">Prefect worker</text>
+  <text x="1140.0" y="288.0" text-anchor="middle" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#BFD3E0">zpodengine-pool</text>
+  <path d="M1140.0 214 V244" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M1140.0 304 V336" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="1148.0" y="326" font-size="11" fill="#555">starts · docker</text>
+  <rect x="1040" y="340" width="200" height="200" rx="4" fill="#fff" stroke="#12455F" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="1140.0" y="360" text-anchor="middle" font-size="12.5" font-weight="700" fill="#12455F">flow run container</text>
+  <text x="1140.0" y="376" text-anchor="middle" font-size="11" fill="#666">one per run, <tspan font-family="Consolas, 'JetBrains Mono', monospace">zpodengine</tspan> image</text>
+  <rect x="1052" y="388" width="176" height="23" rx="11.5" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="1140.0" y="404" text-anchor="middle" font-size="11.5" fill="#12455F">Python</text>
+  <rect x="1052" y="417" width="176" height="23" rx="11.5" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="1140.0" y="433" text-anchor="middle" font-size="11.5" fill="#12455F">PowerShell · PowerCLI</text>
+  <rect x="1052" y="446" width="176" height="23" rx="11.5" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="1140.0" y="462" text-anchor="middle" font-size="11.5" fill="#12455F">Shell · govc</text>
+  <rect x="1052" y="475" width="176" height="23" rx="11.5" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="1140.0" y="491" text-anchor="middle" font-size="11.5" fill="#12455F">Terraform (available)</text>
+  <rect x="1052" y="504" width="176" height="23" rx="11.5" fill="#fff" stroke="#B9C0C8" stroke-dasharray="3 3"/>
+  <text x="1140.0" y="520" text-anchor="middle" font-size="11.5" fill="#888">Ansible (not implemented)</text>
+  <rect x="350" y="74" width="264" height="150" rx="8" fill="none" stroke="#B9C0C8" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <rect x="362" y="66" width="135" height="16" fill="#F7F8FA"/>
+  <text x="370" y="78" font-size="10.5" font-weight="700" letter-spacing="0.4" fill="#888">COMPOSE · ZPODWEB</text>
+  <rect x="654" y="74" width="618" height="496" rx="8" fill="none" stroke="#B9C0C8" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <rect x="666" y="66" width="142" height="16" fill="#F7F8FA"/>
+  <text x="674" y="78" font-size="10.5" font-weight="700" letter-spacing="0.4" fill="#888">COMPOSE · ZPODCORE</text>
+  <rect x="362" y="590" width="898" height="92" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="362" y="590" width="6" height="92" rx="2" fill="#12455F"/>
+  <text x="384" y="620" font-size="16" font-weight="700" fill="#12455F">zPod Library</text>
+  <text x="384" y="639" font-size="12" fill="#666">host volumes</text>
+  <rect x="562" y="608" width="320" height="56" rx="4" fill="#fff" stroke="#12455F" stroke-width="1.5"/>
+  <text x="576" y="631" font-size="13" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F">/library</text>
+  <text x="576" y="650" font-size="11" fill="#666">component definitions · zPodLibrary git repositories</text>
+  <rect x="916" y="608" width="320" height="56" rx="4" fill="#fff" stroke="#12455F" stroke-width="1.5"/>
+  <text x="930" y="631" font-size="13" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F">/products</text>
+  <text x="930" y="650" font-size="11" fill="#666">downloaded templates and binaries · OVA, ISO</text>
+  <rect x="1310" y="340" width="260" height="200" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="1310" y="340" width="6" height="200" rx="2" fill="#12455F"/>
+  <text x="1332" y="370" font-size="16" font-weight="700" fill="#12455F">Endpoints</text>
+  <text x="1332" y="389" font-size="12" fill="#666">where zPods are deployed</text>
+  <rect x="1332" y="406" width="216" height="50" rx="4" fill="#12455F"/>
+  <text x="1440.0" y="428.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">vCenter</text>
+  <text x="1440.0" y="445.0" text-anchor="middle" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#BFD3E0">vcsa · ESXi hosts</text>
+  <rect x="1332" y="466" width="216" height="50" rx="4" fill="#12455F"/>
+  <text x="1440.0" y="488.0" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">NSX Manager</text>
+  <text x="1440.0" y="505.0" text-anchor="middle" font-size="11" font-family="Consolas, 'JetBrains Mono', monospace" fill="#BFD3E0">nsx</text>
+  <path d="M826.0 342 V408" stroke="#777" stroke-width="2.5" fill="none" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="834.0" y="379.0" text-anchor="start" font-size="11.5" fill="#555">read / write</text>
+  <path d="M956 180 H1018" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="988.0" y="172" text-anchor="middle" font-size="11.5" fill="#555">flows</text>
+  <path d="M936 466.0 H1018" stroke="#777" stroke-width="2.5" fill="none" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="978.0" y="458.0" text-anchor="middle" font-size="11.5" fill="#555">read / write</text>
+  <path d="M696 588 V342" stroke="#777" stroke-width="2.5" fill="none" stroke-dasharray="3 4" marker-end="url(#ar)"/>
+  <text x="688" y="585" text-anchor="end" font-size="11.5" fill="#555">mounts</text>
+  <path d="M1140.0 588 V558" stroke="#777" stroke-width="2.5" fill="none" stroke-dasharray="3 4" marker-end="url(#ar)"/>
+  <text x="1148.0" y="585" text-anchor="start" font-size="11.5" fill="#555">mounts</text>
+  <path d="M1242 440.0 H1308" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="1440.0" y="564" text-anchor="middle" font-size="11.5" fill="#555">flows call the vCenter and NSX APIs</text>
+  <text x="1440.0" y="580" text-anchor="middle" font-size="11.5" fill="#555">and upload OVAs to deploy zPods</text>
+  </g>
+  <rect x="350" y="56" width="922" height="92" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="350" y="56" width="6" height="92" rx="2" fill="#12455F"/>
+  <text x="372" y="84" font-size="16" font-weight="700" fill="#12455F">Traefik</text>
+  <text x="372" y="102" font-size="12" fill="#666">reverse proxy · TLS · the only published port</text>
+  <rect x="1208.0" y="68" width="50.0" height="20" rx="10" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="1233.0" y="82" text-anchor="middle" font-size="11.5" font-weight="700" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F">:443</text>
+  <text x="1192" y="82" text-anchor="end" font-size="11" fill="#777">:80 redirects to :443</text>
+  <text x="1258" y="106" text-anchor="end" font-size="11" fill="#777">dashed ports: internal only, no longer published</text>
+  <rect x="468.2" y="116" width="117.60000000000001" height="22" rx="11" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="527" y="131" text-anchor="middle" font-size="11.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F" xml:space="preserve"><tspan font-weight="700">/ui</tspan>  or  <tspan font-weight="700">ui.*</tspan></text>
+  <path d="M527 148 V188" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <rect x="775.0" y="116" width="132.0" height="22" rx="11" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="841.0" y="131" text-anchor="middle" font-size="11.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F" xml:space="preserve"><tspan font-weight="700">/api</tspan>  or  <tspan font-weight="700">api.*</tspan></text>
+  <path d="M841.0 148 V188" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <rect x="1045.2" y="116" width="189.6" height="22" rx="11" fill="#EEF4F7" stroke="#12455F"/>
+  <text x="1140.0" y="131" text-anchor="middle" font-size="11.5" font-family="Consolas, 'JetBrains Mono', monospace" fill="#12455F" xml:space="preserve"><tspan font-weight="700">/prefect</tspan>  or  <tspan font-weight="700">prefect.*</tspan></text>
+  <path d="M1140.0 148 V188" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M284 228 H302 Q310 228 310 220 V94 Q310 86 318 86 H348" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M262 544 H314 Q322 544 322 536 V130 Q322 122 330 122 H348" stroke="#777" stroke-width="2.5" fill="none" marker-end="url(#ar)"/>
+  <text x="284" y="112" text-anchor="end" font-size="11.5" fill="#555">both to Traefik, HTTPS <tspan font-family="Consolas, 'JetBrains Mono', monospace" font-weight="700">:443</tspan></text>
+  <text x="30" y="848" font-size="11" font-weight="700" letter-spacing="0.5" fill="#888">TWO WAYS TO ROUTE · BOTH WORK AT THE SAME TIME</text>
+  <rect x="30.0" y="860" width="755.0" height="210" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="30.0" y="860" width="6" height="210" rx="2" fill="#12455F"/>
+  <text x="52.0" y="890" font-size="16" font-weight="700" fill="#12455F">Option A · by path</text>
+  <text x="52.0" y="909" font-size="12" fill="#666">one name, or just the appliance IP: no DNS records, one certificate</text>
+  <rect x="611.0" y="874" width="156.0" height="22" rx="11" fill="#12455F"/>
+  <text x="689.0" y="889" text-anchor="middle" font-size="11.5" font-weight="700" fill="#fff">recommended for labs</text>
+  <text x="52.0" y="942" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://zpodfactory.fqdn.com/ui</text>
+  <text x="430.0" y="942" font-size="12.5" fill="#999">→</text>
+  <text x="452.0" y="942" font-size="12.5" fill="#12455F">zpodweb</text>
+  <text x="52.0" y="968" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://zpodfactory.fqdn.com/api</text>
+  <text x="430.0" y="968" font-size="12.5" fill="#999">→</text>
+  <text x="452.0" y="968" font-size="12.5" fill="#12455F">zPod API, zcli -s …/api</text>
+  <text x="52.0" y="994" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://zpodfactory.fqdn.com/prefect</text>
+  <text x="430.0" y="994" font-size="12.5" fill="#999">→</text>
+  <text x="452.0" y="994" font-size="12.5" fill="#12455F">Prefect UI and its API</text>
+  <text x="52.0" y="1020" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://&lt;appliance-ip&gt;/ui</text>
+  <text x="430.0" y="1020" font-size="12.5" fill="#999">→</text>
+  <text x="452.0" y="1020" font-size="12.5" fill="#12455F">the same routes by IP</text>
+  <text x="52.0" y="1054" font-size="11.5" fill="#777">apps read their prefix from X-Forwarded-Prefix; the Prefect UI is built for /prefect</text>
+  <rect x="815.0" y="860" width="755.0" height="210" rx="6" fill="#fff" stroke="#C5CAD0"/>
+  <rect x="815.0" y="860" width="6" height="210" rx="2" fill="#12455F"/>
+  <text x="837.0" y="890" font-size="16" font-weight="700" fill="#12455F">Option B · by host name</text>
+  <text x="837.0" y="909" font-size="12" fill="#666">a wildcard DNS record and certificate: *.zpodfactory.fqdn.com</text>
+  <text x="837.0" y="942" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://ui.zpodfactory.fqdn.com</text>
+  <text x="1215.0" y="942" font-size="12.5" fill="#999">→</text>
+  <text x="1237.0" y="942" font-size="12.5" fill="#12455F">zpodweb</text>
+  <text x="837.0" y="968" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://api.zpodfactory.fqdn.com</text>
+  <text x="1215.0" y="968" font-size="12.5" fill="#999">→</text>
+  <text x="1237.0" y="968" font-size="12.5" fill="#12455F">zPod API, zcli -s https://api.…</text>
+  <text x="837.0" y="994" font-size="13" font-family="Consolas, 'JetBrains Mono', monospace" fill="#333">https://prefect.zpodfactory.fqdn.com</text>
+  <text x="1215.0" y="994" font-size="12.5" fill="#999">→</text>
+  <text x="1237.0" y="994" font-size="12.5" fill="#12455F">Prefect UI and its API</text>
+  <text x="837.0" y="1054" font-size="11.5" fill="#777">same routers as option A: ui.* and api.* serve at /, prefect.* opens /prefect/</text>
+</svg>
